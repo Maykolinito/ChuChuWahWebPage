@@ -99,7 +99,7 @@
     position: relative;
     overflow: hidden;
     /* Fondo general desde img/bg.png (fallback a imagen online si no existe) */
-    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), 
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
                 url('img/bg.png');
     background-size: cover;
     background-position: center 30%;
@@ -108,7 +108,7 @@
   /* Fallback si no existe bg.png */
   @supports (background-image: url('img/bg.png')) {
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), 
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
                   url('img/bg.png');
       background-size: cover;
       background-position: center 30%;
@@ -120,6 +120,7 @@
     position: relative;
     width: 95%;
     max-width: 1200px;
+    max-height: 550px;
     margin: 0 auto 30px auto;
     overflow: hidden;
     border-radius: 20px;
@@ -599,6 +600,7 @@
     <li><a href="#combos">Combos</a></li>
     <li><a href="#menu">Menú</a></li>
     <li><a href="#bebidas">Bebidas</a></li>
+    <li><a href="lmr.html">Lo más pedido</a></li>
     <li><a href="#info">Info</a></li>
   </ul>
   <div class="currency-switcher">
@@ -1150,6 +1152,30 @@
     startAutoSlide();
   }
 
+  // ======================== TOUCH CARRUSEL ========================
+  function setupTouchCarousel() {
+    const carousel = document.getElementById("carouselSlides");
+    if (!carousel) return;
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carousel.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carousel.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const diff = touchStartX - touchEndX;
+      if (diff > 50) changeSlide(1); // Swipe left
+      else if (diff < -50) changeSlide(-1); // Swipe right
+    }
+  }
+
   // Inicialización general
   function init() {
     renderCombos();
@@ -1181,6 +1207,7 @@
     document.getElementById("closeCartBtn").onclick = () => document.getElementById("cartDrawer").classList.remove("open");
     document.getElementById("enviarWhatsappBtn").addEventListener("click", enviarPedidoWhatsApp);
     loadCarouselImages();
+    setupTouchCarousel();
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
