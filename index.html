@@ -655,39 +655,38 @@
 <body>
 
 <div id="mobile-only-message" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--oscuro); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; padding: 20px; text-align: center; display: none;">
-  <h2>📱 Solo disponible en dispositivos móviles</h2>
-  <p>Este sitio está optimizado para móviles. Por favor, accede desde tu teléfono.</p>
+  <h2>📱 Only available on mobile devices</h2>
+  <p>This site is optimized for mobile. Please access from your phone.</p>
 </div>
 
 <nav>
   <img src="logo.png" alt="ChuChuWah Logo" class="nav-logo-img">
   <ul class="nav-links">
-    <li><a href="#combos">Combos</a></li>
-    <li><a href="#menu">Menú</a></li>
-    <li><a href="#bebidas">Bebidas</a></li>
-    <li><a href="lmr.html">Lo más pedido</a></li>
-    <li><a href="#info">Info</a></li>
+    <li><a href="#combos" data-translate="Combos">Combos</a></li>
+    <li><a href="#menu" data-translate="Menú">Menú</a></li>
+    <li><a href="#bebidas" data-translate="Bebidas">Bebidas</a></li>
+    <li><a href="lmr.html" data-translate="Lo más pedido">Lo más pedido</a></li>
+    <li><a href="#info" data-translate="Info">Info</a></li>
   </ul>
   <button id="mobile-menu-btn" class="mobile-menu-btn">☰</button>
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#combos">Combos</a>
-    <a href="#menu">Menú</a>
-    <a href="#bebidas">Bebidas</a>
-    <a href="lmr.html">Lo más pedido</a>
-    <a href="#info">Info</a>
+    <a href="#combos" data-translate="Combos">Combos</a>
+    <a href="#menu" data-translate="Menú">Menú</a>
+    <a href="#bebidas" data-translate="Bebidas">Bebidas</a>
+    <a href="lmr.html" data-translate="Lo más pedido">Lo más pedido</a>
+    <a href="#info" data-translate="Info">Info</a>
   </div>
   <div class="currency-switcher">
-    <button class="currency-btn active" data-currency="cup">🇨🇺 CUP</button>
+    <button class="currency-btn" data-currency="cup">🇨🇺 CUP</button>
     <button class="currency-btn" data-currency="usd">💵 USD</button>
   </div>
   <div class="language-switcher">
-    <button class="language-btn active" data-lang="es">🇪🇸 ES</button>
+    <button class="language-btn" data-lang="es">🇪🇸 ES</button>
     <button class="language-btn" data-lang="en">🇬🇧 EN</button>
   </div>
 </nav>
 
 <div class="hero">
-  <!-- Carrusel de imágenes promocionales desde carpeta img/ -->
   <div class="carousel-container" id="carousel">
     <div class="carousel-slides" id="carouselSlides"></div>
     <button class="carousel-btn prev" id="prevBtn">❮</button>
@@ -699,14 +698,14 @@
   <p class="hero-eyebrow">🚂 Jaruco, Mayabeque, Cuba</p>
   <h1 class="hero-title" data-translate="El Expreso del Sabor">CHU<span>CHU</span>WAH</h1>
   <p class="hero-subtitle" data-translate="El Expreso del Sabor"></p>
-  <p class="hero-desc" data-translate="Comida cubana con alma propia.">Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.</p>
+  <p class="hero-desc" data-translate="Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.">Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.</p>
   <div class="hero-ctas">
     <a href="#menu" class="btn-outline" data-translate="Ver Menú Completo">Ver Menú Completo</a>
   </div>
   <div class="hero-badges">
-    <div class="badge"><span class="badge-icon">🕐</span><span class="badge-text">11am – 10pm</span></div>
-    <div class="badge"><span class="badge-icon">🛵</span><span class="badge-text">Delivery Mayabeque</span></div>
-    <div class="badge"><span class="badge-icon">💳</span><span class="badge-text">Zelle & CUP</span></div>
+    <div class="badge"><span class="badge-icon">🕐</span><span class="badge-text" data-translate="11am – 10pm">11am – 10pm</span></div>
+    <div class="badge"><span class="badge-icon">🛵</span><span class="badge-text" data-translate="Delivery Mayabeque">Delivery Mayabeque</span></div>
+    <div class="badge"><span class="badge-icon">💳</span><span class="badge-text" data-translate="Zelle & CUP">Zelle & CUP</span></div>
   </div>
 </div>
 
@@ -764,8 +763,8 @@
     <div class="payment-method">
       <label data-translate="Método de pago:">Método de pago:</label>
       <select id="paymentMethod">
-        <option value="CUP (efectivo)">💵 CUP (efectivo)</option>
-        <option value="Zelle (USD)">💲 Zelle (USD)</option>
+        <option value="CUP (efectivo)" data-translate="CUP (efectivo)">💵 CUP (efectivo)</option>
+        <option value="Zelle (USD)" data-translate="Zelle (USD)">💲 Zelle (USD)</option>
       </select>
     </div>
     <div class="delivery-form" id="deliveryFormStatic">
@@ -893,7 +892,159 @@
 
   let carrito = [];
   let currentCurrency = "cup";
+  let currentLang = "es";
   let pendingProduct = null;
+
+  // ======================== COOKIES ========================
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  function setCookie(name, value, days = 30) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = `expires=${date.toUTCString()}`;
+    document.cookie = `${name}=${value}; ${expires}; path=/`;
+  }
+
+  function loadPreferences() {
+    const savedCurrency = getCookie('chuchuwah_currency');
+    const savedLang = getCookie('chuchuwah_lang');
+    if (savedCurrency) {
+      currentCurrency = savedCurrency;
+      document.querySelectorAll('.currency-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.currency === savedCurrency) btn.classList.add('active');
+      });
+    }
+    if (savedLang) {
+      currentLang = savedLang;
+      document.querySelectorAll('.language-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === savedLang) btn.classList.add('active');
+      });
+      setLanguage(savedLang);
+    }
+  }
+
+  // ======================== TRADUCCIONES ========================
+  const translations = {
+    es: {
+      "El Expreso del Sabor": "El Expreso del Sabor",
+      "Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.": "Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.",
+      "COMBOS ESPECIALES": "COMBOS ESPECIALES",
+      "MENÚ COMPLETO": "MENÚ COMPLETO",
+      "NUESTRAS BEBIDAS": "NUESTRAS BEBIDAS",
+      "¿LISTO PARA PEDIR?": "¿LISTO PARA PEDIR?",
+      "Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm": "Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm",
+      "INFORMACIÓN & CONTACTO": "INFORMACIÓN & CONTACTO",
+      "Tu Pedido": "Tu Pedido",
+      "Agregar al carrito": "Agregar al carrito",
+      "Agregar extras": "Agregar extras",
+      "Cancelar": "Cancelar",
+      "Confirmar": "Confirmar",
+      "Para llevar (sin costo extra)": "Para llevar (sin costo extra)",
+      "Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)": "Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)",
+      "Delivery fuera de Jaruco (precio a consultar)": "Delivery fuera de Jaruco (precio a consultar)",
+      "Dirección completa": "Dirección completa",
+      "Nombre de quien recibe": "Nombre de quien recibe",
+      "Número de celular": "Número de celular",
+      "Notas adicionales (opcional)": "Notas adicionales (opcional)",
+      "Método de pago:": "Método de pago:",
+      "CUP (efectivo)": "💵 CUP (efectivo)",
+      "Zelle (USD)": "💲 Zelle (USD)",
+      "Pedir por WhatsApp": "📲 Pedir por WhatsApp",
+      "Subtotal:": "Subtotal:",
+      "Empaque:": "Empaque:",
+      "Mensajería:": "Mensajería:",
+      "Total:": "Total:",
+      "Tu carrito está vacío": "Tu carrito está vacío",
+      "Jaruco, Mayabeque": "Jaruco, Mayabeque",
+      "Horario": "Horario",
+      "11am – 10pm (Delivery hasta 6pm)": "11am – 10pm (Delivery hasta 6pm)",
+      "Contacto": "Contacto",
+      "Nuestras Ofertas": "Nuestras Ofertas",
+      "Todo lo que tenemos": "Todo lo que tenemos",
+      "Para tomar": "Para tomar",
+      "El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.": "El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.",
+      "Encuéntranos": "Encuéntranos",
+      "Combos": "Combos",
+      "Menú": "Menú",
+      "Bebidas": "Bebidas",
+      "Lo más pedido": "Lo más pedido",
+      "Info": "Info",
+      "Ver Menú Completo": "Ver Menú Completo"
+    },
+    en: {
+      "El Expreso del Sabor": "The Flavor Express",
+      "Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.": "Cuban food with its own soul. Chicken, pizzas, seafood, meats and much more — straight to your table or door throughout Mayabeque.",
+      "COMBOS ESPECIALES": "SPECIAL COMBO MEALS",
+      "MENÚ COMPLETO": "FULL MENU",
+      "NUESTRAS BEBIDAS": "OUR DRINKS",
+      "¿LISTO PARA PEDIR?": "READY TO ORDER?",
+      "Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm": "Delivery available throughout Mayabeque • Monday to Sunday 11am – 10pm",
+      "INFORMACIÓN & CONTACTO": "INFO & CONTACT",
+      "Tu Pedido": "Your Order",
+      "Agregar al carrito": "Add to Cart",
+      "Agregar extras": "Add Extras",
+      "Cancelar": "Cancel",
+      "Confirmar": "Confirm",
+      "Para llevar (sin costo extra)": "Takeaway (no extra cost)",
+      "Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)": "Home delivery (Jaruco +200 CUP / 0.52 USD)",
+      "Delivery fuera de Jaruco (precio a consultar)": "Delivery outside Jaruco (price to be confirmed)",
+      "Dirección completa": "Full address",
+      "Nombre de quien recibe": "Recipient's name",
+      "Número de celular": "Cell phone number",
+      "Notas adicionales (opcional)": "Additional notes (optional)",
+      "Método de pago:": "Payment method:",
+      "CUP (efectivo)": "💵 CUP (cash)",
+      "Zelle (USD)": "💲 Zelle (USD)",
+      "Pedir por WhatsApp": "📲 Order via WhatsApp",
+      "Subtotal:": "Subtotal:",
+      "Empaque:": "Packaging:",
+      "Mensajería:": "Delivery:",
+      "Total:": "Total:",
+      "Tu carrito está vacío": "Your cart is empty",
+      "Jaruco, Mayabeque": "Jaruco, Mayabeque",
+      "Horario": "Opening Hours",
+      "11am – 10pm (Delivery hasta 6pm)": "11am – 10pm (Delivery until 6pm)",
+      "Contacto": "Contact",
+      "Nuestras Ofertas": "Our Offers",
+      "Todo lo que tenemos": "Everything we have",
+      "Para tomar": "To drink",
+      "El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.": "The price of drinks is consulted at the time of order. They are added to the cart at no cost and billed separately.",
+      "Encuéntranos": "Find us",
+      "Combos": "Combos",
+      "Menú": "Menu",
+      "Bebidas": "Drinks",
+      "Lo más pedido": "Most ordered",
+      "Info": "Info",
+      "Ver Menú Completo": "View Full Menu"
+    }
+  };
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    setCookie('chuchuwah_lang', lang);
+    document.querySelectorAll('.language-btn').forEach(btn => {
+      if (btn.dataset.lang === lang) btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
+    document.querySelectorAll('[data-translate]').forEach(el => {
+      const key = el.getAttribute('data-translate');
+      if (translations[lang][key]) el.innerText = translations[lang][key];
+    });
+    document.querySelectorAll('[data-translate-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-translate-placeholder');
+      if (translations[lang][key]) el.placeholder = translations[lang][key];
+    });
+    document.querySelectorAll('option').forEach(el => {
+      const key = el.textContent.trim();
+      if (translations[lang][key]) el.textContent = translations[lang][key];
+    });
+  }
 
   function getPriceValue(cup, usd) { return currentCurrency === "cup" ? cup : usd; }
   function formatPrice(valor) {
@@ -912,17 +1063,43 @@
     }
   }
 
+  function setCurrency(currency) {
+    currentCurrency = currency;
+    setCookie('chuchuwah_currency', currency);
+    document.querySelectorAll('.currency-btn').forEach(btn => {
+      if (btn.dataset.currency === currency) btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
+    document.querySelectorAll('.combo-price-value').forEach(el => {
+      const cupVal = el.getAttribute('data-cup');
+      const usdVal = el.getAttribute('data-usd');
+      if (cupVal && usdVal) el.innerText = currency === "cup" ? cupVal : usdVal;
+    });
+    document.querySelectorAll('.price-value').forEach(el => {
+      const cupVal = el.getAttribute('data-cup');
+      const usdVal = el.getAttribute('data-usd');
+      if (cupVal && usdVal) el.innerText = currency === "cup" ? cupVal + " CUP" : "$" + usdVal + " USD";
+      else if (el.getAttribute('data-cup')) {
+        const cup = parseFloat(el.getAttribute('data-cup'));
+        const usd = parseFloat(el.getAttribute('data-usd'));
+        el.innerText = currency === "cup" ? cup + " CUP" : "$" + usd + " USD";
+      }
+    });
+    actualizarCarrito();
+    syncPaymentMethodWithCurrency();
+  }
+
   function renderCombos() {
     const container = document.getElementById("combos-container");
     container.innerHTML = combosData.map(c => `
       <div class="combo-card ${c.pareja ? 'pareja' : ''} fade-in">
         <div class="combo-emoji">${c.emoji}</div>
-        <div class="combo-num">${c.pareja ? 'Pareja' : 'Combo'}</div>
+        <div class="combo-num">${c.pareja ? (currentLang === 'es' ? 'Pareja' : 'Couple') : (currentLang === 'es' ? 'Combo' : 'Combo')}</div>
         <div class="combo-name">${c.nombre}</div>
         <ul class="combo-items">${c.items.map(i => `<li>${i}</li>`).join('')}</ul>
         <div class="combo-price">
           <span class="combo-price-value" data-cup="${c.cup} CUP" data-usd="$${c.usd} USD">${currentCurrency === "cup" ? c.cup + " CUP" : "$" + c.usd + " USD"}</span>
-          <button class="add-to-cart-btn" data-nombre="${c.nombre}" data-cup="${c.cup}" data-usd="${c.usd}" data-tipo="combo">Agregar</button>
+          <button class="add-to-cart-btn" data-nombre="${c.nombre}" data-cup="${c.cup}" data-usd="${c.usd}" data-tipo="combo" data-translate="Agregar al carrito">Agregar</button>
         </div>
       </div>
     `).join('');
@@ -933,6 +1110,10 @@
         const usd = parseFloat(btn.dataset.usd);
         agregarAlCarrito({ nombre, cup, usd, tipo: "combo" }, 1, []);
       });
+    });
+    document.querySelectorAll('[data-translate]').forEach(el => {
+      const key = el.getAttribute('data-translate');
+      if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
     });
   }
 
@@ -954,7 +1135,7 @@
         const p = productosData[nombre];
         if (!p) return;
         const precioMostrado = currentCurrency === "cup" ? p.cup + " CUP" : "$" + p.usd + " USD";
-        html += `<div class="menu-item"><span class="menu-item-name">${nombre}</span><span class="price-value" data-cup="${p.cup}" data-usd="${p.usd}">${precioMostrado}</span><button class="small-add-btn" data-nombre="${nombre}" data-tipo="${p.tipo}" data-cup="${p.cup}" data-usd="${p.usd}">+</button></div>`;
+        html += `<div class="menu-item"><span class="menu-item-name">${nombre}</span><span class="price-value" data-cup="${p.cup}" data-usd="${p.usd}">${precioMostrado}</span><button class="small-add-btn" data-nombre="${nombre}" data-tipo="${p.tipo}" data-cup="${p.cup}" data-usd="${p.usd}" data-translate="Agregar al carrito">+</button></div>`;
       });
       html += `</div></div>`;
     }
@@ -973,6 +1154,10 @@
         }
       });
     });
+    document.querySelectorAll('[data-translate]').forEach(el => {
+      const key = el.getAttribute('data-translate');
+      if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
+    });
   }
 
   function mostrarModalAgregos(tipoProducto) {
@@ -985,7 +1170,7 @@
         <span>${currentCurrency === "cup" ? ag.cup + " CUP" : "$" + ag.usd + " USD"}</span>
       </div>
     `).join('');
-    document.getElementById("modalTitle").innerText = `Agregar extras a ${pendingProduct.nombre}`;
+    document.getElementById("modalTitle").innerText = currentLang === 'es' ? `Agregar extras a ${pendingProduct.nombre}` : `Add extras to ${pendingProduct.nombre}`;
     document.getElementById("agregosModal").style.display = "flex";
   }
 
@@ -1018,7 +1203,7 @@
     if (deliveryType === "delivery") deliveryCost = currentCurrency === "cup" ? 200 : 0.52;
     else if (deliveryType === "outside") {
       deliveryCost = 0;
-      deliveryNote = " (precio a consultar)";
+      deliveryNote = currentLang === 'es' ? " (precio a consultar)" : " (price to be confirmed)";
     }
     let total = subtotal + totalEmpaque + deliveryCost;
 
@@ -1032,19 +1217,23 @@
             <button onclick="cambiarCantidad(${idx}, -1)">-</button>
             <span>${item.cantidad}</span>
             <button onclick="cambiarCantidad(${idx}, 1)">+</button>
-            <button class="remove-item" onclick="eliminarItem(${idx})">Eliminar</button>
+            <button class="remove-item" onclick="eliminarItem(${idx})" data-translate="Eliminar">Eliminar</button>
           </div>
         </div>
       `;
     }).join('');
-    if (carrito.length === 0) cartContainer.innerHTML = "<p data-translate='Tu carrito está vacío'>Tu carrito está vacío</p>";
+    if (carrito.length === 0) cartContainer.innerHTML = `<p data-translate="Tu carrito está vacío">Tu carrito está vacío</p>`;
     document.getElementById("totalsArea").innerHTML = `
       <p><span data-translate="Subtotal:">Subtotal:</span><span>${formatPrice(subtotal)}</span></p>
       <p><span data-translate="Empaque:">Empaque:</span><span>${formatPrice(totalEmpaque)}</span></p>
-      <p><span data-translate="Mensajería:">Mensajería:</span><span>${deliveryType === "outside" ? "A consultar" : formatPrice(deliveryCost)}</span></p>
-      <hr><p><strong data-translate="Total:">Total:</strong><strong>${deliveryType === "outside" ? formatPrice(total) + " + envío a confirmar" : formatPrice(total)}</strong></p>
+      <p><span data-translate="Mensajería:">Mensajería:</span><span>${deliveryType === "outside" ? (currentLang === 'es' ? "A consultar" : "To be confirmed") : formatPrice(deliveryCost)}</span></p>
+      <hr><p><strong data-translate="Total:">Total:</strong><strong>${deliveryType === "outside" ? formatPrice(total) + (currentLang === 'es' ? " + envío a confirmar" : " + shipping to be confirmed") : formatPrice(total)}</strong></p>
     `;
     document.getElementById("cartCount").innerText = carrito.reduce((acc, i) => acc + i.cantidad, 0);
+    document.querySelectorAll('[data-translate]').forEach(el => {
+      const key = el.getAttribute('data-translate');
+      if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
+    });
   }
 
   window.cambiarCantidad = (idx, delta) => {
@@ -1064,7 +1253,7 @@
       if (item.tipo === "pizza") cajas += item.cantidad;
       else if (item.tipo === "comida" || item.tipo === "pasta" || item.tipo === "pan") termo += item.cantidad;
       mensaje += `%0A• ${item.nombre} x${item.cantidad} - ${formatPrice(precioUnitario * item.cantidad)}`;
-      if (item.agregos.length) mensaje += ` (Agregos: ${item.agregos.map(a=>a.nombre).join(', ')})`;
+      if (item.agregos.length) mensaje += ` (${currentLang === 'es' ? 'Agregos' : 'Extras'}: ${item.agregos.map(a=>a.nombre).join(', ')})`;
     });
     const precioCaja = currentCurrency === "cup" ? 60 : 0.19;
     const precioTermo = currentCurrency === "cup" ? 100 : 0.31;
@@ -1078,65 +1267,44 @@
       direccion = document.getElementById("direccion")?.value || "";
       nombreDestino = document.getElementById("nombreDestino")?.value || "";
       telefonoDestino = document.getElementById("telefonoDestino")?.value || "";
-      mensaje += `%0A%0A🚚 *Delivery a domicilio (Jaruco)* - Costo: ${formatPrice(deliveryCost)}`;
-      mensaje += `%0A📍 Dirección: ${direccion}`;
-      mensaje += `%0A👤 Recibe: ${nombreDestino}`;
-      mensaje += `%0A📞 Celular: ${telefonoDestino}`;
+      mensaje += `%0A%0A🚚 *${currentLang === 'es' ? 'Delivery a domicilio (Jaruco)' : 'Home delivery (Jaruco)'}* - ${currentLang === 'es' ? 'Costo' : 'Cost'}: ${formatPrice(deliveryCost)}`;
+      mensaje += `%0A📍 ${currentLang === 'es' ? 'Dirección' : 'Address'}: ${direccion}`;
+      mensaje += `%0A👤 ${currentLang === 'es' ? 'Recibe' : 'Recipient'}: ${nombreDestino}`;
+      mensaje += `%0A📞 ${currentLang === 'es' ? 'Celular' : 'Cell phone'}: ${telefonoDestino}`;
     } else if (deliveryType === "outside") {
       deliveryCost = 0;
       direccion = document.getElementById("direccion")?.value || "";
       nombreDestino = document.getElementById("nombreDestino")?.value || "";
       telefonoDestino = document.getElementById("telefonoDestino")?.value || "";
-      mensaje += `%0A%0A🚚 *Delivery fuera de Jaruco* - Costo a acordar con el cliente`;
-      mensaje += `%0A📍 Dirección: ${direccion}`;
-      mensaje += `%0A👤 Recibe: ${nombreDestino}`;
-      mensaje += `%0A📞 Celular: ${telefonoDestino}`;
+      mensaje += `%0A%0A🚚 *${currentLang === 'es' ? 'Delivery fuera de Jaruco' : 'Delivery outside Jaruco'}* - ${currentLang === 'es' ? 'Costo a acordar con el cliente' : 'Cost to be confirmed with the client'}`;
+      mensaje += `%0A📍 ${currentLang === 'es' ? 'Dirección' : 'Address'}: ${direccion}`;
+      mensaje += `%0A👤 ${currentLang === 'es' ? 'Recibe' : 'Recipient'}: ${nombreDestino}`;
+      mensaje += `%0A📞 ${currentLang === 'es' ? 'Celular' : 'Cell phone'}: ${telefonoDestino}`;
     } else {
-      mensaje += `%0A%0A🥡 *Para llevar*`;
+      mensaje += `%0A%0A🥡 *${currentLang === 'es' ? 'Para llevar' : 'Takeaway'}*`;
     }
     let total = subtotal + totalEmpaque + deliveryCost;
-    mensaje += `%0A%0A📦 Empaque: +${formatPrice(totalEmpaque)}`;
-    if (deliveryType === "outside") mensaje += `%0A💰 *Total (sin envío): ${formatPrice(total)}*`;
-    else mensaje += `%0A💰 *Total: ${formatPrice(total)}*`;
+    mensaje += `%0A%0A📦 ${currentLang === 'es' ? 'Empaque' : 'Packaging'}: +${formatPrice(totalEmpaque)}`;
+    if (deliveryType === "outside") mensaje += `%0A💰 *${currentLang === 'es' ? 'Total (sin envío)' : 'Total (without shipping)'}: ${formatPrice(total)}*`;
+    else mensaje += `%0A💰 *${currentLang === 'es' ? 'Total' : 'Total'}: ${formatPrice(total)}*`;
     const metodoPago = document.getElementById("paymentMethod")?.value;
-    mensaje += `%0A💳 Método de pago: ${metodoPago}`;
+    mensaje += `%0A💳 ${currentLang === 'es' ? 'Método de pago' : 'Payment method'}: ${metodoPago}`;
     const notas = document.getElementById("notas")?.value;
-    if (notas) mensaje += `%0A%0A📝 Notas: ${notas}`;
-    mensaje += `%0A%0A¡Gracias por tu pedido! 🚂`;
+    if (notas) mensaje += `%0A%0A📝 ${currentLang === 'es' ? 'Notas' : 'Notes'}: ${notas}`;
+    mensaje += `%0A%0A${currentLang === 'es' ? '¡Gracias por tu pedido! 🚂' : 'Thank you for your order! 🚂'}`;
     window.open(`https://wa.me/5350993981?text=${mensaje}`, "_blank");
-  }
-
-  function setCurrency(currency) {
-    currentCurrency = currency;
-    document.querySelectorAll('.currency-btn').forEach(btn => {
-      if (btn.dataset.currency === currency) btn.classList.add('active');
-      else btn.classList.remove('active');
-    });
-    document.querySelectorAll('.combo-price-value').forEach(el => {
-      const cupVal = el.getAttribute('data-cup');
-      const usdVal = el.getAttribute('data-usd');
-      if (cupVal && usdVal) el.innerText = currency === "cup" ? cupVal : usdVal;
-    });
-    document.querySelectorAll('.price-value').forEach(el => {
-      const cupVal = el.getAttribute('data-cup');
-      const usdVal = el.getAttribute('data-usd');
-      if (cupVal && usdVal) el.innerText = currency === "cup" ? cupVal + " CUP" : "$" + usdVal + " USD";
-      else if (el.getAttribute('data-cup')) {
-        const cup = parseFloat(el.getAttribute('data-cup'));
-        const usd = parseFloat(el.getAttribute('data-usd'));
-        el.innerText = currency === "cup" ? cup + " CUP" : "$" + usd + " USD";
-      }
-    });
-    actualizarCarrito();
-    syncPaymentMethodWithCurrency();
   }
 
   function renderBebidas() {
     const bebidas = ["Tigón","Malta","Agua Natural Grande","Agua Natural Pequeño","Presidente / Widmill","Heniken / Corona","Energizante","Jugo de Lata","Caja de Jugo","Shaka","Néctar / Limonada","Coca Cola","Kermato","Cristal / Bucanero","Pomo de Refresco","Hollandia / Lander","Refresco Vaso","Redbull","Refresco Importado","Batido Mango / Guayaba","Go Tropic Morena","Go Tropic Roja","Batido de Chocolate","Vaso de Dispensada","Jarra de Dispensada","Termo de Dispensada"];
     const container = document.getElementById("bebidas-container");
-    container.innerHTML = bebidas.map(b => `<div class="bebida-item"><span>${b}</span><button class="add-bebida" data-nombre="${b}">Agregar</button></div>`).join('');
+    container.innerHTML = bebidas.map(b => `<div class="bebida-item"><span>${b}</span><button class="add-bebida" data-nombre="${b}" data-translate="Agregar al carrito">Agregar</button></div>`).join('');
     document.querySelectorAll('.add-bebida').forEach(btn => {
       btn.addEventListener('click', () => agregarAlCarrito({ nombre: btn.dataset.nombre, cup: 0, usd: 0, tipo: "bebida" }, 1, []));
+    });
+    document.querySelectorAll('[data-translate]').forEach(el => {
+      const key = el.getAttribute('data-translate');
+      if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
     });
   }
 
@@ -1157,7 +1325,6 @@
   }
 
   // ======================== CARRUSEL ========================
-  let currentSlide = 0;
   let slideImages = [];
   let autoSlideInterval;
 
@@ -1257,109 +1424,12 @@
     }
   }
 
-  // ======================== TRADUCCIONES ========================
-  let currentLang = "es";
-  const translations = {
-    es: {
-      "El Expreso del Sabor": "El Expreso del Sabor",
-      "Comida cubana con alma propia.": "Comida cubana con alma propia.",
-      "COMBOS ESPECIALES": "COMBOS ESPECIALES",
-      "MENÚ COMPLETO": "MENÚ COMPLETO",
-      "NUESTRAS BEBIDAS": "NUESTRAS BEBIDAS",
-      "¿LISTO PARA PEDIR?": "¿LISTO PARA PEDIR?",
-      "Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm": "Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm",
-      "INFORMACIÓN & CONTACTO": "INFORMACIÓN & CONTACTO",
-      "Tu Pedido": "Tu Pedido",
-      "Agregar al carrito": "Agregar al carrito",
-      "Agregar extras": "Agregar extras",
-      "Cancelar": "Cancelar",
-      "Confirmar": "Confirmar",
-      "Para llevar (sin costo extra)": "Para llevar (sin costo extra)",
-      "Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)": "Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)",
-      "Delivery fuera de Jaruco (precio a consultar)": "Delivery fuera de Jaruco (precio a consultar)",
-      "Dirección completa": "Dirección completa",
-      "Nombre de quien recibe": "Nombre de quien recibe",
-      "Número de celular": "Número de celular",
-      "Notas adicionales (opcional)": "Notas adicionales (opcional)",
-      "Método de pago:": "Método de pago:",
-      "Pedir por WhatsApp": "Pedir por WhatsApp",
-      "Subtotal:": "Subtotal:",
-      "Empaque:": "Empaque:",
-      "Mensajería:": "Mensajería:",
-      "Total:": "Total:",
-      "Tu carrito está vacío": "Tu carrito está vacío",
-      "Jaruco, Mayabeque": "Jaruco, Mayabeque",
-      "Horario": "Horario",
-      "11am – 10pm (Delivery hasta 6pm)": "11am – 10pm (Delivery hasta 6pm)",
-      "Contacto": "Contacto",
-      "Nuestras Ofertas": "Nuestras Ofertas",
-      "Todo lo que tenemos": "Todo lo que tenemos",
-      "Para tomar": "Para tomar",
-      "El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.": "El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.",
-      "Encuéntranos": "Encuéntranos"
-    },
-    en: {
-      "El Expreso del Sabor": "The Flavor Express",
-      "Comida cubana con alma propia.": "Cuban food with its own soul.",
-      "COMBOS ESPECIALES": "SPECIAL COMBO MEALS",
-      "MENÚ COMPLETO": "FULL MENU",
-      "NUESTRAS BEBIDAS": "OUR DRINKS",
-      "¿LISTO PARA PEDIR?": "READY TO ORDER?",
-      "Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm": "Delivery available throughout Mayabeque • Monday to Sunday 11am – 10pm",
-      "INFORMACIÓN & CONTACTO": "INFO & CONTACT",
-      "Tu Pedido": "Your Order",
-      "Agregar al carrito": "Add to Cart",
-      "Agregar extras": "Add Extras",
-      "Cancelar": "Cancel",
-      "Confirmar": "Confirm",
-      "Para llevar (sin costo extra)": "Takeaway (no extra cost)",
-      "Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)": "Home delivery (Jaruco +200 CUP / 0.52 USD)",
-      "Delivery fuera de Jaruco (precio a consultar)": "Delivery outside Jaruco (price to be confirmed)",
-      "Dirección completa": "Full address",
-      "Nombre de quien recibe": "Recipient's name",
-      "Número de celular": "Cell phone number",
-      "Notas adicionales (opcional)": "Additional notes (optional)",
-      "Método de pago:": "Payment method:",
-      "Pedir por WhatsApp": "Order via WhatsApp",
-      "Subtotal:": "Subtotal:",
-      "Empaque:": "Packaging:",
-      "Mensajería:": "Delivery:",
-      "Total:": "Total:",
-      "Tu carrito está vacío": "Your cart is empty",
-      "Jaruco, Mayabeque": "Jaruco, Mayabeque",
-      "Horario": "Opening Hours",
-      "11am – 10pm (Delivery hasta 6pm)": "11am – 10pm (Delivery until 6pm)",
-      "Contacto": "Contact",
-      "Nuestras Ofertas": "Our Offers",
-      "Todo lo que tenemos": "Everything we have",
-      "Para tomar": "To drink",
-      "El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.": "The price of drinks is consulted at the time of order. They are added to the cart at no cost and billed separately.",
-      "Encuéntranos": "Find us"
-    }
-  };
-
-  function setLanguage(lang) {
-    currentLang = lang;
-    document.querySelectorAll('.language-btn').forEach(btn => {
-      if (btn.dataset.lang === lang) btn.classList.add('active');
-      else btn.classList.remove('active');
-    });
-    document.querySelectorAll('[data-translate]').forEach(el => {
-      const key = el.getAttribute('data-translate');
-      if (translations[lang][key]) el.innerText = translations[lang][key];
-    });
-    document.querySelectorAll('[data-translate-placeholder]').forEach(el => {
-      const key = el.getAttribute('data-translate-placeholder');
-      if (translations[lang][key]) el.placeholder = translations[lang][key];
-    });
-  }
-
   // Inicialización general
   function init() {
+    loadPreferences();
     renderCombos();
     renderMenu();
     renderBebidas();
-    setCurrency("cup");
     setupDeliveryEvents();
     document.querySelectorAll('.currency-btn').forEach(btn => {
       btn.addEventListener('click', (e) => setCurrency(e.target.dataset.currency));
