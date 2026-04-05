@@ -1,577 +1,1049 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>🐍 Snake Game | Classic Arcade</title>
-    <style>
-        * {
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background: linear-gradient(145deg, #1a472a 0%, #0e2a1a 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Segoe UI', 'Courier New', 'Press Start 2P', monospace;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .game-container {
-            background: #0d1f12;
-            border-radius: 48px;
-            padding: 24px 24px 28px 24px;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.1);
-            border: 1px solid #2e7d5e;
-        }
-
-        .game-panel {
-            background: #071208;
-            border-radius: 28px;
-            padding: 16px;
-            box-shadow: inset 0 0 8px #00000055, 0 8px 18px black;
-        }
-
-        canvas {
-            display: block;
-            margin: 0 auto;
-            border-radius: 20px;
-            box-shadow: 0 0 0 4px #2b5a42, 0 10px 25px rgba(0,0,0,0.3);
-            background-color: #1b3b2b;
-            cursor: pointer;
-        }
-
-        .info-area {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-top: 20px;
-            margin-bottom: 8px;
-            padding: 10px 18px;
-            background: #0a1910;
-            border-radius: 60px;
-            backdrop-filter: blur(2px);
-            font-weight: bold;
-        }
-
-        .score-box, .high-box {
-            background: #000000aa;
-            padding: 8px 22px;
-            border-radius: 40px;
-            color: #b9fbc0;
-            text-shadow: 0 0 4px #2eff7a;
-            letter-spacing: 1px;
-        }
-
-        .score-box span, .high-box span {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #f9f3c1, #d4ffb0);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            text-shadow: none;
-        }
-
-        .score-box label, .high-box label {
-            font-size: 0.85rem;
-            color: #9bcfb0;
-            margin-right: 8px;
-            font-weight: 600;
-        }
-
-        button {
-            background: #2c5e3f;
-            border: none;
-            font-family: inherit;
-            font-weight: bold;
-            font-size: 1.1rem;
-            padding: 8px 28px;
-            border-radius: 60px;
-            color: #f3ffdd;
-            cursor: pointer;
-            transition: 0.15s linear;
-            box-shadow: 0 4px 0 #0e2a18;
-            letter-spacing: 1px;
-        }
-
-        button:hover {
-            background: #3f8460;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 0 #0e2a18;
-        }
-
-        button:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 #0e2a18;
-        }
-
-        .controls-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 16px;
-            gap: 12px;
-            padding: 0 12px;
-        }
-
-        .tip {
-            background: #00000066;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            color: #c1e4cf;
-            font-weight: 500;
-        }
-
-        .tip kbd {
-            background: #1e2f24;
-            padding: 2px 8px;
-            border-radius: 30px;
-            font-weight: bold;
-            margin: 0 4px;
-            font-size: 0.7rem;
-            color: #f5ffb0;
-        }
-
-        @media (max-width: 550px) {
-            .game-container {
-                padding: 14px;
-            }
-            .score-box span, .high-box span {
-                font-size: 1.2rem;
-            }
-            button {
-                padding: 5px 20px;
-                font-size: 0.9rem;
-            }
-            .tip {
-                font-size: 0.6rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chu-Chu-Wah | El Expreso del Sabor — Jaruco, Mayabeque</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rojo: #C0001A;
+    --rojo-oscuro: #8B0010;
+    --amarillo: #FFD700;
+    --oscuro: #0F0F0F;
+    --gris: #1A1A1A;
+    --blanco: #FFFFFF;
+    --crema: #FFF8E7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--oscuro);
+    color: var(--blanco);
+    overflow-x: hidden;
+  }
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(192,0,26,0.3);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--amarillo);
+    letter-spacing: 3px;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--amarillo); }
+  .currency-switcher {
+    display: flex;
+    gap: 10px;
+    background: rgba(0,0,0,0.6);
+    padding: 6px 12px;
+    border-radius: 40px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,215,0,0.3);
+  }
+  .currency-btn {
+    background: transparent;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: rgba(255,255,255,0.6);
+  }
+  .currency-btn.active {
+    background: var(--amarillo);
+    color: var(--oscuro);
+    box-shadow: 0 0 6px rgba(255,215,0,0.5);
+  }
+  .currency-btn:last-child.active { background: #25D366; color: #0F0F0F; }
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), 
+                url('https://images.pexels.com/photos/1215926/pexels-photo-1215926.jpeg?auto=compress&cs=tinysrgb&w=1600');
+    background-size: cover;
+    background-position: center 30%;
+    background-attachment: fixed;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--amarillo);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 14vw, 160px);
+    line-height: 0.9;
+    letter-spacing: 4px;
+    color: var(--blanco);
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s forwards;
+  }
+  .hero-title span { color: var(--rojo); display: block; }
+  .hero-subtitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(18px, 3vw, 28px);
+    letter-spacing: 8px;
+    color: var(--amarillo);
+    margin-top: 12px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.6s forwards;
+  }
+  .hero-desc {
+    max-width: 520px;
+    margin: 32px auto 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s forwards;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    margin-top: 44px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.9s 1s forwards;
+  }
+  .btn-primary {
+    background: var(--rojo);
+    color: var(--blanco);
+    padding: 14px 36px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--rojo-oscuro); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid rgba(255,215,0,0.5);
+    color: var(--amarillo);
+    padding: 14px 36px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-outline:hover {
+    border-color: var(--amarillo);
+    background: rgba(255,215,0,0.08);
+    transform: translateY(-2px);
+  }
+  .hero-badges {
+    display: flex;
+    gap: 32px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.9s 1.2s forwards;
+  }
+  .badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .badge-icon { font-size: 24px; }
+  .badge-text {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  section {
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
+    background: rgba(15,15,15,0.7);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rojo);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: 2px;
+    color: var(--blanco);
+    margin-bottom: 24px;
+  }
+  .section-title em { color: var(--amarillo); font-style: normal; }
+  .divider {
+    width: 90%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--rojo), var(--amarillo), var(--rojo), transparent);
+    margin: 0 auto;
+  }
+  /* Combos */
+  #combos { background: var(--oscuro); }
+  .combos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 48px;
+  }
+  .combo-card {
+    background: var(--gris);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 28px;
+    transition: transform 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .combo-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--rojo);
+  }
+  .combo-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(192,0,26,0.4);
+  }
+  .combo-card.pareja::before { background: var(--amarillo); }
+  .combo-emoji { font-size: 36px; margin-bottom: 12px; }
+  .combo-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rojo);
+    margin-bottom: 6px;
+  }
+  .combo-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: var(--blanco);
+    margin-bottom: 14px;
+  }
+  .combo-items li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    padding: 4px 0;
+  }
+  .combo-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+  }
+  .combo-price-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--amarillo);
+  }
+  .add-to-cart-btn {
+    background: var(--amarillo);
+    color: #0F0F0F;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .add-to-cart-btn:hover { background: #e6c200; transform: scale(0.98); }
+  /* Menú */
+  .menu-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+  }
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .menu-item-name { font-size: 13px; color: rgba(255,255,255,0.8); }
+  .price-value {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--amarillo);
+    margin-left: 12px;
+  }
+  .small-add-btn {
+    background: var(--rojo);
+    border: none;
+    color: white;
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 5px;
+    margin-left: 8px;
+    cursor: pointer;
+  }
+  /* Bebidas */
+  .bebidas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 40px;
+  }
+  .bebida-item {
+    padding: 12px;
+    background: rgba(255,215,0,0.05);
+    border: 1px solid rgba(255,215,0,0.15);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .bebida-item button {
+    background: var(--rojo);
+    border: none;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .bebidas-nota {
+    margin-top: 20px;
+    padding: 12px 18px;
+    background: rgba(255,215,0,0.05);
+    border-left: 3px solid var(--amarillo);
+    font-size: 12px;
+    color: #ccc;
+  }
+  /* CARRITO DRAWER */
+  .cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 450px;
+    max-width: 90vw;
+    height: 100vh;
+    background: #111;
+    z-index: 1000;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 3px solid var(--rojo);
+  }
+  .cart-drawer.open { right: 0; }
+  .cart-header {
+    padding: 20px;
+    background: var(--rojo);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cart-header h3 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; }
+  .close-cart { background: none; border: none; color: white; font-size: 28px; cursor: pointer; }
+  .cart-items { flex: 1; overflow-y: auto; padding: 20px; }
+  .cart-item {
+    background: #1e1e1e;
+    margin-bottom: 12px;
+    padding: 12px;
+    border-radius: 8px;
+  }
+  .cart-item-title { font-weight: bold; display: flex; justify-content: space-between; }
+  .cart-item-agregos { font-size: 11px; color: #aaa; margin-top: 4px; }
+  .cart-item-controls { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+  .cart-item-controls button { background: #333; border: none; color: white; width: 28px; height: 28px; border-radius: 4px; cursor: pointer; }
+  .remove-item { background: #8B0010; margin-left: auto; }
+  .cart-total { padding: 20px; border-top: 1px solid #333; background: #0a0a0a; }
+  .cart-total p { display: flex; justify-content: space-between; margin: 8px 0; }
+  .cart-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .btn-checkout { background: #25D366; color: black; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+  .delivery-form, .payment-method {
+    margin-top: 16px;
+    padding: 16px;
+    background: #1e1e1e;
+    border-radius: 8px;
+  }
+  .delivery-form input, .delivery-form select, .delivery-form textarea, .payment-method select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 4px;
+  }
+  .cart-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--rojo);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 99;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-size: 28px;
+  }
+  .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--amarillo);
+    color: black;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  /* Modal agregos */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 1100;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    background: #1a1a1a;
+    padding: 24px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  .agregos-list { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+  .agrego-item { display: flex; justify-content: space-between; align-items: center; }
+  .agrego-item label { display: flex; align-items: center; gap: 8px; }
+  .modal-buttons { display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px; }
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; flex-wrap: wrap; }
+    .nav-links { display: none; }
+    section { padding: 50px 20px; margin: 0 10px 20px 10px; }
+  }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
 </head>
 <body>
-<div>
-    <div class="game-container">
-        <div class="game-panel">
-            <canvas id="snakeCanvas" width="500" height="500"></canvas>
-            <div class="info-area">
-                <div class="score-box">
-                    <label>🍎 SCORE</label>
-                    <span id="scoreValue">0</span>
-                </div>
-                <div class="high-box">
-                    <label>🏆 HIGH</label>
-                    <span id="highScoreValue">0</span>
-                </div>
-            </div>
-            <div class="controls-row">
-                <button id="restartButton">🔄 NEW GAME</button>
-                <div class="tip">
-                    🎮 <kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd>   |  <kbd>WASD</kbd>   |  <kbd>R</kbd> restart
-                </div>
-            </div>
-        </div>
+
+<nav>
+  <a href="#" class="nav-logo">CHU·CHU·WAH</a>
+  <ul class="nav-links">
+    <li><a href="#combos">Combos</a></li>
+    <li><a href="#menu">Menú</a></li>
+    <li><a href="#bebidas">Bebidas</a></li>
+    <li><a href="#info">Info</a></li>
+  </ul>
+  <div class="currency-switcher">
+    <button class="currency-btn active" data-currency="cup">🇨🇺 CUP</button>
+    <button class="currency-btn" data-currency="usd">💵 USD</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <p class="hero-eyebrow">🚂 Jaruco, Mayabeque, Cuba</p>
+  <h1 class="hero-title">CHU<span>CHU</span>WAH</h1>
+  <p class="hero-subtitle">El Expreso del Sabor</p>
+  <p class="hero-desc">Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.</p>
+  <div class="hero-ctas">
+    <a href="#menu" class="btn-outline">Ver Menú Completo</a>
+  </div>
+  <div class="hero-badges">
+    <div class="badge"><span class="badge-icon">🕐</span><span class="badge-text">11am – 10pm</span></div>
+    <div class="badge"><span class="badge-icon">🛵</span><span class="badge-text">Delivery Mayabeque</span></div>
+    <div class="badge"><span class="badge-icon">💳</span><span class="badge-text">Zelle & CUP</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section id="combos">
+  <p class="section-label fade-in">Nuestras Ofertas</p>
+  <h2 class="section-title fade-in">COMBOS <em>ESPECIALES</em></h2>
+  <div class="combos-grid" id="combos-container"></div>
+</section>
+
+<div class="divider"></div>
+
+<section id="menu">
+  <p class="section-label fade-in">Todo lo que tenemos</p>
+  <h2 class="section-title fade-in">MENÚ <em>COMPLETO</em></h2>
+  <div id="menu-container"></div>
+</section>
+
+<div class="divider"></div>
+
+<section id="bebidas">
+  <p class="section-label fade-in">Para tomar</p>
+  <h2 class="section-title fade-in">NUESTRAS <em>BEBIDAS</em></h2>
+  <div class="bebidas-grid" id="bebidas-container"></div>
+  <div class="bebidas-nota">El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.</div>
+</section>
+
+<div class="pedido-banner" style="background: var(--rojo); padding: 50px 20px; text-align: center; border-radius: 20px; margin: 20px auto; max-width: 1000px;">
+  <h2 class="pedido-title" style="font-family: 'Bebas Neue', sans-serif; font-size: 48px;">¿LISTO PARA PEDIR?</h2>
+  <p class="pedido-sub">Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm</p>
+</div>
+
+<section id="info">
+  <p class="section-label fade-in">Encuéntranos</p>
+  <h2 class="section-title fade-in">INFORMACIÓN <em>& CONTACTO</em></h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">📍</div><div style="font-weight: bold;">Jaruco, Mayabeque</div><div>Cuba, cerca del tren Hershey</div></div>
+    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">🕐</div><div style="font-weight: bold;">Horario</div><div>11am – 10pm (Delivery hasta 6pm)</div></div>
+    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">📞</div><div style="font-weight: bold;">Contacto</div><div><a href="tel:47874242" style="color: var(--amarillo);">47874242</a><br><a href="https://wa.me/5350993981" style="color: var(--amarillo);">WhatsApp +53 50993981</a></div></div>
+  </div>
+</section>
+
+<footer style="background: #080808; padding: 40px; text-align: center; margin-top: 40px;">
+  <div class="footer-logo" style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--amarillo);">CHU·CHU·WAH</div>
+  <div class="footer-copy" style="color: #555; margin-top: 12px;">© 2025 Restaurante ChuChuWah · Jaruco, Cuba</div>
+</footer>
+
+<!-- CARRITO DRAWER -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header"><h3>Tu Pedido</h3><button class="close-cart" id="closeCartBtn">✕</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-total" id="cartTotal">
+    <div id="totalsArea"></div>
+    <div class="payment-method">
+      <label>Método de pago:</label>
+      <select id="paymentMethod">
+        <option value="CUP (efectivo)">💵 CUP (efectivo)</option>
+        <option value="Zelle (USD)">💲 Zelle (USD)</option>
+      </select>
     </div>
+    <div class="delivery-form" id="deliveryFormStatic">
+      <label>Tipo de pedido:</label>
+      <select id="deliveryType">
+        <option value="pickup">Para llevar (sin costo extra)</option>
+        <option value="delivery">Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)</option>
+      </select>
+      <div id="deliveryFields" style="display: none;">
+        <input type="text" id="direccion" placeholder="Dirección completa">
+        <input type="text" id="nombreDestino" placeholder="Nombre de quien recibe">
+        <input type="tel" id="telefonoDestino" placeholder="Número de celular">
+      </div>
+      <textarea id="notas" placeholder="Notas adicionales (opcional)"></textarea>
+    </div>
+    <div class="cart-actions">
+      <button class="btn-checkout" id="enviarWhatsappBtn">📲 Pedir por WhatsApp</button>
+    </div>
+  </div>
+</div>
+<div class="cart-icon" id="cartIcon">🛒<span class="cart-count" id="cartCount">0</span></div>
+
+<!-- MODAL AGREGOS -->
+<div class="modal" id="agregosModal">
+  <div class="modal-content">
+    <h3 id="modalTitle">Agregar extras</h3>
+    <div id="agregosList" class="agregos-list"></div>
+    <div class="modal-buttons">
+      <button id="confirmAgregosBtn" class="btn-primary">Agregar al carrito</button>
+      <button id="cancelAgregosBtn" class="btn-outline">Cancelar</button>
+    </div>
+  </div>
 </div>
 
 <script>
-    (function(){
-        // ---------- CONFIGURATION ----------
-        const GRID_SIZE = 20;        // 20x20 grid
-        const CELL_SIZE = 25;         // px (500/20)
-        const TOTAL_CELLS = GRID_SIZE * GRID_SIZE;
-        const TICK_INTERVAL_MS = 130;  // game speed
-        
-        // DOM elements
-        const canvas = document.getElementById('snakeCanvas');
-        const ctx = canvas.getContext('2d');
-        const scoreSpan = document.getElementById('scoreValue');
-        const highScoreSpan = document.getElementById('highScoreValue');
-        const restartBtn = document.getElementById('restartButton');
-        
-        // ---------- GAME STATE ----------
-        let snake = [];          // array of {x, y}
-        let direction = 'RIGHT';    // current moving direction
-        let nextDirection = 'RIGHT';
-        let food = { x: 15, y: 12 };
-        let score = 0;
-        let highScore = 0;
-        let playing = true;       // game active flag
-        let gameInterval = null;
-        let winFlag = false;       // for showing different message
-        
-        // ---------- HELPER FUNCTIONS ----------
-        // load highscore from localStorage
-        function loadHighScore() {
-            const saved = localStorage.getItem('snakeHighScore');
-            if (saved !== null && !isNaN(parseInt(saved))) {
-                highScore = parseInt(saved);
-            } else {
-                highScore = 0;
-            }
-            highScoreSpan.innerText = highScore;
+  // ======================== DATOS DE PRODUCTOS ========================
+  const productosData = {
+    "Bistec de pollo": { cup: 1400, usd: 3.61, tipo: "comida" },
+    "Pollo asado": { cup: 1740, usd: 4.49, tipo: "comida" },
+    "Has Gordon Blue de pollo": { cup: 2700, usd: 6.97, tipo: "comida" },
+    "Juliana de pollo": { cup: 1620, usd: 4.18, tipo: "comida" },
+    "Fajitas de pollo empanizadas": { cup: 1900, usd: 4.90, tipo: "comida" },
+    "Fricase de pollo": { cup: 1850, usd: 4.77, tipo: "comida" },
+    "Alitas de pollo": { cup: 1355, usd: 3.50, tipo: "comida" },
+    "Pizza Chuchu Napole": { cup: 600, usd: 1.55, tipo: "pizza" },
+    "Pizza Gouda Napole": { cup: 1200, usd: 3.10, tipo: "pizza" },
+    "Pizza ChuChuWah Napole": { cup: 2850, usd: 7.35, tipo: "pizza" },
+    "Pizza ChuChuWah Gouda": { cup: 3450, usd: 8.90, tipo: "pizza" },
+    "Pizza Chuchu 4 Estaciones": { cup: 1950, usd: 5.03, tipo: "pizza" },
+    "Pizza Gouda 4 Estaciones": { cup: 2560, usd: 6.61, tipo: "pizza" },
+    "Pizza Gouda Vegetales": { cup: 1190, usd: 3.07, tipo: "pizza" },
+    "Bistec de cerdo grille": { cup: 1920, usd: 4.95, tipo: "comida" },
+    "Bistec Uruguaito": { cup: 3250, usd: 8.39, tipo: "comida" },
+    "Juliana de cerdo": { cup: 2150, usd: 5.55, tipo: "comida" },
+    "Fajita de cerdo empanizada": { cup: 2540, usd: 6.55, tipo: "comida" },
+    "Suprema de cerdo": { cup: 2750, usd: 7.10, tipo: "comida" },
+    "Fricase de cerdo": { cup: 3000, usd: 7.74, tipo: "comida" },
+    "Masa de cerdo frita": { cup: 2550, usd: 6.58, tipo: "comida" },
+    "Rolitillo de cerdo": { cup: 2400, usd: 6.19, tipo: "comida" },
+    "Chuletas de cerdo ahumado": { cup: 1950, usd: 5.03, tipo: "comida" },
+    "Lonjas de cerdo asado": { cup: 1900, usd: 4.90, tipo: "comida" },
+    "Juliana mixta": { cup: 1900, usd: 4.90, tipo: "comida" },
+    "Padre mixta empanizada": { cup: 2250, usd: 5.81, tipo: "comida" },
+    "San Jacobo (jamón y queso)": { cup: 940, usd: 2.43, tipo: "comida" },
+    "Lomo ahumado": { cup: 970, usd: 2.50, tipo: "comida" },
+    "Coctel de atún": { cup: 1470, usd: 5.03, tipo: "comida" },
+    "Eperlan entrante": { cup: 1950, usd: 7.35, tipo: "comida" },
+    "Filete de pescado grille": { cup: 2000, usd: 6.92, tipo: "comida" },
+    "Filete de pescado canciller": { cup: 2680, usd: 8.67, tipo: "comida" },
+    "Filetillo de pescado": { cup: 2400, usd: 5.42, tipo: "comida" },
+    "Filete de pescado con camarón": { cup: 2100, usd: 5.41, tipo: "comida" },
+    "Spaghetti de queso Gouda": { cup: 940, usd: 2.43, tipo: "pasta" },
+    "Pan con bistec": { cup: 500, usd: 1.29, tipo: "pan" },
+    "Bocadito de jamón": { cup: 300, usd: 0.77, tipo: "pan" },
+    "Bocadito de jamón y queso": { cup: 550, usd: 1.42, tipo: "pan" },
+    "Super hamburgueza": { cup: 560, usd: 1.45, tipo: "pan" },
+    "Super Expreso ChuChuWah": { cup: 730, usd: 1.88, tipo: "pan" },
+    "Pan con hamburgueza pollo": { cup: 330, usd: 0.85, tipo: "pan" },
+    "Café expreso": { cup: 100, usd: 0.26, tipo: "bebida" },
+    "Café cortadito": { cup: 130, usd: 0.34, tipo: "bebida" },
+    "Batido de frutas": { cup: 270, usd: 0.70, tipo: "bebida" },
+    "Batido de chocolate": { cup: 500, usd: 1.29, tipo: "bebida" },
+    "Batido de Mamey": { cup: 350, usd: 0.90, tipo: "bebida" },
+    "Pan con 2 croquetas": { cup: 230, usd: 0.59, tipo: "pan" },
+    "Entremeses surtido": { cup: 850, usd: 2.19, tipo: "comida" },
+    "Entremés ChuChuWah": { cup: 1720, usd: 4.44, tipo: "comida" },
+    "Bolitas de jamón": { cup: 900, usd: 2.32, tipo: "comida" },
+    "Bolitas de queso Gouda": { cup: 1620, usd: 4.18, tipo: "comida" },
+    "Croquetas (6 unidades)": { cup: 240, usd: 0.62, tipo: "comida" },
+    "Picadera ChuChuWah": { cup: 2200, usd: 5.68, tipo: "comida" },
+    "Ensalada fría": { cup: 200, usd: 0.52, tipo: "comida" },
+    "Buñuelos en almíbar": { cup: 250, usd: 0.65, tipo: "comida" },
+    "Ensalada": { cup: 210, usd: 0.54, tipo: "comida" },
+    "Arroz frito": { cup: 1335, usd: 3.45, tipo: "comida" },
+    "Arroz blanco": { cup: 245, usd: 0.63, tipo: "comida" },
+    "Arroz moro": { cup: 290, usd: 0.75, tipo: "comida" },
+    "Papas pre fritas": { cup: 455, usd: 1.17, tipo: "comida" },
+    "Vianda frita": { cup: 360, usd: 0.93, tipo: "comida" },
+    "Vianda hervida": { cup: 220, usd: 0.57, tipo: "comida" }
+  };
+
+  const combosData = [
+    { nombre: "El Expreso", emoji: "🍔", items: ["Super Expreso ChuChuWah", "Papas pre fritas", "Líquido a elegir"], cup: 1185, usd: 3.03 },
+    { nombre: "El Crujiente", emoji: "🍗", items: ["Fajitas de pollo empanizadas", "Arroz moro", "Líquido a elegir"], cup: 2190, usd: 5.59 },
+    { nombre: "La Bestia", emoji: "🍕", items: ["Pizza ChuChuWah Napole", "Croquetas (6 uds)", "Líquido a elegir"], cup: 3090, usd: 7.89 },
+    { nombre: "El Cubano", emoji: "🥩", items: ["Bistec Uruguaito", "Arroz moro", "Ensalada", "Líquido a elegir"], cup: 3750, usd: 9.57 },
+    { nombre: "Noche ChuChuWah (Pareja)", emoji: "💑", items: ["2x Bistec de pollo", "Arroz frito", "Ensalada", "2 Líquidos"], cup: 4945, usd: 12.63, pareja: true },
+    { nombre: "Mar y Amor (Pareja)", emoji: "🐟", items: ["2x Filete de pescado grille", "Arroz frito", "Ensalada fría", "2 Líquidos"], cup: 5535, usd: 14.13, pareja: true }
+  ];
+
+  const todosAgregos = [
+    { nombre: "Hawaiana", cup: 280, usd: 0.72, para: ["pizza"] },
+    { nombre: "Jamón", cup: 165, usd: 0.43, para: ["pizza", "pasta", "pan"] },
+    { nombre: "Queso Gouda", cup: 450, usd: 1.16, para: ["pizza", "pasta", "pan"] },
+    { nombre: "Chorizo", cup: 375, usd: 0.97, para: ["pizza", "pasta"] },
+    { nombre: "Atún", cup: 760, usd: 1.96, para: ["pizza", "pasta"] },
+    { nombre: "Piña", cup: 140, usd: 0.36, para: ["pizza"] },
+    { nombre: "Bacon", cup: 545, usd: 1.41, para: ["pizza", "pasta", "pan"] },
+    { nombre: "Aceituna", cup: 440, usd: 1.14, para: ["pizza"] },
+    { nombre: "Lomo ahumado", cup: 345, usd: 0.89, para: ["pizza", "pasta", "pan"] },
+    { nombre: "Cebolla", cup: 300, usd: 0.77, para: ["pizza", "pasta", "pan"] },
+    { nombre: "Pimiento", cup: 125, usd: 0.32, para: ["pizza", "pasta"] }
+  ];
+
+  let carrito = [];
+  let currentCurrency = "cup";
+  let pendingProduct = null;
+
+  function getPriceValue(cup, usd) {
+    return currentCurrency === "cup" ? cup : usd;
+  }
+
+  function formatPrice(valor) {
+    if (currentCurrency === "cup") return Math.round(valor) + " CUP";
+    else return "$" + valor.toFixed(2) + " USD";
+  }
+
+  // Sincronizar método de pago con moneda
+  function syncPaymentMethodWithCurrency() {
+    const paymentSelect = document.getElementById("paymentMethod");
+    if (paymentSelect) {
+      if (currentCurrency === "cup") paymentSelect.value = "CUP (efectivo)";
+      else paymentSelect.value = "Zelle (USD)";
+    }
+  }
+
+  function syncCurrencyWithPaymentMethod() {
+    const paymentSelect = document.getElementById("paymentMethod");
+    if (paymentSelect) {
+      const newCurrency = paymentSelect.value === "CUP (efectivo)" ? "cup" : "usd";
+      if (newCurrency !== currentCurrency) {
+        setCurrency(newCurrency);
+      }
+    }
+  }
+
+  // Render combos
+  function renderCombos() {
+    const container = document.getElementById("combos-container");
+    container.innerHTML = combosData.map(c => `
+      <div class="combo-card ${c.pareja ? 'pareja' : ''} fade-in">
+        <div class="combo-emoji">${c.emoji}</div>
+        <div class="combo-num">${c.pareja ? 'Pareja' : 'Combo'}</div>
+        <div class="combo-name">${c.nombre}</div>
+        <ul class="combo-items">${c.items.map(i => `<li>${i}</li>`).join('')}</ul>
+        <div class="combo-price">
+          <span class="combo-price-value" data-cup="${c.cup} CUP" data-usd="$${c.usd} USD">${currentCurrency === "cup" ? c.cup + " CUP" : "$" + c.usd + " USD"}</span>
+          <button class="add-to-cart-btn" data-nombre="${c.nombre}" data-cup="${c.cup}" data-usd="${c.usd}" data-tipo="combo">Agregar</button>
+        </div>
+      </div>
+    `).join('');
+    document.querySelectorAll('.add-to-cart-btn[data-tipo="combo"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const nombre = btn.dataset.nombre;
+        const cup = parseFloat(btn.dataset.cup);
+        const usd = parseFloat(btn.dataset.usd);
+        agregarAlCarrito({ nombre, cup, usd, tipo: "combo" }, 1, []);
+      });
+    });
+  }
+
+  function renderMenu() {
+    const container = document.getElementById("menu-container");
+    const categorias = {
+      "🍗 Pollo & Cerdo": ["Bistec de pollo","Pollo asado","Has Gordon Blue de pollo","Juliana de pollo","Fajitas de pollo empanizadas","Fricase de pollo","Alitas de pollo","Bistec de cerdo grille","Bistec Uruguaito","Juliana de cerdo","Fajita de cerdo empanizada","Suprema de cerdo","Fricase de cerdo","Masa de cerdo frita","Rolitillo de cerdo","Chuletas de cerdo ahumado","Lonjas de cerdo asado","Juliana mixta","Padre mixta empanizada","San Jacobo (jamón y queso)","Lomo ahumado"],
+      "🍕 Pizzas": ["Pizza Chuchu Napole","Pizza Gouda Napole","Pizza ChuChuWah Napole","Pizza ChuChuWah Gouda","Pizza Chuchu 4 Estaciones","Pizza Gouda 4 Estaciones","Pizza Gouda Vegetales"],
+      "🦐 Mariscos & Pescado": ["Coctel de atún","Eperlan entrante","Filete de pescado grille","Filete de pescado canciller","Filetillo de pescado","Filete de pescado con camarón"],
+      "🍝 Pastas": ["Spaghetti de queso Gouda"],
+      "☕ Cafetería & Panes": ["Pan con bistec","Bocadito de jamón","Bocadito de jamón y queso","Super hamburgueza","Super Expreso ChuChuWah","Pan con hamburgueza pollo","Café expreso","Café cortadito","Batido de frutas","Batido de chocolate","Batido de Mamey","Pan con 2 croquetas"],
+      "🥗 Entremeses": ["Entremeses surtido","Entremés ChuChuWah","Bolitas de jamón","Bolitas de queso Gouda","Croquetas (6 unidades)","Picadera ChuChuWah","Ensalada fría","Buñuelos en almíbar"],
+      "🍚 Guarniciones": ["Ensalada","Arroz frito","Arroz blanco","Arroz moro","Papas pre fritas","Vianda frita","Vianda hervida"]
+    };
+    let html = "";
+    for (let [cat, items] of Object.entries(categorias)) {
+      html += `<div class="menu-category fade-in" style="margin-bottom: 2rem;"><div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; border-bottom: 1px solid rgba(192,0,26,0.3); padding-bottom: 8px;"><span style="font-size: 24px;">${cat.split(' ')[0]}</span><span style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--amarillo);">${cat.substring(2)}</span></div><div class="menu-items-grid">`;
+      items.forEach(nombre => {
+        const p = productosData[nombre];
+        if (!p) return;
+        const precioMostrado = currentCurrency === "cup" ? p.cup + " CUP" : "$" + p.usd + " USD";
+        html += `<div class="menu-item"><span class="menu-item-name">${nombre}</span><span class="price-value" data-cup="${p.cup}" data-usd="${p.usd}">${precioMostrado}</span><button class="small-add-btn" data-nombre="${nombre}" data-tipo="${p.tipo}" data-cup="${p.cup}" data-usd="${p.usd}">+</button></div>`;
+      });
+      html += `</div></div>`;
+    }
+    container.innerHTML = html;
+    document.querySelectorAll('.small-add-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const nombre = btn.dataset.nombre;
+        const tipo = btn.dataset.tipo;
+        const cup = parseFloat(btn.dataset.cup);
+        const usd = parseFloat(btn.dataset.usd);
+        if (tipo === "pizza" || tipo === "pasta" || tipo === "pan") {
+          pendingProduct = { nombre, cup, usd, tipo };
+          mostrarModalAgregos(tipo);
+        } else {
+          agregarAlCarrito({ nombre, cup, usd, tipo }, 1, []);
         }
-        
-        function updateHighScoreUI() {
-            highScoreSpan.innerText = highScore;
-        }
-        
-        // check and update highscore
-        function updateHighScoreIfNeeded() {
-            if (score > highScore) {
-                highScore = score;
-                localStorage.setItem('snakeHighScore', highScore);
-                updateHighScoreUI();
-            }
-        }
-        
-        // update score display
-        function updateScoreUI() {
-            scoreSpan.innerText = score;
-        }
-        
-        // get all free positions (cells not occupied by snake)
-        function getFreeCells() {
-            const occupied = new Set();
-            for (let segment of snake) {
-                occupied.add(`${segment.x},${segment.y}`);
-            }
-            const free = [];
-            for (let i = 0; i < GRID_SIZE; i++) {
-                for (let j = 0; j < GRID_SIZE; j++) {
-                    if (!occupied.has(`${i},${j}`)) {
-                        free.push({ x: i, y: j });
-                    }
-                }
-            }
-            return free;
-        }
-        
-        // generate random food avoiding snake body, returns true if success, false if no free cells (win)
-        function generateRandomFood() {
-            const freeCells = getFreeCells();
-            if (freeCells.length === 0) {
-                return false;   // no empty space → victory!
-            }
-            const randomIndex = Math.floor(Math.random() * freeCells.length);
-            food = { ...freeCells[randomIndex] };
-            return true;
-        }
-        
-        // reset game fully
-        function resetGame() {
-            // kill ongoing interval
-            if (gameInterval) {
-                clearInterval(gameInterval);
-                gameInterval = null;
-            }
-            
-            // initial snake: three cells in the middle
-            const mid = Math.floor(GRID_SIZE / 2);
-            snake = [
-                { x: mid, y: mid },
-                { x: mid-1, y: mid },
-                { x: mid-2, y: mid }
-            ];
-            direction = 'RIGHT';
-            nextDirection = 'RIGHT';
-            score = 0;
-            playing = true;
-            winFlag = false;
-            updateScoreUI();
-            
-            // generate valid food (not on snake)
-            const freeStart = getFreeCells();
-            if (freeStart.length > 0) {
-                const rand = Math.floor(Math.random() * freeStart.length);
-                food = { ...freeStart[rand] };
-            } else {
-                // impossible on fresh start but fallback
-                food = { x: 5, y: 5 };
-            }
-            
-            // draw fresh board
-            drawGame();
-            
-            // start new interval
-            gameInterval = setInterval(gameTick, TICK_INTERVAL_MS);
-        }
-        
-        // ------------- GAME OVER HANDLING -------------
-        function endGame(isWin = false) {
-            if (!playing) return;  // already ended
-            playing = false;
-            winFlag = isWin;
-            if (gameInterval) {
-                clearInterval(gameInterval);
-                gameInterval = null;
-            }
-            drawGame();  // show game over / win message on canvas
-        }
-        
-        // ---------- COLLISION & MECHANICS ----------
-        // check if position collides with snake body (optionally skip tail index if needed, but we use after update)
-        function isSelfCollision(head, snakeArray) {
-            // head collides with any segment of snakeArray (excluding potential head duplication? we compare)
-            for (let i = 0; i < snakeArray.length; i++) {
-                if (snakeArray[i].x === head.x && snakeArray[i].y === head.y) {
-                    return true;
-                }
-            }
-            return false;
-        }
-        
-        // check wall collision
-        function isWallCollision(head) {
-            return head.x < 0 || head.x >= GRID_SIZE || head.y < 0 || head.y >= GRID_SIZE;
-        }
-        
-        // main game logic (called each tick)
-        function gameTick() {
-            if (!playing) return;  // extra safety
-            
-            // apply queued direction if not opposite
-            const oppositeMap = {
-                'UP': 'DOWN', 'DOWN': 'UP', 'LEFT': 'RIGHT', 'RIGHT': 'LEFT'
-            };
-            if (nextDirection && oppositeMap[nextDirection] !== direction) {
-                direction = nextDirection;
-            }
-            
-            // compute new head based on current direction
-            let newHead = { ...snake[0] };
-            switch(direction) {
-                case 'RIGHT': newHead.y += 1; break;
-                case 'LEFT':  newHead.y -= 1; break;
-                case 'UP':    newHead.x -= 1; break;
-                case 'DOWN':  newHead.x += 1; break;
-                default: break;
-            }
-            
-            // check wall collision before any other action
-            if (isWallCollision(newHead)) {
-                endGame(false);
-                drawGame();
-                return;
-            }
-            
-            // check if food is eaten
-            const willEat = (newHead.x === food.x && newHead.y === food.y);
-            
-            // --- simulate movement & body update ---
-            if (willEat) {
-                // EAT: insert new head at front, keep tail (no pop)
-                const newSnake = [newHead, ...snake];
-                snake = newSnake;
-                // increase score
-                score++;
-                updateScoreUI();
-                updateHighScoreIfNeeded();
-                
-                // generate new food
-                const successFood = generateRandomFood();
-                // if no free cells -> VICTORY !
-                if (!successFood) {
-                    // Perfect win: snake filled the board
-                    endGame(true);
-                    drawGame();
-                    return;
-                }
-                
-                // after eating, check self collision (new head could hit body? only if weird but new head is unique because food was not in snake)
-                // but after adding head, we must ensure head didn't crash into existing body (except it's new cell that was free, but just in case extra check)
-                // but because food was placed on empty cell, the new head cell was previously empty, so no self-collision. However, if something wrong skip
-                // but we also check max win condition: if snake length == TOTAL_CELLS then game win
-                if (snake.length === TOTAL_CELLS) {
-                    endGame(true);
-                    drawGame();
-                    return;
-                }
-                
-            } else {
-                // NORMAL MOVE: insert new head, remove tail
-                const newSnake = [newHead, ...snake.slice(0, -1)];
-                snake = newSnake;
-                // after move, verify self collision (new head might overlap body)
-                if (isSelfCollision(snake[0], snake.slice(1))) {
-                    endGame(false);
-                    drawGame();
-                    return;
-                }
-            }
-            
-            // re-check win condition after any move (just in case)
-            if (snake.length === TOTAL_CELLS) {
-                endGame(true);
-                drawGame();
-                return;
-            }
-            
-            // redraw everything
-            drawGame();
-        }
-        
-        // ---------- GRAPHICS (canvas drawing) ----------
-        function drawGame() {
-            if (!ctx) return;
-            // background grid & soft pattern
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // draw grid lines (light grid)
-            ctx.strokeStyle = '#2e6a4a';
-            ctx.lineWidth = 0.8;
-            for (let i = 0; i <= GRID_SIZE; i++) {
-                ctx.beginPath();
-                ctx.moveTo(i * CELL_SIZE, 0);
-                ctx.lineTo(i * CELL_SIZE, canvas.height);
-                ctx.stroke();
-                ctx.moveTo(0, i * CELL_SIZE);
-                ctx.lineTo(canvas.width, i * CELL_SIZE);
-                ctx.stroke();
-            }
-            
-            // draw food (radiant berry)
-            ctx.shadowBlur = 0;
-            ctx.fillStyle = '#ff5252';
-            ctx.beginPath();
-            ctx.arc(food.x * CELL_SIZE + CELL_SIZE/2, food.y * CELL_SIZE + CELL_SIZE/2, CELL_SIZE/2 - 2, 0, Math.PI*2);
-            ctx.fill();
-            ctx.fillStyle = '#ff2a2a';
-            ctx.beginPath();
-            ctx.arc(food.x * CELL_SIZE + CELL_SIZE/2, food.y * CELL_SIZE + CELL_SIZE/2, CELL_SIZE/3, 0, Math.PI*2);
-            ctx.fill();
-            ctx.fillStyle = '#ffffbb';
-            ctx.beginPath();
-            ctx.arc(food.x * CELL_SIZE + CELL_SIZE/2 - 2, food.y * CELL_SIZE + CELL_SIZE/2 - 2, 2, 0, Math.PI*2);
-            ctx.fill();
-            ctx.shadowBlur = 0;
-            
-            // draw snake (smooth gradient)
-            for (let i = 0; i < snake.length; i++) {
-                const seg = snake[i];
-                const xPos = seg.x * CELL_SIZE;
-                const yPos = seg.y * CELL_SIZE;
-                const padding = i === 0 ? 2 : 3;
-                const radius = 5;
-                ctx.fillStyle = i === 0 ? '#94e67c' : '#3faa5a';
-                ctx.shadowBlur = 2;
-                ctx.shadowColor = '#96ffa6';
-                ctx.beginPath();
-                ctx.roundRect(xPos + 1, yPos + 1, CELL_SIZE - 2, CELL_SIZE - 2, radius);
-                ctx.fill();
-                // eyes for head
-                if (i === 0) {
-                    ctx.fillStyle = '#ffffff';
-                    ctx.beginPath();
-                    ctx.arc(xPos + CELL_SIZE - 8, yPos + 8, 3, 0, Math.PI*2);
-                    ctx.arc(xPos + 8, yPos + 8, 3, 0, Math.PI*2);
-                    ctx.fill();
-                    ctx.fillStyle = '#0a2f1a';
-                    ctx.beginPath();
-                    ctx.arc(xPos + CELL_SIZE - 7, yPos + 7, 1.5, 0, Math.PI*2);
-                    ctx.arc(xPos + 9, yPos + 7, 1.5, 0, Math.PI*2);
-                    ctx.fill();
-                }
-            }
-            ctx.shadowBlur = 0;
-            
-            // if game over or win overlay
-            if (!playing) {
-                ctx.font = 'bold 24px "Segoe UI", "Courier New", monospace';
-                ctx.shadowBlur = 0;
-                ctx.fillStyle = 'rgba(0,0,0,0.75)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = winFlag ? '#f6ffb0' : '#ffcf9a';
-                ctx.font = 'bold 26px "Courier New", monospace';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                const message = winFlag ? '✨ YOU WIN! ✨' : '💀 GAME OVER 💀';
-                ctx.fillStyle = winFlag ? '#c6ff87' : '#ffa75c';
-                ctx.shadowColor = '#000000';
-                ctx.fillText(message, canvas.width/2, canvas.height/2 - 15);
-                ctx.font = 'bold 16px monospace';
-                ctx.fillStyle = '#ddeeff';
-                ctx.fillText('press NEW GAME', canvas.width/2, canvas.height/2 + 30);
-                ctx.textAlign = 'left';
-            }
-            
-            // optional: show current score on canvas corner
-            ctx.font = 'bold 14px "Courier New"';
-            ctx.fillStyle = '#ebffdd';
-            ctx.shadowBlur = 2;
-            ctx.fillText(`🍎 ${score}`, 12, 28);
-        }
-        
-        // helper: canvas rounded rect
-        if (!CanvasRenderingContext2D.prototype.roundRect) {
-            CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
-                if (w < 2 * r) r = w / 2;
-                if (h < 2 * r) r = h / 2;
-                this.moveTo(x+r, y);
-                this.lineTo(x+w-r, y);
-                this.quadraticCurveTo(x+w, y, x+w, y+r);
-                this.lineTo(x+w, y+h-r);
-                this.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
-                this.lineTo(x+r, y+h);
-                this.quadraticCurveTo(x, y+h, x, y+h-r);
-                this.lineTo(x, y+r);
-                this.quadraticCurveTo(x, y, x+r, y);
-                return this;
-            };
-        }
-        
-        // ---------- KEYBOARD CONTROLS ----------
-        function handleKeydown(e) {
-            const key = e.key;
-            // restart with R / r key
-            if (key === 'r' || key === 'R') {
-                e.preventDefault();
-                resetGame();
-                return;
-            }
-            
-            if (!playing) return;   // no direction change if game over
-            
-            let newDir = null;
-            // arrow keys + WASD
-            if (key === 'ArrowUp' || key === 'w' || key === 'W') newDir = 'UP';
-            else if (key === 'ArrowDown' || key === 's' || key === 'S') newDir = 'DOWN';
-            else if (key === 'ArrowLeft' || key === 'a' || key === 'A') newDir = 'LEFT';
-            else if (key === 'ArrowRight' || key === 'd' || key === 'D') newDir = 'RIGHT';
-            
-            if (newDir) {
-                e.preventDefault();
-                // prevent opposite direction relative to current direction (not nextDirection, but immediate safety)
-                const opposite = {
-                    'UP': 'DOWN', 'DOWN': 'UP', 'LEFT': 'RIGHT', 'RIGHT': 'LEFT'
-                };
-                if (opposite[newDir] !== direction) {
-                    nextDirection = newDir;
-                }
-            }
-        }
-        
-        // ---------- INITIALIZATION ----------
-        function init() {
-            loadHighScore();
-            resetGame();      // sets snake, food, interval, draws
-            window.addEventListener('keydown', handleKeydown);
-            restartBtn.addEventListener('click', () => {
-                resetGame();
-            });
-            // optional: touch/mobile friendly: prevent canvas contextmenu
-            canvas.addEventListener('contextmenu', (e) => e.preventDefault());
-        }
-        
-        // start everything
-        init();
-    })();
+      });
+    });
+  }
+
+  function mostrarModalAgregos(tipoProducto) {
+    let filtrados = todosAgregos.filter(ag => ag.para.includes(tipoProducto));
+    if (tipoProducto === "pan") {
+      filtrados = filtrados.filter(ag => !["Hawaiana", "Piña", "Aceituna"].includes(ag.nombre));
+    }
+    const container = document.getElementById("agregosList");
+    container.innerHTML = filtrados.map(ag => `
+      <div class="agrego-item">
+        <label><input type="checkbox" value="${ag.nombre}" data-cup="${ag.cup}" data-usd="${ag.usd}"> ${ag.nombre}</label>
+        <span>${currentCurrency === "cup" ? ag.cup + " CUP" : "$" + ag.usd + " USD"}</span>
+      </div>
+    `).join('');
+    document.getElementById("modalTitle").innerText = `Agregar extras a ${pendingProduct.nombre}`;
+    document.getElementById("agregosModal").style.display = "flex";
+  }
+
+  function agregarAlCarrito(productoBase, cantidad, agregosSeleccionados) {
+    const precioBase = getPriceValue(productoBase.cup, productoBase.usd);
+    const extraCosto = agregosSeleccionados.reduce((sum, ag) => sum + getPriceValue(ag.cup, ag.usd), 0);
+    const precioUnitario = precioBase + extraCosto;
+    const key = JSON.stringify({ nombre: productoBase.nombre, agregos: agregosSeleccionados.map(a=>a.nombre).sort() });
+    const existing = carrito.find(item => JSON.stringify({ nombre: item.nombre, agregos: item.agregos.map(a=>a.nombre).sort() }) === key);
+    if (existing) {
+      existing.cantidad += cantidad;
+    } else {
+      carrito.push({
+        id: Date.now() + Math.random(),
+        nombre: productoBase.nombre,
+        tipo: productoBase.tipo,
+        precioUnitario: precioUnitario,
+        cantidad: cantidad,
+        agregos: agregosSeleccionados,
+        baseCup: productoBase.cup,
+        baseUsd: productoBase.usd
+      });
+    }
+    actualizarCarrito();
+  }
+
+  function actualizarCarrito() {
+    const cartContainer = document.getElementById("cartItems");
+    let subtotal = 0;
+    let cajasPizza = 0;
+    let termopacks = 0;
+    carrito.forEach(item => {
+      subtotal += item.precioUnitario * item.cantidad;
+      if (item.tipo === "pizza") cajasPizza += item.cantidad;
+      else if (item.tipo === "comida" || item.tipo === "pasta" || item.tipo === "pan") termopacks += item.cantidad;
+    });
+    const precioCaja = currentCurrency === "cup" ? 60 : 0.19;
+    const precioTermo = currentCurrency === "cup" ? 100 : 0.31;
+    let totalEmpaque = (cajasPizza * precioCaja) + (termopacks * precioTermo);
+    let deliveryCost = 0;
+    const deliveryType = document.getElementById("deliveryType")?.value;
+    if (deliveryType === "delivery") deliveryCost = currentCurrency === "cup" ? 200 : 0.52;
+    let total = subtotal + totalEmpaque + deliveryCost;
+
+    cartContainer.innerHTML = carrito.map((item, idx) => `
+      <div class="cart-item">
+        <div class="cart-item-title">${item.nombre} x${item.cantidad} <strong>${formatPrice(item.precioUnitario * item.cantidad)}</strong></div>
+        ${item.agregos.length ? `<div class="cart-item-agregos">+ ${item.agregos.map(a=>a.nombre).join(', ')}</div>` : ''}
+        <div class="cart-item-controls">
+          <button onclick="cambiarCantidad(${idx}, -1)">-</button>
+          <span>${item.cantidad}</span>
+          <button onclick="cambiarCantidad(${idx}, 1)">+</button>
+          <button class="remove-item" onclick="eliminarItem(${idx})">Eliminar</button>
+        </div>
+      </div>
+    `).join('');
+    if (carrito.length === 0) cartContainer.innerHTML = "<p>Tu carrito está vacío</p>";
+
+    document.getElementById("totalsArea").innerHTML = `
+      <p><span>Subtotal:</span><span>${formatPrice(subtotal)}</span></p>
+      <p><span>Empaque (caja pizza x${cajasPizza} / termopack x${termopacks}):</span><span>${formatPrice(totalEmpaque)}</span></p>
+      <p><span>Mensajería:</span><span>${formatPrice(deliveryCost)}</span></p>
+      <hr><p><strong>Total:</strong><strong>${formatPrice(total)}</strong></p>
+    `;
+    document.getElementById("cartCount").innerText = carrito.reduce((acc, i) => acc + i.cantidad, 0);
+  }
+
+  window.cambiarCantidad = (idx, delta) => {
+    let newCant = carrito[idx].cantidad + delta;
+    if (newCant <= 0) carrito.splice(idx, 1);
+    else carrito[idx].cantidad = newCant;
+    actualizarCarrito();
+  };
+  window.eliminarItem = (idx) => {
+    carrito.splice(idx, 1);
+    actualizarCarrito();
+  };
+
+  function enviarPedidoWhatsApp() {
+    let mensaje = "🍽️ *NUEVO PEDIDO CHUCHUWAH*%0A";
+    let subtotal = 0;
+    let cajas = 0, termo = 0;
+    carrito.forEach(item => {
+      subtotal += item.precioUnitario * item.cantidad;
+      if (item.tipo === "pizza") cajas += item.cantidad;
+      else if (item.tipo === "comida" || item.tipo === "pasta" || item.tipo === "pan") termo += item.cantidad;
+      mensaje += `%0A• ${item.nombre} x${item.cantidad} - ${formatPrice(item.precioUnitario * item.cantidad)}`;
+      if (item.agregos.length) mensaje += ` (Agregos: ${item.agregos.map(a=>a.nombre).join(', ')})`;
+    });
+    const precioCaja = currentCurrency === "cup" ? 60 : 0.19;
+    const precioTermo = currentCurrency === "cup" ? 100 : 0.31;
+    let totalEmpaque = (cajas * precioCaja) + (termo * precioTermo);
+    let deliveryCost = 0;
+    const deliveryType = document.getElementById("deliveryType")?.value;
+    let direccion = "", nombreDestino = "", telefonoDestino = "";
+    if (deliveryType === "delivery") {
+      deliveryCost = currentCurrency === "cup" ? 200 : 0.52;
+      direccion = document.getElementById("direccion")?.value || "";
+      nombreDestino = document.getElementById("nombreDestino")?.value || "";
+      telefonoDestino = document.getElementById("telefonoDestino")?.value || "";
+      mensaje += `%0A%0A🚚 *Delivery a domicilio* (${formatPrice(deliveryCost)})`;
+      mensaje += `%0A📍 Dirección: ${direccion}`;
+      mensaje += `%0A👤 Recibe: ${nombreDestino}`;
+      mensaje += `%0A📞 Celular: ${telefonoDestino}`;
+    } else {
+      mensaje += `%0A%0A🥡 *Para llevar*`;
+    }
+    let total = subtotal + totalEmpaque + deliveryCost;
+    mensaje += `%0A%0A📦 Empaque: +${formatPrice(totalEmpaque)}`;
+    mensaje += `%0A%0A💰 *Total: ${formatPrice(total)}*`;
+    const metodoPago = document.getElementById("paymentMethod")?.value;
+    mensaje += `%0A💳 Método de pago: ${metodoPago}`;
+    const notas = document.getElementById("notas")?.value;
+    if (notas) mensaje += `%0A%0A📝 Notas: ${notas}`;
+    mensaje += `%0A%0A¡Gracias por tu pedido! 🚂`;
+    window.open(`https://wa.me/5350993981?text=${mensaje}`, "_blank");
+  }
+
+  function setCurrency(currency) {
+    currentCurrency = currency;
+    document.querySelectorAll('.currency-btn').forEach(btn => {
+      if (btn.dataset.currency === currency) btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
+    // Actualizar precios visibles en combos y menú
+    document.querySelectorAll('.combo-price-value').forEach(el => {
+      const cupVal = el.getAttribute('data-cup');
+      const usdVal = el.getAttribute('data-usd');
+      if (cupVal && usdVal) el.innerText = currency === "cup" ? cupVal : usdVal;
+    });
+    document.querySelectorAll('.price-value').forEach(el => {
+      const cupVal = el.getAttribute('data-cup');
+      const usdVal = el.getAttribute('data-usd');
+      if (cupVal && usdVal) el.innerText = currency === "cup" ? cupVal + " CUP" : "$" + usdVal + " USD";
+      else if (el.getAttribute('data-cup')) {
+        const cup = parseFloat(el.getAttribute('data-cup'));
+        const usd = parseFloat(el.getAttribute('data-usd'));
+        el.innerText = currency === "cup" ? cup + " CUP" : "$" + usd + " USD";
+      }
+    });
+    actualizarCarrito();
+    syncPaymentMethodWithCurrency();
+  }
+
+  function renderBebidas() {
+    const bebidas = ["Tigón","Malta","Agua Natural Grande","Agua Natural Pequeño","Presidente / Widmill","Heniken / Corona","Energizante","Jugo de Lata","Caja de Jugo","Shaka","Néctar / Limonada","Coca Cola","Kermato","Cristal / Bucanero","Pomo de Refresco","Hollandia / Lander","Refresco Vaso","Redbull","Refresco Importado","Batido Mango / Guayaba","Go Tropic Morena","Go Tropic Roja","Batido de Chocolate","Vaso de Dispensada","Jarra de Dispensada","Termo de Dispensada"];
+    const container = document.getElementById("bebidas-container");
+    container.innerHTML = bebidas.map(b => `
+      <div class="bebida-item"><span>${b}</span><button class="add-bebida" data-nombre="${b}">Agregar</button></div>
+    `).join('');
+    document.querySelectorAll('.add-bebida').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const nombre = btn.dataset.nombre;
+        agregarAlCarrito({ nombre, cup: 0, usd: 0, tipo: "bebida" }, 1, []);
+      });
+    });
+  }
+
+  function setupDeliveryEvents() {
+    const deliverySelect = document.getElementById("deliveryType");
+    const deliveryFields = document.getElementById("deliveryFields");
+    if (deliverySelect) {
+      deliverySelect.addEventListener("change", () => {
+        deliveryFields.style.display = deliverySelect.value === "delivery" ? "block" : "none";
+        actualizarCarrito();
+      });
+      deliverySelect.dispatchEvent(new Event('change'));
+    }
+  }
+
+  // Eventos de sincronización
+  function bindSyncEvents() {
+    const paymentSelect = document.getElementById("paymentMethod");
+    if (paymentSelect) {
+      paymentSelect.addEventListener("change", syncCurrencyWithPaymentMethod);
+    }
+    const currencyBtns = document.querySelectorAll('.currency-btn');
+    currencyBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        setCurrency(e.target.dataset.currency);
+      });
+    });
+  }
+
+  document.getElementById("confirmAgregosBtn").onclick = () => {
+    const checkboxes = document.querySelectorAll("#agregosList input:checked");
+    const seleccionados = Array.from(checkboxes).map(cb => {
+      const nombre = cb.value;
+      const cup = parseFloat(cb.dataset.cup);
+      const usd = parseFloat(cb.dataset.usd);
+      return { nombre, cup, usd };
+    });
+    if (pendingProduct) {
+      agregarAlCarrito(pendingProduct, 1, seleccionados);
+    }
+    document.getElementById("agregosModal").style.display = "none";
+    pendingProduct = null;
+  };
+  document.getElementById("cancelAgregosBtn").onclick = () => {
+    document.getElementById("agregosModal").style.display = "none";
+    pendingProduct = null;
+  };
+
+  document.getElementById("cartIcon").onclick = () => document.getElementById("cartDrawer").classList.add("open");
+  document.getElementById("closeCartBtn").onclick = () => document.getElementById("cartDrawer").classList.remove("open");
+  document.getElementById("enviarWhatsappBtn").addEventListener("click", enviarPedidoWhatsApp);
+
+  // Inicialización
+  renderCombos();
+  renderMenu();
+  renderBebidas();
+  setCurrency("cup");
+  setupDeliveryEvents();
+  bindSyncEvents();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
