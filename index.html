@@ -90,7 +90,7 @@
     font-weight: 700;
     text-transform: uppercase;
   }
-  /* Colores según estado (se aplican dinámicamente) */
+  /* Colores según estado */
   .nav-status.open { background: rgba(40,167,69,0.2); border-left: 3px solid var(--verde); }
   .nav-status.open .status-dot { background: var(--verde); box-shadow: 0 0 4px var(--verde); }
   .nav-status.open .status-text { color: var(--verde); }
@@ -159,7 +159,7 @@
       background-attachment: fixed;
     }
   }
-  /* Carrusel mejorado - más grande y adaptable */
+  /* Carrusel mejorado */
   .carousel-container {
     position: relative;
     width: 95%;
@@ -468,10 +468,10 @@
     margin-left: 8px;
     cursor: pointer;
   }
-  /* Bebidas */
+  /* Bebidas con precio fijo por vaso */
   .bebidas-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 12px;
     margin-top: 40px;
   }
@@ -484,6 +484,13 @@
     justify-content: space-between;
     align-items: center;
   }
+  .bebida-item span:first-child { font-size: 13px; font-weight: 500; }
+  .bebida-price {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--amarillo);
+    margin: 0 8px;
+  }
   .bebida-item button {
     background: var(--rojo);
     border: none;
@@ -491,14 +498,7 @@
     padding: 4px 12px;
     border-radius: 5px;
     cursor: pointer;
-  }
-  .bebidas-nota {
-    margin-top: 20px;
-    padding: 12px 18px;
-    background: rgba(255,215,0,0.05);
-    border-left: 3px solid var(--amarillo);
-    font-size: 12px;
-    color: #ccc;
+    font-size: 11px;
   }
   /* CARRITO DRAWER */
   .cart-drawer {
@@ -643,7 +643,7 @@
     padding: 8px 16px;
   }
   
-  /* Responsive adjustments */
+  /* Responsive */
   @media (max-width: 768px) {
     nav {
       padding: 8px 12px;
@@ -666,9 +666,10 @@
     .next { right: 5px; }
     .carousel-slide img { max-height: 250px; }
     .hero { padding-top: 100px; }
+    .bebidas-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
   }
   @media (max-width: 480px) {
-    .nav-status .status-text { display: none; } /* en móviles muy pequeños solo el punto */
+    .nav-status .status-text { display: none; } /* solo el punto en móviles muy pequeños */
     .nav-status { padding: 4px 8px; }
   }
   .fade-in {
@@ -708,7 +709,7 @@
     <a href="#info">Info</a>
   </div>
   
-  <!-- ESTADO DEL RESTAURANTE INTEGRADO EN EL NAVBAR -->
+  <!-- ESTADO DEL RESTAURANTE INTEGRADO -->
   <div class="nav-status" id="navStatus">
     <span class="status-dot"></span>
     <span class="status-text">Cerrado</span>
@@ -765,7 +766,7 @@
   <p class="section-label fade-in">Para tomar</p>
   <h2 class="section-title fade-in">NUESTRAS <em>BEBIDAS</em></h2>
   <div class="bebidas-grid" id="bebidas-container"></div>
-  <div class="bebidas-nota">El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.</div>
+  <div class="bebidas-nota" style="margin-top: 16px; font-size: 12px; color: #aaa; text-align: center;">🍹 Precio por vaso: 70 CUP / 0.19 USD (incluye cualquier bebida de la lista)</div>
 </section>
 
 <div class="pedido-banner" style="background: var(--rojo); padding: 50px 20px; text-align: center; border-radius: 20px; margin: 20px auto; max-width: 1000px;">
@@ -880,7 +881,7 @@
     "Pan con hamburgueza pollo": { cup: 330, usd: 0.85, tipo: "pan" },
     "Café expreso": { cup: 100, usd: 0.26, tipo: "bebida" },
     "Café cortadito": { cup: 130, usd: 0.34, tipo: "bebida" },
-    "Batido de frutas": { cup: 270, usd: 0.70, tipo: "bebida" },
+    "Batido de frutas": { cup: 300, usd: 0.78, tipo: "bebida" },
     "Batido de chocolate": { cup: 500, usd: 1.29, tipo: "bebida" },
     "Batido de Mamey": { cup: 350, usd: 0.90, tipo: "bebida" },
     "Pan con 2 croquetas": { cup: 230, usd: 0.59, tipo: "pan" },
@@ -951,18 +952,14 @@
     }
   }
 
-  // ======================== ESTADO DEL RESTAURANTE (VERDE, NARANJA, ROJO) en NAV ========================
+  // ======================== ESTADO DEL RESTAURANTE ========================
   function updateRestaurantStatus() {
     const statusDiv = document.getElementById('navStatus');
     if (!statusDiv) return;
     const now = new Date();
     const currentHour = now.getHours();
-    const openTime = 11;
-    const closeTime = 22;
-    const closingSoonTime = 21;
-    
-    let statusClass = '';
-    let statusText = '';
+    const openTime = 11, closeTime = 22, closingSoonTime = 21;
+    let statusClass = '', statusText = '';
     if (currentHour >= openTime && currentHour < closeTime) {
       if (currentHour >= closingSoonTime && currentHour < closeTime) {
         statusClass = 'closing';
@@ -975,7 +972,6 @@
       statusClass = 'closed';
       statusText = 'Cerrado';
     }
-    // Remover clases previas
     statusDiv.classList.remove('open', 'closing', 'closed');
     statusDiv.classList.add(statusClass);
     const textSpan = statusDiv.querySelector('.status-text');
@@ -1019,6 +1015,12 @@
     });
     actualizarCarrito();
     syncPaymentMethodWithCurrency();
+    // Actualizar precios de bebidas mostrados
+    document.querySelectorAll('.bebida-price').forEach(el => {
+      const cupVal = el.getAttribute('data-cup');
+      const usdVal = el.getAttribute('data-usd');
+      if (cupVal && usdVal) el.innerText = currency === "cup" ? cupVal + " CUP" : "$" + usdVal + " USD";
+    });
   }
 
   function renderCombos() {
@@ -1084,12 +1086,26 @@
     });
   }
 
+  // BEBIDAS CON PRECIO FIJO POR VASO (70 CUP / 0.19 USD)
   function renderBebidas() {
-    const bebidas = ["Tigón","Malta","Agua Natural Grande","Agua Natural Pequeño","Presidente / Widmill","Heniken / Corona","Energizante","Jugo de Lata","Caja de Jugo","Shaka","Néctar / Limonada","Coca Cola","Kermato","Cristal / Bucanero","Pomo de Refresco","Hollandia / Lander","Refresco Vaso","Redbull","Refresco Importado","Batido Mango / Guayaba","Go Tropic Morena","Go Tropic Roja","Batido de Chocolate","Vaso de Dispensada","Jarra de Dispensada","Termo de Dispensada"];
+    const bebidasList = ["Tigón","Malta","Agua Natural Grande","Agua Natural Pequeño","Presidente / Widmill","Heniken / Corona","Energizante","Jugo de Lata","Caja de Jugo","Shaka","Néctar / Limonada","Coca Cola","Kermato","Cristal / Bucanero","Pomo de Refresco","Hollandia / Lander","Refresco Vaso","Redbull","Refresco Importado","Batido Mango / Guayaba","Go Tropic Morena","Go Tropic Roja","Batido de Chocolate","Vaso de Dispensada","Jarra de Dispensada","Termo de Dispensada"];
     const container = document.getElementById("bebidas-container");
-    container.innerHTML = bebidas.map(b => `<div class="bebida-item"><span>${b}</span><button class="add-bebida" data-nombre="${b}">Agregar</button></div>`).join('');
+    const precioCup = 70;
+    const precioUsd = 0.19;
+    container.innerHTML = bebidasList.map(b => `
+      <div class="bebida-item">
+        <span>${b}</span>
+        <span class="bebida-price" data-cup="${precioCup}" data-usd="${precioUsd}">${currentCurrency === "cup" ? precioCup + " CUP" : "$" + precioUsd + " USD"}</span>
+        <button class="add-bebida" data-nombre="${b}" data-cup="${precioCup}" data-usd="${precioUsd}">Agregar</button>
+      </div>
+    `).join('');
     document.querySelectorAll('.add-bebida').forEach(btn => {
-      btn.addEventListener('click', () => agregarAlCarrito({ nombre: btn.dataset.nombre, cup: 0, usd: 0, tipo: "bebida" }, 1, []));
+      btn.addEventListener('click', () => {
+        const nombre = btn.dataset.nombre;
+        const cup = parseFloat(btn.dataset.cup);
+        const usd = parseFloat(btn.dataset.usd);
+        agregarAlCarrito({ nombre, cup, usd, tipo: "bebida" }, 1, []);
+      });
     });
   }
 
