@@ -16,6 +16,8 @@
     --gris: #1A1A1A;
     --blanco: #FFFFFF;
     --crema: #FFF8E7;
+    --verde: #28a745;
+    --naranja: #fd7e14;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -454,6 +456,36 @@
     font-size: 12px;
     color: #ccc;
   }
+  /* Estado del restaurante */
+  .restaurant-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    margin: 20px auto;
+    max-width: 300px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .status-open {
+    background: var(--verde);
+    color: white;
+  }
+  .status-closing {
+    background: var(--naranja);
+    color: black;
+  }
+  .status-closed {
+    background: var(--rojo);
+    color: white;
+  }
+  .status-icon {
+    font-size: 18px;
+  }
   /* CARRITO DRAWER */
   .cart-drawer {
     position: fixed;
@@ -616,34 +648,6 @@
     font-size: 14px;
     padding: 6px 12px;
   }
-  .language-switcher {
-    display: flex;
-    gap: 10px;
-    background: rgba(0,0,0,0.6);
-    padding: 6px 12px;
-    border-radius: 40px;
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255,215,0,0.3);
-    margin-left: 12px;
-  }
-  .language-btn {
-    background: transparent;
-    border: none;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 1px;
-    padding: 6px 14px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.2s;
-    color: rgba(255,255,255,0.6);
-  }
-  .language-btn.active {
-    background: var(--amarillo);
-    color: var(--oscuro);
-    box-shadow: 0 0 6px rgba(255,215,0,0.5);
-  }
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .mobile-menu-btn { display: block; }
@@ -662,29 +666,31 @@
 <nav>
   <img src="logo.png" alt="ChuChuWah Logo" class="nav-logo-img">
   <ul class="nav-links">
-    <li><a href="#combos" data-translate="Combos">Combos</a></li>
-    <li><a href="#menu" data-translate="Menú">Menú</a></li>
-    <li><a href="#bebidas" data-translate="Bebidas">Bebidas</a></li>
-    <li><a href="lmr.html" data-translate="Lo más pedido">Lo más pedido</a></li>
-    <li><a href="#info" data-translate="Info">Info</a></li>
+    <li><a href="#combos">Combos</a></li>
+    <li><a href="#menu">Menú</a></li>
+    <li><a href="#bebidas">Bebidas</a></li>
+    <li><a href="lmr.html">Lo más pedido</a></li>
+    <li><a href="#info">Info</a></li>
   </ul>
   <button id="mobile-menu-btn" class="mobile-menu-btn">☰</button>
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#combos" data-translate="Combos">Combos</a>
-    <a href="#menu" data-translate="Menú">Menú</a>
-    <a href="#bebidas" data-translate="Bebidas">Bebidas</a>
-    <a href="lmr.html" data-translate="Lo más pedido">Lo más pedido</a>
-    <a href="#info" data-translate="Info">Info</a>
+    <a href="#combos">Combos</a>
+    <a href="#menu">Menú</a>
+    <a href="#bebidas">Bebidas</a>
+    <a href="lmr.html">Lo más pedido</a>
+    <a href="#info">Info</a>
   </div>
   <div class="currency-switcher">
     <button class="currency-btn" data-currency="cup">🇨🇺 CUP</button>
     <button class="currency-btn" data-currency="usd">💵 USD</button>
   </div>
-  <div class="language-switcher">
-    <button class="language-btn" data-lang="es">🇪🇸 ES</button>
-    <button class="language-btn" data-lang="en">🇬🇧 EN</button>
-  </div>
 </nav>
+
+<!-- Estado del restaurante -->
+<div class="restaurant-status" id="restaurantStatus">
+  <span class="status-icon">🕒</span>
+  <span class="status-text">Cerrado</span>
+</div>
 
 <div class="hero">
   <div class="carousel-container" id="carousel">
@@ -696,56 +702,56 @@
 
   <img src="logo.png" alt="ChuChuWah Logo" class="hero-logo fade-in">
   <p class="hero-eyebrow">🚂 Jaruco, Mayabeque, Cuba</p>
-  <h1 class="hero-title" data-translate="El Expreso del Sabor">CHU<span>CHU</span>WAH</h1>
-  <p class="hero-subtitle" data-translate="El Expreso del Sabor"></p>
-  <p class="hero-desc" data-translate="Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.">Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.</p>
+  <h1 class="hero-title">CHU<span>CHU</span>WAH</h1>
+  <p class="hero-subtitle">El Expreso del Sabor</p>
+  <p class="hero-desc">Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.</p>
   <div class="hero-ctas">
-    <a href="#menu" class="btn-outline" data-translate="Ver Menú Completo">Ver Menú Completo</a>
+    <a href="#menu" class="btn-outline">Ver Menú Completo</a>
   </div>
   <div class="hero-badges">
-    <div class="badge"><span class="badge-icon">🕐</span><span class="badge-text" data-translate="11am – 10pm">11am – 10pm</span></div>
-    <div class="badge"><span class="badge-icon">🛵</span><span class="badge-text" data-translate="Delivery Mayabeque">Delivery Mayabeque</span></div>
-    <div class="badge"><span class="badge-icon">💳</span><span class="badge-text" data-translate="Zelle & CUP">Zelle & CUP</span></div>
+    <div class="badge"><span class="badge-icon">🕐</span><span class="badge-text">11am – 10pm</span></div>
+    <div class="badge"><span class="badge-icon">🛵</span><span class="badge-text">Delivery Mayabeque</span></div>
+    <div class="badge"><span class="badge-icon">💳</span><span class="badge-text">Zelle & CUP</span></div>
   </div>
 </div>
 
 <div class="divider"></div>
 
 <section id="combos">
-  <p class="section-label fade-in" data-translate="Nuestras Ofertas">Nuestras Ofertas</p>
-  <h2 class="section-title fade-in" data-translate="COMBOS ESPECIALES">COMBOS <em>ESPECIALES</em></h2>
+  <p class="section-label fade-in">Nuestras Ofertas</p>
+  <h2 class="section-title fade-in">COMBOS <em>ESPECIALES</em></h2>
   <div class="combos-grid" id="combos-container"></div>
 </section>
 
 <div class="divider"></div>
 
 <section id="menu">
-  <p class="section-label fade-in" data-translate="Todo lo que tenemos">Todo lo que tenemos</p>
-  <h2 class="section-title fade-in" data-translate="MENÚ COMPLETO">MENÚ <em>COMPLETO</em></h2>
+  <p class="section-label fade-in">Todo lo que tenemos</p>
+  <h2 class="section-title fade-in">MENÚ <em>COMPLETO</em></h2>
   <div id="menu-container"></div>
 </section>
 
 <div class="divider"></div>
 
 <section id="bebidas">
-  <p class="section-label fade-in" data-translate="Para tomar">Para tomar</p>
-  <h2 class="section-title fade-in" data-translate="NUESTRAS BEBIDAS">NUESTRAS <em>BEBIDAS</em></h2>
+  <p class="section-label fade-in">Para tomar</p>
+  <h2 class="section-title fade-in">NUESTRAS <em>BEBIDAS</em></h2>
   <div class="bebidas-grid" id="bebidas-container"></div>
-  <div class="bebidas-nota" data-translate="El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.">El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.</div>
+  <div class="bebidas-nota">El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.</div>
 </section>
 
 <div class="pedido-banner" style="background: var(--rojo); padding: 50px 20px; text-align: center; border-radius: 20px; margin: 20px auto; max-width: 1000px;">
-  <h2 class="pedido-title" style="font-family: 'Bebas Neue', sans-serif; font-size: 48px;" data-translate="¿LISTO PARA PEDIR?">¿LISTO PARA PEDIR?</h2>
-  <p class="pedido-sub" data-translate="Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm">Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm</p>
+  <h2 class="pedido-title" style="font-family: 'Bebas Neue', sans-serif; font-size: 48px;">¿LISTO PARA PEDIR?</h2>
+  <p class="pedido-sub">Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm</p>
 </div>
 
 <section id="info">
-  <p class="section-label fade-in" data-translate="Encuéntranos">Encuéntranos</p>
-  <h2 class="section-title fade-in" data-translate="INFORMACIÓN & CONTACTO">INFORMACIÓN <em>& CONTACTO</em></h2>
+  <p class="section-label fade-in">Encuéntranos</p>
+  <h2 class="section-title fade-in">INFORMACIÓN <em>& CONTACTO</em></h2>
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
-    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">📍</div><div style="font-weight: bold;" data-translate="Jaruco, Mayabeque">Jaruco, Mayabeque</div><div>Cuba, cerca del tren Hershey</div></div>
-    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">🕐</div><div style="font-weight: bold;" data-translate="Horario">Horario</div><div data-translate="11am – 10pm (Delivery hasta 6pm)">11am – 10pm (Delivery hasta 6pm)</div></div>
-    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">📞</div><div style="font-weight: bold;" data-translate="Contacto">Contacto</div><div><a href="tel:47874242" style="color: var(--amarillo);">47874242</a><br><a href="https://wa.me/5350993981" style="color: var(--amarillo);">WhatsApp +53 50993981</a></div></div>
+    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">📍</div><div style="font-weight: bold;">Jaruco, Mayabeque</div><div>Cuba, cerca del tren Hershey</div></div>
+    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">🕐</div><div style="font-weight: bold;">Horario</div><div>11am – 10pm (Delivery hasta 6pm)</div></div>
+    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">📞</div><div style="font-weight: bold;">Contacto</div><div><a href="tel:47874242" style="color: var(--amarillo);">47874242</a><br><a href="https://wa.me/5350993981" style="color: var(--amarillo);">WhatsApp +53 50993981</a></div></div>
   </div>
 </section>
 
@@ -756,33 +762,33 @@
 
 <!-- CARRITO DRAWER -->
 <div class="cart-drawer" id="cartDrawer">
-  <div class="cart-header"><h3 data-translate="Tu Pedido">Tu Pedido</h3><button class="close-cart" id="closeCartBtn">✕</button></div>
+  <div class="cart-header"><h3>Tu Pedido</h3><button class="close-cart" id="closeCartBtn">✕</button></div>
   <div class="cart-items" id="cartItems"></div>
   <div class="cart-total" id="cartTotal">
     <div id="totalsArea"></div>
     <div class="payment-method">
-      <label data-translate="Método de pago:">Método de pago:</label>
+      <label>Método de pago:</label>
       <select id="paymentMethod">
-        <option value="CUP (efectivo)" data-translate="CUP (efectivo)">💵 CUP (efectivo)</option>
-        <option value="Zelle (USD)" data-translate="Zelle (USD)">💲 Zelle (USD)</option>
+        <option value="CUP (efectivo)">💵 CUP (efectivo)</option>
+        <option value="Zelle (USD)">💲 Zelle (USD)</option>
       </select>
     </div>
     <div class="delivery-form" id="deliveryFormStatic">
-      <label data-translate="Tipo de pedido:">Tipo de pedido:</label>
+      <label>Tipo de pedido:</label>
       <select id="deliveryType">
-        <option value="pickup" data-translate="Para llevar (sin costo extra)">Para llevar (sin costo extra)</option>
-        <option value="delivery" data-translate="Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)">Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)</option>
-        <option value="outside" data-translate="Delivery fuera de Jaruco (precio a consultar)">Delivery fuera de Jaruco (precio a consultar)</option>
+        <option value="pickup">Para llevar (sin costo extra)</option>
+        <option value="delivery">Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)</option>
+        <option value="outside">Delivery fuera de Jaruco (precio a consultar)</option>
       </select>
       <div id="deliveryFields" style="display: none;">
-        <input type="text" id="direccion" placeholder="Dirección completa" data-translate-placeholder="Dirección completa">
-        <input type="text" id="nombreDestino" placeholder="Nombre de quien recibe" data-translate-placeholder="Nombre de quien recibe">
-        <input type="tel" id="telefonoDestino" placeholder="Número de celular" data-translate-placeholder="Número de celular">
+        <input type="text" id="direccion" placeholder="Dirección completa">
+        <input type="text" id="nombreDestino" placeholder="Nombre de quien recibe">
+        <input type="tel" id="telefonoDestino" placeholder="Número de celular">
       </div>
-      <textarea id="notas" placeholder="Notas adicionales (opcional)" data-translate-placeholder="Notas adicionales (opcional)"></textarea>
+      <textarea id="notas" placeholder="Notas adicionales (opcional)"></textarea>
     </div>
     <div class="cart-actions">
-      <button class="btn-checkout" id="enviarWhatsappBtn" data-translate="Pedir por WhatsApp">📲 Pedir por WhatsApp</button>
+      <button class="btn-checkout" id="enviarWhatsappBtn">📲 Pedir por WhatsApp</button>
     </div>
   </div>
 </div>
@@ -791,11 +797,11 @@
 <!-- MODAL AGREGOS -->
 <div class="modal" id="agregosModal">
   <div class="modal-content">
-    <h3 id="modalTitle" data-translate="Agregar extras">Agregar extras</h3>
+    <h3 id="modalTitle">Agregar extras</h3>
     <div id="agregosList" class="agregos-list"></div>
     <div class="modal-buttons">
-      <button id="confirmAgregosBtn" class="btn-primary" data-translate="Confirmar">Confirmar</button>
-      <button id="cancelAgregosBtn" class="btn-outline" data-translate="Cancelar">Cancelar</button>
+      <button id="confirmAgregosBtn" class="btn-primary">Confirmar</button>
+      <button id="cancelAgregosBtn" class="btn-outline">Cancelar</button>
     </div>
   </div>
 </div>
@@ -892,7 +898,6 @@
 
   let carrito = [];
   let currentCurrency = "cup";
-  let currentLang = "es";
   let pendingProduct = null;
 
   // ======================== COOKIES ========================
@@ -911,7 +916,6 @@
 
   function loadPreferences() {
     const savedCurrency = getCookie('chuchuwah_currency');
-    const savedLang = getCookie('chuchuwah_lang');
     if (savedCurrency) {
       currentCurrency = savedCurrency;
       document.querySelectorAll('.currency-btn').forEach(btn => {
@@ -919,133 +923,35 @@
         if (btn.dataset.currency === savedCurrency) btn.classList.add('active');
       });
     }
-    if (savedLang) {
-      currentLang = savedLang;
-      document.querySelectorAll('.language-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.lang === savedLang) btn.classList.add('active');
-      });
-      setLanguage(savedLang);
-    }
   }
 
-  // ======================== TRADUCCIONES ========================
-  const translations = {
-    es: {
-      "El Expreso del Sabor": "El Expreso del Sabor",
-      "Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.": "Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.",
-      "COMBOS ESPECIALES": "COMBOS ESPECIALES",
-      "MENÚ COMPLETO": "MENÚ COMPLETO",
-      "NUESTRAS BEBIDAS": "NUESTRAS BEBIDAS",
-      "¿LISTO PARA PEDIR?": "¿LISTO PARA PEDIR?",
-      "Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm": "Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm",
-      "INFORMACIÓN & CONTACTO": "INFORMACIÓN & CONTACTO",
-      "Tu Pedido": "Tu Pedido",
-      "Agregar al carrito": "Agregar al carrito",
-      "Agregar extras": "Agregar extras",
-      "Cancelar": "Cancelar",
-      "Confirmar": "Confirmar",
-      "Para llevar (sin costo extra)": "Para llevar (sin costo extra)",
-      "Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)": "Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)",
-      "Delivery fuera de Jaruco (precio a consultar)": "Delivery fuera de Jaruco (precio a consultar)",
-      "Dirección completa": "Dirección completa",
-      "Nombre de quien recibe": "Nombre de quien recibe",
-      "Número de celular": "Número de celular",
-      "Notas adicionales (opcional)": "Notas adicionales (opcional)",
-      "Método de pago:": "Método de pago:",
-      "CUP (efectivo)": "💵 CUP (efectivo)",
-      "Zelle (USD)": "💲 Zelle (USD)",
-      "Pedir por WhatsApp": "📲 Pedir por WhatsApp",
-      "Subtotal:": "Subtotal:",
-      "Empaque:": "Empaque:",
-      "Mensajería:": "Mensajería:",
-      "Total:": "Total:",
-      "Tu carrito está vacío": "Tu carrito está vacío",
-      "Jaruco, Mayabeque": "Jaruco, Mayabeque",
-      "Horario": "Horario",
-      "11am – 10pm (Delivery hasta 6pm)": "11am – 10pm (Delivery hasta 6pm)",
-      "Contacto": "Contacto",
-      "Nuestras Ofertas": "Nuestras Ofertas",
-      "Todo lo que tenemos": "Todo lo que tenemos",
-      "Para tomar": "Para tomar",
-      "El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.": "El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.",
-      "Encuéntranos": "Encuéntranos",
-      "Combos": "Combos",
-      "Menú": "Menú",
-      "Bebidas": "Bebidas",
-      "Lo más pedido": "Lo más pedido",
-      "Info": "Info",
-      "Ver Menú Completo": "Ver Menú Completo"
-    },
-    en: {
-      "El Expreso del Sabor": "The Flavor Express",
-      "Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.": "Cuban food with its own soul. Chicken, pizzas, seafood, meats and much more — straight to your table or door throughout Mayabeque.",
-      "COMBOS ESPECIALES": "SPECIAL COMBO MEALS",
-      "MENÚ COMPLETO": "FULL MENU",
-      "NUESTRAS BEBIDAS": "OUR DRINKS",
-      "¿LISTO PARA PEDIR?": "READY TO ORDER?",
-      "Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm": "Delivery available throughout Mayabeque • Monday to Sunday 11am – 10pm",
-      "INFORMACIÓN & CONTACTO": "INFO & CONTACT",
-      "Tu Pedido": "Your Order",
-      "Agregar al carrito": "Add to Cart",
-      "Agregar extras": "Add Extras",
-      "Cancelar": "Cancel",
-      "Confirmar": "Confirm",
-      "Para llevar (sin costo extra)": "Takeaway (no extra cost)",
-      "Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)": "Home delivery (Jaruco +200 CUP / 0.52 USD)",
-      "Delivery fuera de Jaruco (precio a consultar)": "Delivery outside Jaruco (price to be confirmed)",
-      "Dirección completa": "Full address",
-      "Nombre de quien recibe": "Recipient's name",
-      "Número de celular": "Cell phone number",
-      "Notas adicionales (opcional)": "Additional notes (optional)",
-      "Método de pago:": "Payment method:",
-      "CUP (efectivo)": "💵 CUP (cash)",
-      "Zelle (USD)": "💲 Zelle (USD)",
-      "Pedir por WhatsApp": "📲 Order via WhatsApp",
-      "Subtotal:": "Subtotal:",
-      "Empaque:": "Packaging:",
-      "Mensajería:": "Delivery:",
-      "Total:": "Total:",
-      "Tu carrito está vacío": "Your cart is empty",
-      "Jaruco, Mayabeque": "Jaruco, Mayabeque",
-      "Horario": "Opening Hours",
-      "11am – 10pm (Delivery hasta 6pm)": "11am – 10pm (Delivery until 6pm)",
-      "Contacto": "Contact",
-      "Nuestras Ofertas": "Our Offers",
-      "Todo lo que tenemos": "Everything we have",
-      "Para tomar": "To drink",
-      "El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.": "The price of drinks is consulted at the time of order. They are added to the cart at no cost and billed separately.",
-      "Encuéntranos": "Find us",
-      "Combos": "Combos",
-      "Menú": "Menu",
-      "Bebidas": "Drinks",
-      "Lo más pedido": "Most ordered",
-      "Info": "Info",
-      "Ver Menú Completo": "View Full Menu"
-    }
-  };
+  // ======================== ESTADO DEL RESTAURANTE ========================
+  function updateRestaurantStatus() {
+    const statusElement = document.getElementById('restaurantStatus');
+    const now = new Date();
+    const currentHour = now.getHours();
+    const openTime = 11; // 11 AM
+    const closeTime = 22; // 10 PM
+    const closingSoonTime = 21; // 9 PM
 
-  function setLanguage(lang) {
-    currentLang = lang;
-    setCookie('chuchuwah_lang', lang);
-    document.querySelectorAll('.language-btn').forEach(btn => {
-      if (btn.dataset.lang === lang) btn.classList.add('active');
-      else btn.classList.remove('active');
-    });
-    document.querySelectorAll('[data-translate]').forEach(el => {
-      const key = el.getAttribute('data-translate');
-      if (translations[lang][key]) el.innerText = translations[lang][key];
-    });
-    document.querySelectorAll('[data-translate-placeholder]').forEach(el => {
-      const key = el.getAttribute('data-translate-placeholder');
-      if (translations[lang][key]) el.placeholder = translations[lang][key];
-    });
-    document.querySelectorAll('option').forEach(el => {
-      const key = el.textContent.trim();
-      if (translations[lang][key]) el.textContent = translations[lang][key];
-    });
+    let statusClass = 'status-closed';
+    let statusText = "Cerrado";
+
+    if (currentHour > openTime && currentHour < closeTime) {
+      if (currentHour >= closingSoonTime) {
+        statusClass = 'status-closing';
+        statusText = "A punto de cerrar";
+      } else {
+        statusClass = 'status-open';
+        statusText = "Abierto";
+      }
+    }
+
+    statusElement.className = `restaurant-status ${statusClass}`;
+    statusElement.querySelector('.status-text').textContent = statusText;
   }
 
+  // ======================== FUNCIONES DEL CARRITO ========================
   function getPriceValue(cup, usd) { return currentCurrency === "cup" ? cup : usd; }
   function formatPrice(valor) {
     if (currentCurrency === "cup") return Math.round(valor) + " CUP";
@@ -1067,8 +973,8 @@
     currentCurrency = currency;
     setCookie('chuchuwah_currency', currency);
     document.querySelectorAll('.currency-btn').forEach(btn => {
+      btn.classList.remove('active');
       if (btn.dataset.currency === currency) btn.classList.add('active');
-      else btn.classList.remove('active');
     });
     document.querySelectorAll('.combo-price-value').forEach(el => {
       const cupVal = el.getAttribute('data-cup');
@@ -1094,12 +1000,12 @@
     container.innerHTML = combosData.map(c => `
       <div class="combo-card ${c.pareja ? 'pareja' : ''} fade-in">
         <div class="combo-emoji">${c.emoji}</div>
-        <div class="combo-num">${c.pareja ? (currentLang === 'es' ? 'Pareja' : 'Couple') : (currentLang === 'es' ? 'Combo' : 'Combo')}</div>
+        <div class="combo-num">${c.pareja ? 'Pareja' : 'Combo'}</div>
         <div class="combo-name">${c.nombre}</div>
         <ul class="combo-items">${c.items.map(i => `<li>${i}</li>`).join('')}</ul>
         <div class="combo-price">
           <span class="combo-price-value" data-cup="${c.cup} CUP" data-usd="$${c.usd} USD">${currentCurrency === "cup" ? c.cup + " CUP" : "$" + c.usd + " USD"}</span>
-          <button class="add-to-cart-btn" data-nombre="${c.nombre}" data-cup="${c.cup}" data-usd="${c.usd}" data-tipo="combo" data-translate="Agregar al carrito">Agregar</button>
+          <button class="add-to-cart-btn" data-nombre="${c.nombre}" data-cup="${c.cup}" data-usd="${c.usd}" data-tipo="combo">Agregar</button>
         </div>
       </div>
     `).join('');
@@ -1110,10 +1016,6 @@
         const usd = parseFloat(btn.dataset.usd);
         agregarAlCarrito({ nombre, cup, usd, tipo: "combo" }, 1, []);
       });
-    });
-    document.querySelectorAll('[data-translate]').forEach(el => {
-      const key = el.getAttribute('data-translate');
-      if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
     });
   }
 
@@ -1135,7 +1037,7 @@
         const p = productosData[nombre];
         if (!p) return;
         const precioMostrado = currentCurrency === "cup" ? p.cup + " CUP" : "$" + p.usd + " USD";
-        html += `<div class="menu-item"><span class="menu-item-name">${nombre}</span><span class="price-value" data-cup="${p.cup}" data-usd="${p.usd}">${precioMostrado}</span><button class="small-add-btn" data-nombre="${nombre}" data-tipo="${p.tipo}" data-cup="${p.cup}" data-usd="${p.usd}" data-translate="Agregar al carrito">+</button></div>`;
+        html += `<div class="menu-item"><span class="menu-item-name">${nombre}</span><span class="price-value" data-cup="${p.cup}" data-usd="${p.usd}">${precioMostrado}</span><button class="small-add-btn" data-nombre="${nombre}" data-tipo="${p.tipo}" data-cup="${p.cup}" data-usd="${p.usd}">+</button></div>`;
       });
       html += `</div></div>`;
     }
@@ -1154,9 +1056,14 @@
         }
       });
     });
-    document.querySelectorAll('[data-translate]').forEach(el => {
-      const key = el.getAttribute('data-translate');
-      if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
+  }
+
+  function renderBebidas() {
+    const bebidas = ["Tigón","Malta","Agua Natural Grande","Agua Natural Pequeño","Presidente / Widmill","Heniken / Corona","Energizante","Jugo de Lata","Caja de Jugo","Shaka","Néctar / Limonada","Coca Cola","Kermato","Cristal / Bucanero","Pomo de Refresco","Hollandia / Lander","Refresco Vaso","Redbull","Refresco Importado","Batido Mango / Guayaba","Go Tropic Morena","Go Tropic Roja","Batido de Chocolate","Vaso de Dispensada","Jarra de Dispensada","Termo de Dispensada"];
+    const container = document.getElementById("bebidas-container");
+    container.innerHTML = bebidas.map(b => `<div class="bebida-item"><span>${b}</span><button class="add-bebida" data-nombre="${b}">Agregar</button></div>`).join('');
+    document.querySelectorAll('.add-bebida').forEach(btn => {
+      btn.addEventListener('click', () => agregarAlCarrito({ nombre: btn.dataset.nombre, cup: 0, usd: 0, tipo: "bebida" }, 1, []));
     });
   }
 
@@ -1170,7 +1077,7 @@
         <span>${currentCurrency === "cup" ? ag.cup + " CUP" : "$" + ag.usd + " USD"}</span>
       </div>
     `).join('');
-    document.getElementById("modalTitle").innerText = currentLang === 'es' ? `Agregar extras a ${pendingProduct.nombre}` : `Add extras to ${pendingProduct.nombre}`;
+    document.getElementById("modalTitle").innerText = "Agregar extras a " + pendingProduct.nombre;
     document.getElementById("agregosModal").style.display = "flex";
   }
 
@@ -1203,7 +1110,7 @@
     if (deliveryType === "delivery") deliveryCost = currentCurrency === "cup" ? 200 : 0.52;
     else if (deliveryType === "outside") {
       deliveryCost = 0;
-      deliveryNote = currentLang === 'es' ? " (precio a consultar)" : " (price to be confirmed)";
+      deliveryNote = " (precio a consultar)";
     }
     let total = subtotal + totalEmpaque + deliveryCost;
 
@@ -1217,23 +1124,19 @@
             <button onclick="cambiarCantidad(${idx}, -1)">-</button>
             <span>${item.cantidad}</span>
             <button onclick="cambiarCantidad(${idx}, 1)">+</button>
-            <button class="remove-item" onclick="eliminarItem(${idx})" data-translate="Eliminar">Eliminar</button>
+            <button class="remove-item" onclick="eliminarItem(${idx})">Eliminar</button>
           </div>
         </div>
       `;
     }).join('');
-    if (carrito.length === 0) cartContainer.innerHTML = `<p data-translate="Tu carrito está vacío">Tu carrito está vacío</p>`;
+    if (carrito.length === 0) cartContainer.innerHTML = `<p>Tu carrito está vacío</p>`;
     document.getElementById("totalsArea").innerHTML = `
-      <p><span data-translate="Subtotal:">Subtotal:</span><span>${formatPrice(subtotal)}</span></p>
-      <p><span data-translate="Empaque:">Empaque:</span><span>${formatPrice(totalEmpaque)}</span></p>
-      <p><span data-translate="Mensajería:">Mensajería:</span><span>${deliveryType === "outside" ? (currentLang === 'es' ? "A consultar" : "To be confirmed") : formatPrice(deliveryCost)}</span></p>
-      <hr><p><strong data-translate="Total:">Total:</strong><strong>${deliveryType === "outside" ? formatPrice(total) + (currentLang === 'es' ? " + envío a confirmar" : " + shipping to be confirmed") : formatPrice(total)}</strong></p>
+      <p><span>Subtotal:</span><span>${formatPrice(subtotal)}</span></p>
+      <p><span>Empaque:</span><span>${formatPrice(totalEmpaque)}</span></p>
+      <p><span>Mensajería:</span><span>${deliveryType === "outside" ? "A consultar" : formatPrice(deliveryCost)}</span></p>
+      <hr><p><strong>Total:</strong><strong>${deliveryType === "outside" ? formatPrice(total) + " + envío a confirmar" : formatPrice(total)}</strong></p>
     `;
     document.getElementById("cartCount").innerText = carrito.reduce((acc, i) => acc + i.cantidad, 0);
-    document.querySelectorAll('[data-translate]').forEach(el => {
-      const key = el.getAttribute('data-translate');
-      if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
-    });
   }
 
   window.cambiarCantidad = (idx, delta) => {
@@ -1253,13 +1156,12 @@
       if (item.tipo === "pizza") cajas += item.cantidad;
       else if (item.tipo === "comida" || item.tipo === "pasta" || item.tipo === "pan") termo += item.cantidad;
       mensaje += `%0A• ${item.nombre} x${item.cantidad} - ${formatPrice(precioUnitario * item.cantidad)}`;
-      if (item.agregos.length) mensaje += ` (${currentLang === 'es' ? 'Agregos' : 'Extras'}: ${item.agregos.map(a=>a.nombre).join(', ')})`;
+      if (item.agregos.length) mensaje += ` (Agregos: ${item.agregos.map(a=>a.nombre).join(', ')})`;
     });
     const precioCaja = currentCurrency === "cup" ? 60 : 0.19;
     const precioTermo = currentCurrency === "cup" ? 100 : 0.31;
     let totalEmpaque = (cajas * precioCaja) + (termo * precioTermo);
     let deliveryCost = 0;
-    let deliveryNote = "";
     const deliveryType = document.getElementById("deliveryType")?.value;
     let direccion = "", nombreDestino = "", telefonoDestino = "";
     if (deliveryType === "delivery") {
@@ -1267,45 +1169,32 @@
       direccion = document.getElementById("direccion")?.value || "";
       nombreDestino = document.getElementById("nombreDestino")?.value || "";
       telefonoDestino = document.getElementById("telefonoDestino")?.value || "";
-      mensaje += `%0A%0A🚚 *${currentLang === 'es' ? 'Delivery a domicilio (Jaruco)' : 'Home delivery (Jaruco)'}* - ${currentLang === 'es' ? 'Costo' : 'Cost'}: ${formatPrice(deliveryCost)}`;
-      mensaje += `%0A📍 ${currentLang === 'es' ? 'Dirección' : 'Address'}: ${direccion}`;
-      mensaje += `%0A👤 ${currentLang === 'es' ? 'Recibe' : 'Recipient'}: ${nombreDestino}`;
-      mensaje += `%0A📞 ${currentLang === 'es' ? 'Celular' : 'Cell phone'}: ${telefonoDestino}`;
+      mensaje += `%0A%0A🚚 *Delivery a domicilio (Jaruco)* - Costo: ${formatPrice(deliveryCost)}`;
+      mensaje += `%0A📍 Dirección: ${direccion}`;
+      mensaje += `%0A👤 Recibe: ${nombreDestino}`;
+      mensaje += `%0A📞 Celular: ${telefonoDestino}`;
     } else if (deliveryType === "outside") {
       deliveryCost = 0;
       direccion = document.getElementById("direccion")?.value || "";
       nombreDestino = document.getElementById("nombreDestino")?.value || "";
       telefonoDestino = document.getElementById("telefonoDestino")?.value || "";
-      mensaje += `%0A%0A🚚 *${currentLang === 'es' ? 'Delivery fuera de Jaruco' : 'Delivery outside Jaruco'}* - ${currentLang === 'es' ? 'Costo a acordar con el cliente' : 'Cost to be confirmed with the client'}`;
-      mensaje += `%0A📍 ${currentLang === 'es' ? 'Dirección' : 'Address'}: ${direccion}`;
-      mensaje += `%0A👤 ${currentLang === 'es' ? 'Recibe' : 'Recipient'}: ${nombreDestino}`;
-      mensaje += `%0A📞 ${currentLang === 'es' ? 'Celular' : 'Cell phone'}: ${telefonoDestino}`;
+      mensaje += `%0A%0A🚚 *Delivery fuera de Jaruco* - Costo a acordar con el cliente`;
+      mensaje += `%0A📍 Dirección: ${direccion}`;
+      mensaje += `%0A👤 Recibe: ${nombreDestino}`;
+      mensaje += `%0A📞 Celular: ${telefonoDestino}`;
     } else {
-      mensaje += `%0A%0A🥡 *${currentLang === 'es' ? 'Para llevar' : 'Takeaway'}*`;
+      mensaje += `%0A%0A🥡 *Para llevar*`;
     }
     let total = subtotal + totalEmpaque + deliveryCost;
-    mensaje += `%0A%0A📦 ${currentLang === 'es' ? 'Empaque' : 'Packaging'}: +${formatPrice(totalEmpaque)}`;
-    if (deliveryType === "outside") mensaje += `%0A💰 *${currentLang === 'es' ? 'Total (sin envío)' : 'Total (without shipping)'}: ${formatPrice(total)}*`;
-    else mensaje += `%0A💰 *${currentLang === 'es' ? 'Total' : 'Total'}: ${formatPrice(total)}*`;
+    mensaje += `%0A%0A📦 Empaque: +${formatPrice(totalEmpaque)}`;
+    if (deliveryType === "outside") mensaje += `%0A💰 *Total (sin envío): ${formatPrice(total)}*`;
+    else mensaje += `%0A💰 *Total: ${formatPrice(total)}*`;
     const metodoPago = document.getElementById("paymentMethod")?.value;
-    mensaje += `%0A💳 ${currentLang === 'es' ? 'Método de pago' : 'Payment method'}: ${metodoPago}`;
+    mensaje += `%0A💳 Método de pago: ${metodoPago}`;
     const notas = document.getElementById("notas")?.value;
-    if (notas) mensaje += `%0A%0A📝 ${currentLang === 'es' ? 'Notas' : 'Notes'}: ${notas}`;
-    mensaje += `%0A%0A${currentLang === 'es' ? '¡Gracias por tu pedido! 🚂' : 'Thank you for your order! 🚂'}`;
+    if (notas) mensaje += `%0A%0A📝 Notas: ${notas}`;
+    mensaje += `%0A%0A¡Gracias por tu pedido! 🚂`;
     window.open(`https://wa.me/5350993981?text=${mensaje}`, "_blank");
-  }
-
-  function renderBebidas() {
-    const bebidas = ["Tigón","Malta","Agua Natural Grande","Agua Natural Pequeño","Presidente / Widmill","Heniken / Corona","Energizante","Jugo de Lata","Caja de Jugo","Shaka","Néctar / Limonada","Coca Cola","Kermato","Cristal / Bucanero","Pomo de Refresco","Hollandia / Lander","Refresco Vaso","Redbull","Refresco Importado","Batido Mango / Guayaba","Go Tropic Morena","Go Tropic Roja","Batido de Chocolate","Vaso de Dispensada","Jarra de Dispensada","Termo de Dispensada"];
-    const container = document.getElementById("bebidas-container");
-    container.innerHTML = bebidas.map(b => `<div class="bebida-item"><span>${b}</span><button class="add-bebida" data-nombre="${b}" data-translate="Agregar al carrito">Agregar</button></div>`).join('');
-    document.querySelectorAll('.add-bebida').forEach(btn => {
-      btn.addEventListener('click', () => agregarAlCarrito({ nombre: btn.dataset.nombre, cup: 0, usd: 0, tipo: "bebida" }, 1, []));
-    });
-    document.querySelectorAll('[data-translate]').forEach(el => {
-      const key = el.getAttribute('data-translate');
-      if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
-    });
   }
 
   function setupDeliveryEvents() {
@@ -1325,6 +1214,7 @@
   }
 
   // ======================== CARRUSEL ========================
+  let currentSlide = 0;
   let slideImages = [];
   let autoSlideInterval;
 
@@ -1427,6 +1317,8 @@
   // Inicialización general
   function init() {
     loadPreferences();
+    updateRestaurantStatus();
+    setInterval(updateRestaurantStatus, 60000);
     renderCombos();
     renderMenu();
     renderBebidas();
@@ -1463,9 +1355,6 @@
       if (!e.target.closest(".mobile-menu") && !e.target.closest("#mobile-menu-btn")) {
         document.getElementById("mobile-menu").classList.remove("open");
       }
-    });
-    document.querySelectorAll('.language-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => setLanguage(e.target.dataset.lang));
     });
 
     const observer = new IntersectionObserver((entries) => {
