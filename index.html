@@ -675,11 +675,11 @@
   <img src="logo.png" alt="ChuChuWah Logo" class="nav-logo-img">
   <button class="hamburger" id="hamburger">☰</button>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#combos">Combos</a></li>
-    <li><a href="#menu">Menú</a></li>
-    <li><a href="#bebidas">Bebidas</a></li>
-    <li><a href="lmp.html">Lo más pedido</a></li>
-    <li><a href="#info">Info</a></li>
+    <li><a href="#combos" data-trans="combos">Combos</a></li>
+    <li><a href="#menu" data-trans="menu">Menú</a></li>
+    <li><a href="#bebidas" data-trans="bebidas">Bebidas</a></li>
+    <li><a href="lmp.html" data-trans="mas-pedido">Lo más pedido</a></li>
+    <li><a href="#info" data-trans="info">Info</a></li>
   </ul>
   <div class="lang-switcher">
     <button class="lang-btn active" data-lang="es">ES</button>
@@ -703,60 +703,60 @@
 
   <img src="logo.png" alt="ChuChuWah Logo" class="hero-logo fade-in">
   <p class="hero-eyebrow">🚂 Jaruco, Mayabeque, Cuba</p>
-  <h1 class="hero-title">CHU<span>CHU</span>WAH</h1>
-  <p class="hero-subtitle">El Expreso del Sabor</p>
-  <p class="hero-desc">Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.</p>
+  <h1 class="hero-title" data-trans="hero-title">CHU<span>CHU</span>WAH</h1>
+  <p class="hero-subtitle" data-trans="hero-subtitle">El Expreso del Sabor</p>
+  <p class="hero-desc" data-trans="hero-desc">Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.</p>
   <div class="hero-ctas">
-    <a href="#menu" class="btn-outline">Ver Menú Completo</a>
+    <a href="#menu" class="btn-outline" data-trans="ver-menu">Ver Menú Completo</a>
   </div>
   <div class="hero-badges">
-    <div class="badge"><span class="badge-icon">🕐</span><span class="badge-text">11am – 10pm</span></div>
-    <div class="badge"><span class="badge-icon">🛵</span><span class="badge-text">Delivery Mayabeque</span></div>
-    <div class="badge"><span class="badge-icon">💳</span><span class="badge-text">Zelle & CUP</span></div>
+    <div class="badge"><span class="badge-icon">🕐</span><span class="badge-text" data-trans="horario">11am – 10pm</span></div>
+    <div class="badge"><span class="badge-icon">🛵</span><span class="badge-text" data-trans="delivery">Delivery Mayabeque</span></div>
+    <div class="badge"><span class="badge-icon">💳</span><span class="badge-text" data-trans="pago">Zelle & CUP</span></div>
   </div>
 </div>
 
-<div class="digital-only">
+<div class="digital-only" data-trans="digital-only">
   Solo para pedidos digitales. No se atiende presencialmente.
 </div>
 
 <div class="divider"></div>
 
 <section id="combos">
-  <p class="section-label fade-in">Nuestras Ofertas</p>
-  <h2 class="section-title fade-in">COMBOS <em>ESPECIALES</em></h2>
+  <p class="section-label fade-in" data-trans="ofertas">Nuestras Ofertas</p>
+  <h2 class="section-title fade-in" data-trans="combos-title">COMBOS <em>ESPECIALES</em></h2>
   <div class="combos-grid" id="combos-container"></div>
 </section>
 
 <div class="divider"></div>
 
 <section id="menu">
-  <p class="section-label fade-in">Todo lo que tenemos</p>
-  <h2 class="section-title fade-in">MENÚ <em>COMPLETO</em></h2>
+  <p class="section-label fade-in" data-trans="todo-menu">Todo lo que tenemos</p>
+  <h2 class="section-title fade-in" data-trans="menu-title">MENÚ <em>COMPLETO</em></h2>
   <div id="menu-container"></div>
 </section>
 
 <div class="divider"></div>
 
 <section id="bebidas">
-  <p class="section-label fade-in">Para tomar</p>
-  <h2 class="section-title fade-in">NUESTRAS <em>BEBIDAS</em></h2>
+  <p class="section-label fade-in" data-trans="para-tomar">Para tomar</p>
+  <h2 class="section-title fade-in" data-trans="bebidas-title">NUESTRAS <em>BEBIDAS</em></h2>
   <div class="bebidas-grid" id="bebidas-container"></div>
-  <div class="bebidas-nota">El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.</div>
+  <div class="bebidas-nota" data-trans="bebidas-nota">El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.</div>
 </section>
 
 <div class="pedido-banner" style="background: var(--rojo); padding: 50px 20px; text-align: center; border-radius: 20px; margin: 20px auto; max-width: 1000px;">
-  <h2 class="pedido-title" style="font-family: 'Bebas Neue', sans-serif; font-size: 48px;">¿LISTO PARA PEDIR?</h2>
-  <p class="pedido-sub">Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm</p>
+  <h2 class="pedido-title" style="font-family: 'Bebas Neue', sans-serif; font-size: 48px;" data-trans="listo-pedir">¿LISTO PARA PEDIR?</h2>
+  <p class="pedido-sub" data-trans="pedido-sub">Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm</p>
 </div>
 
 <section id="info">
-  <p class="section-label fade-in">Encuéntranos</p>
-  <h2 class="section-title fade-in">INFORMACIÓN <em>& CONTACTO</em></h2>
+  <p class="section-label fade-in" data-trans="encuentranos">Encuéntranos</p>
+  <h2 class="section-title fade-in" data-trans="info-title">INFORMACIÓN <em>& CONTACTO</em></h2>
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
-    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">📍</div><div style="font-weight: bold;">Jaruco, Mayabeque</div><div>Cuba, cerca del tren Hershey</div></div>
-    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">🕐</div><div style="font-weight: bold;">Horario</div><div>11am – 10pm (Delivery hasta 10pm)</div></div>
-    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">📞</div><div style="font-weight: bold;">Contacto</div><div><a href="tel:47874242" style="color: var(--amarillo);">47874242</a><br><a href="https://wa.me/5350993981" style="color: var(--amarillo);">WhatsApp +53 50993981</a></div></div>
+    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">📍</div><div style="font-weight: bold;" data-trans="ubicacion">Jaruco, Mayabeque</div><div data-trans="ubicacion-detalle">Cuba, cerca del tren Hershey</div></div>
+    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">🕐</div><div style="font-weight: bold;" data-trans="horario-title">Horario</div><div data-trans="horario-detalle">11am – 10pm (Delivery hasta 10pm)</div></div>
+    <div class="info-card" style="background: #1a1a1a; padding: 24px; border-radius: 12px;"><div style="font-size: 28px;">📞</div><div style="font-weight: bold;" data-trans="contacto">Contacto</div><div><a href="tel:47874242" style="color: var(--amarillo);">47874242</a><br><a href="https://wa.me/5350993981" style="color: var(--amarillo);" data-trans="whatsapp">WhatsApp +53 50993981</a></div></div>
   </div>
 </section>
 
@@ -767,33 +767,33 @@
 
 <!-- CARRITO DRAWER -->
 <div class="cart-drawer" id="cartDrawer">
-  <div class="cart-header"><h3>Tu Pedido</h3><button class="close-cart" id="closeCartBtn">✕</button></div>
+  <div class="cart-header"><h3 data-trans="tu-pedido">Tu Pedido</h3><button class="close-cart" id="closeCartBtn">✕</button></div>
   <div class="cart-items" id="cartItems"></div>
   <div class="cart-total" id="cartTotal">
     <div id="totalsArea"></div>
     <div class="payment-method">
-      <label>Método de pago:</label>
+      <label data-trans="metodo-pago">Método de pago:</label>
       <select id="paymentMethod">
         <option value="CUP (efectivo)">💵 CUP (efectivo)</option>
         <option value="Zelle (USD)">💲 Zelle (USD)</option>
       </select>
     </div>
     <div class="delivery-form" id="deliveryFormStatic">
-      <label>Tipo de pedido:</label>
+      <label data-trans="tipo-pedido">Tipo de pedido:</label>
       <select id="deliveryType">
-        <option value="pickup">Para llevar (sin costo extra)</option>
-        <option value="delivery">Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)</option>
-        <option value="outside">Delivery fuera de Jaruco (precio a consultar)</option>
+        <option value="pickup" data-trans="para-llevar">Para llevar (sin costo extra)</option>
+        <option value="delivery" data-trans="delivery-dom">Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)</option>
+        <option value="outside" data-trans="delivery-fuera">Delivery fuera de Jaruco (precio a consultar)</option>
       </select>
       <div id="deliveryFields" style="display: none;">
-        <input type="text" id="direccion" placeholder="Dirección completa">
-        <input type="text" id="nombreDestino" placeholder="Nombre de quien recibe">
-        <input type="tel" id="telefonoDestino" placeholder="Número de celular">
+        <input type="text" id="direccion" placeholder="Dirección completa" data-trans="direccion-placeholder">
+        <input type="text" id="nombreDestino" placeholder="Nombre de quien recibe" data-trans="nombre-destino">
+        <input type="tel" id="telefonoDestino" placeholder="Número de celular" data-trans="telefono-destino">
       </div>
-      <textarea id="notas" placeholder="Notas adicionales (opcional)"></textarea>
+      <textarea id="notas" placeholder="Notas adicionales (opcional)" data-trans="notas-placeholder"></textarea>
     </div>
     <div class="cart-actions">
-      <button class="btn-checkout" id="enviarWhatsappBtn">📲 Pedir por WhatsApp</button>
+      <button class="btn-checkout" id="enviarWhatsappBtn" data-trans="pedir-whatsapp">📲 Pedir por WhatsApp</button>
     </div>
   </div>
 </div>
@@ -802,11 +802,11 @@
 <!-- MODAL AGREGOS -->
 <div class="modal" id="agregosModal">
   <div class="modal-content">
-    <h3 id="modalTitle">Agregar extras</h3>
+    <h3 id="modalTitle" data-trans="agregar-extras">Agregar extras</h3>
     <div id="agregosList" class="agregos-list"></div>
     <div class="modal-buttons">
-      <button id="confirmAgregosBtn" class="btn-primary">Agregar al carrito</button>
-      <button id="cancelAgregosBtn" class="btn-outline">Cancelar</button>
+      <button id="confirmAgregosBtn" class="btn-primary" data-trans="agregar-carrito">Agregar al carrito</button>
+      <button id="cancelAgregosBtn" class="btn-outline" data-trans="cancelar">Cancelar</button>
     </div>
   </div>
 </div>
@@ -814,91 +814,91 @@
 <script>
   // ======================== DATOS DE PRODUCTOS ========================
   const productosData = {
-    "Bistec de pollo": { cup: 1400, usd: 3.61, tipo: "comida" },
-    "Pollo asado": { cup: 1740, usd: 4.49, tipo: "comida" },
-    "Has Gordon Blue de pollo": { cup: 2700, usd: 6.97, tipo: "comida" },
-    "Juliana de pollo": { cup: 1620, usd: 4.18, tipo: "comida" },
-    "Fajitas de pollo empanizadas": { cup: 1900, usd: 4.90, tipo: "comida" },
-    "Fricase de pollo": { cup: 1850, usd: 4.77, tipo: "comida" },
-    "Alitas de pollo": { cup: 1355, usd: 3.50, tipo: "comida" },
-    "Pizza Chuchu Napole": { cup: 600, usd: 1.55, tipo: "pizza" },
-    "Pizza Gouda Napole": { cup: 1200, usd: 3.10, tipo: "pizza" },
-    "Pizza ChuChuWah Napole": { cup: 2850, usd: 7.35, tipo: "pizza" },
-    "Pizza ChuChuWah Gouda": { cup: 3450, usd: 8.90, tipo: "pizza" },
-    "Pizza Chuchu 4 Estaciones": { cup: 1950, usd: 5.03, tipo: "pizza" },
-    "Pizza Gouda 4 Estaciones": { cup: 2560, usd: 6.61, tipo: "pizza" },
-    "Pizza Gouda Vegetales": { cup: 1190, usd: 3.07, tipo: "pizza" },
-    "Bistec de cerdo grille": { cup: 1920, usd: 4.95, tipo: "comida" },
-    "Bistec Uruguaito": { cup: 3250, usd: 8.39, tipo: "comida" },
-    "Juliana de cerdo": { cup: 2150, usd: 5.55, tipo: "comida" },
-    "Fajita de cerdo empanizada": { cup: 2540, usd: 6.55, tipo: "comida" },
-    "Suprema de cerdo": { cup: 2750, usd: 7.10, tipo: "comida" },
-    "Fricase de cerdo": { cup: 3000, usd: 7.74, tipo: "comida" },
-    "Masa de cerdo frita": { cup: 2550, usd: 6.58, tipo: "comida" },
-    "Rolitillo de cerdo": { cup: 2400, usd: 6.19, tipo: "comida" },
-    "Chuletas de cerdo ahumado": { cup: 1950, usd: 5.03, tipo: "comida" },
-    "Lonjas de cerdo asado": { cup: 1900, usd: 4.90, tipo: "comida" },
-    "Juliana mixta": { cup: 1900, usd: 4.90, tipo: "comida" },
-    "Padre mixta empanizada": { cup: 2250, usd: 5.81, tipo: "comida" },
-    "San Jacobo (jamón y queso)": { cup: 940, usd: 2.43, tipo: "comida" },
-    "Lomo ahumado": { cup: 970, usd: 2.50, tipo: "comida" },
-    "Coctel de atún": { cup: 1470, usd: 5.03, tipo: "comida" },
-    "Eperlan entrante": { cup: 1950, usd: 7.35, tipo: "comida" },
-    "Filete de pescado grille": { cup: 2000, usd: 6.92, tipo: "comida" },
-    "Filete de pescado canciller": { cup: 2680, usd: 8.67, tipo: "comida" },
-    "Filetillo de pescado": { cup: 2400, usd: 5.42, tipo: "comida" },
-    "Filete de pescado con camarón": { cup: 2100, usd: 5.41, tipo: "comida" },
-    "Spaghetti de queso Gouda": { cup: 940, usd: 2.43, tipo: "pasta" },
-    "Pan con bistec": { cup: 500, usd: 1.29, tipo: "pan" },
-    "Bocadito de jamón": { cup: 300, usd: 0.77, tipo: "pan" },
-    "Bocadito de jamón y queso": { cup: 550, usd: 1.42, tipo: "pan" },
-    "Super hamburgueza": { cup: 560, usd: 1.45, tipo: "pan" },
-    "Super Expreso ChuChuWah": { cup: 730, usd: 1.88, tipo: "pan" },
-    "Pan con hamburgueza pollo": { cup: 330, usd: 0.85, tipo: "pan" },
-    "Café expreso": { cup: 100, usd: 0.26, tipo: "bebida" },
-    "Café cortadito": { cup: 130, usd: 0.34, tipo: "bebida" },
-    "Batido de frutas": { cup: 270, usd: 0.70, tipo: "bebida" },
-    "Batido de chocolate": { cup: 500, usd: 1.29, tipo: "bebida" },
-    "Batido de Mamey": { cup: 350, usd: 0.90, tipo: "bebida" },
-    "Pan con 2 croquetas": { cup: 230, usd: 0.59, tipo: "pan" },
-    "Entremeses surtido": { cup: 850, usd: 2.19, tipo: "comida" },
-    "Entremés ChuChuWah": { cup: 1720, usd: 4.44, tipo: "comida" },
-    "Bolitas de jamón": { cup: 900, usd: 2.32, tipo: "comida" },
-    "Bolitas de queso Gouda": { cup: 1620, usd: 4.18, tipo: "comida" },
-    "Croquetas (6 unidades)": { cup: 240, usd: 0.62, tipo: "comida" },
-    "Picadera ChuChuWah": { cup: 2200, usd: 5.68, tipo: "comida" },
-    "Ensalada fría": { cup: 200, usd: 0.52, tipo: "comida" },
-    "Buñuelos en almíbar": { cup: 250, usd: 0.65, tipo: "comida" },
-    "Ensalada": { cup: 210, usd: 0.54, tipo: "comida" },
-    "Arroz frito": { cup: 1335, usd: 3.45, tipo: "comida" },
-    "Arroz blanco": { cup: 245, usd: 0.63, tipo: "comida" },
-    "Arroz moro": { cup: 290, usd: 0.75, tipo: "comida" },
-    "Papas pre fritas": { cup: 455, usd: 1.17, tipo: "comida" },
-    "Vianda frita": { cup: 360, usd: 0.93, tipo: "comida" },
-    "Vianda hervida": { cup: 220, usd: 0.57, tipo: "comida" }
+    "Bistec de pollo": { cup: 1400, usd: 3.61, tipo: "comida", en: "Chicken Steak" },
+    "Pollo asado": { cup: 1740, usd: 4.49, tipo: "comida", en: "Roast Chicken" },
+    "Has Gordon Blue de pollo": { cup: 2700, usd: 6.97, tipo: "comida", en: "Chicken Gordon Blue" },
+    "Juliana de pollo": { cup: 1620, usd: 4.18, tipo: "comida", en: "Chicken Juliana" },
+    "Fajitas de pollo empanizadas": { cup: 1900, usd: 4.90, tipo: "comida", en: "Breaded Chicken Fajitas" },
+    "Fricase de pollo": { cup: 1850, usd: 4.77, tipo: "comida", en: "Chicken Fricassee" },
+    "Alitas de pollo": { cup: 1355, usd: 3.50, tipo: "comida", en: "Chicken Wings" },
+    "Pizza Chuchu Napole": { cup: 600, usd: 1.55, tipo: "pizza", en: "Chuchu Napole Pizza" },
+    "Pizza Gouda Napole": { cup: 1200, usd: 3.10, tipo: "pizza", en: "Gouda Napole Pizza" },
+    "Pizza ChuChuWah Napole": { cup: 2850, usd: 7.35, tipo: "pizza", en: "ChuChuWah Napole Pizza" },
+    "Pizza ChuChuWah Gouda": { cup: 3450, usd: 8.90, tipo: "pizza", en: "ChuChuWah Gouda Pizza" },
+    "Pizza Chuchu 4 Estaciones": { cup: 1950, usd: 5.03, tipo: "pizza", en: "Chuchu Four Seasons Pizza" },
+    "Pizza Gouda 4 Estaciones": { cup: 2560, usd: 6.61, tipo: "pizza", en: "Gouda Four Seasons Pizza" },
+    "Pizza Gouda Vegetales": { cup: 1190, usd: 3.07, tipo: "pizza", en: "Gouda Vegetable Pizza" },
+    "Bistec de cerdo grille": { cup: 1920, usd: 4.95, tipo: "comida", en: "Grilled Pork Steak" },
+    "Bistec Uruguaito": { cup: 3250, usd: 8.39, tipo: "comida", en: "Uruguayan Pork Steak" },
+    "Juliana de cerdo": { cup: 2150, usd: 5.55, tipo: "comida", en: "Pork Juliana" },
+    "Fajita de cerdo empanizada": { cup: 2540, usd: 6.55, tipo: "comida", en: "Breaded Pork Fajita" },
+    "Suprema de cerdo": { cup: 2750, usd: 7.10, tipo: "comida", en: "Pork Supreme" },
+    "Fricase de cerdo": { cup: 3000, usd: 7.74, tipo: "comida", en: "Pork Fricassee" },
+    "Masa de cerdo frita": { cup: 2550, usd: 6.58, tipo: "comida", en: "Fried Pork Dough" },
+    "Rolitillo de cerdo": { cup: 2400, usd: 6.19, tipo: "comida", en: "Pork Roll" },
+    "Chuletas de cerdo ahumado": { cup: 1950, usd: 5.03, tipo: "comida", en: "Smoked Pork Chops" },
+    "Lonjas de cerdo asado": { cup: 1900, usd: 4.90, tipo: "comida", en: "Roast Pork Slices" },
+    "Juliana mixta": { cup: 1900, usd: 4.90, tipo: "comida", en: "Mixed Juliana" },
+    "Padre mixta empanizada": { cup: 2250, usd: 5.81, tipo: "comida", en: "Mixed Breaded Father" },
+    "San Jacobo (jamón y queso)": { cup: 940, usd: 2.43, tipo: "comida", en: "San Jacobo (Ham and Cheese)" },
+    "Lomo ahumado": { cup: 970, usd: 2.50, tipo: "comida", en: "Smoked Loin" },
+    "Coctel de atún": { cup: 1470, usd: 5.03, tipo: "comida", en: "Tuna Cocktail" },
+    "Eperlan entrante": { cup: 1950, usd: 7.35, tipo: "comida", en: "Eperlan Starter" },
+    "Filete de pescado grille": { cup: 2000, usd: 6.92, tipo: "comida", en: "Grilled Fish Fillet" },
+    "Filete de pescado canciller": { cup: 2680, usd: 8.67, tipo: "comida", en: "Chancellor Fish Fillet" },
+    "Filetillo de pescado": { cup: 2400, usd: 5.42, tipo: "comida", en: "Small Fish Fillet" },
+    "Filete de pescado con camarón": { cup: 2100, usd: 5.41, tipo: "comida", en: "Fish Fillet with Shrimp" },
+    "Spaghetti de queso Gouda": { cup: 940, usd: 2.43, tipo: "pasta", en: "Gouda Cheese Spaghetti" },
+    "Pan con bistec": { cup: 500, usd: 1.29, tipo: "pan", en: "Steak Sandwich" },
+    "Bocadito de jamón": { cup: 300, usd: 0.77, tipo: "pan", en: "Ham Snack" },
+    "Bocadito de jamón y queso": { cup: 550, usd: 1.42, tipo: "pan", en: "Ham and Cheese Snack" },
+    "Super hamburgueza": { cup: 560, usd: 1.45, tipo: "pan", en: "Super Burger" },
+    "Super Expreso ChuChuWah": { cup: 730, usd: 1.88, tipo: "pan", en: "Super ChuChuWah Express" },
+    "Pan con hamburgueza pollo": { cup: 330, usd: 0.85, tipo: "pan", en: "Chicken Burger Sandwich" },
+    "Café expreso": { cup: 100, usd: 0.26, tipo: "bebida", en: "Espresso Coffee" },
+    "Café cortadito": { cup: 130, usd: 0.34, tipo: "bebida", en: "Cortadito Coffee" },
+    "Batido de frutas": { cup: 270, usd: 0.70, tipo: "bebida", en: "Fruit Milkshake" },
+    "Batido de chocolate": { cup: 500, usd: 1.29, tipo: "bebida", en: "Chocolate Milkshake" },
+    "Batido de Mamey": { cup: 350, usd: 0.90, tipo: "bebida", en: "Mamey Milkshake" },
+    "Pan con 2 croquetas": { cup: 230, usd: 0.59, tipo: "pan", en: "2 Croquettes Sandwich" },
+    "Entremeses surtido": { cup: 850, usd: 2.19, tipo: "comida", en: "Assorted Appetizers" },
+    "Entremés ChuChuWah": { cup: 1720, usd: 4.44, tipo: "comida", en: "ChuChuWah Appetizer" },
+    "Bolitas de jamón": { cup: 900, usd: 2.32, tipo: "comida", en: "Ham Balls" },
+    "Bolitas de queso Gouda": { cup: 1620, usd: 4.18, tipo: "comida", en: "Gouda Cheese Balls" },
+    "Croquetas (6 unidades)": { cup: 240, usd: 0.62, tipo: "comida", en: "Croquettes (6 units)" },
+    "Picadera ChuChuWah": { cup: 2200, usd: 5.68, tipo: "comida", en: "ChuChuWah Snack Platter" },
+    "Ensalada fría": { cup: 200, usd: 0.52, tipo: "comida", en: "Cold Salad" },
+    "Buñuelos en almíbar": { cup: 250, usd: 0.65, tipo: "comida", en: "Syrup Fritters" },
+    "Ensalada": { cup: 210, usd: 0.54, tipo: "comida", en: "Salad" },
+    "Arroz frito": { cup: 1335, usd: 3.45, tipo: "comida", en: "Fried Rice" },
+    "Arroz blanco": { cup: 245, usd: 0.63, tipo: "comida", en: "White Rice" },
+    "Arroz moro": { cup: 290, usd: 0.75, tipo: "comida", en: "Moro Rice" },
+    "Papas pre fritas": { cup: 455, usd: 1.17, tipo: "comida", en: "Pre-fried Potatoes" },
+    "Vianda frita": { cup: 360, usd: 0.93, tipo: "comida", en: "Fried Vianda" },
+    "Vianda hervida": { cup: 220, usd: 0.57, tipo: "comida", en: "Boiled Vianda" }
   };
 
   const combosData = [
-    { nombre: "El Expreso", emoji: "🍔", items: ["Super Expreso ChuChuWah", "Papas pre fritas", "Líquido a elegir"], cup: 1185, usd: 3.03 },
-    { nombre: "El Crujiente", emoji: "🍗", items: ["Fajitas de pollo empanizadas", "Arroz moro", "Líquido a elegir"], cup: 2190, usd: 5.59 },
-    { nombre: "La Bestia", emoji: "🍕", items: ["Pizza ChuChuWah Napole", "Croquetas (6 uds)", "Líquido a elegir"], cup: 3090, usd: 7.89 },
-    { nombre: "El Cubano", emoji: "🥩", items: ["Bistec Uruguaito", "Arroz moro", "Ensalada", "Líquido a elegir"], cup: 3750, usd: 9.57 },
-    { nombre: "Noche ChuChuWah (Pareja)", emoji: "💑", items: ["2x Bistec de pollo", "Arroz frito", "Ensalada", "2 Líquidos"], cup: 4945, usd: 12.63, pareja: true },
-    { nombre: "Mar y Amor (Pareja)", emoji: "🐟", items: ["2x Filete de pescado grille", "Arroz frito", "Ensalada fría", "2 Líquidos"], cup: 5535, usd: 14.13, pareja: true }
+    { nombre: "El Expreso", emoji: "🍔", items: ["Super Expreso ChuChuWah", "Papas pre fritas", "Líquido a elegir"], cup: 1185, usd: 3.03, en: { nombre: "The Express", items: ["Super ChuChuWah Express", "Pre-fried Potatoes", "Drink of choice"] } },
+    { nombre: "El Crujiente", emoji: "🍗", items: ["Fajitas de pollo empanizadas", "Arroz moro", "Líquido a elegir"], cup: 2190, usd: 5.59, en: { nombre: "The Crunchy", items: ["Breaded Chicken Fajitas", "Moro Rice", "Drink of choice"] } },
+    { nombre: "La Bestia", emoji: "🍕", items: ["Pizza ChuChuWah Napole", "Croquetas (6 uds)", "Líquido a elegir"], cup: 3090, usd: 7.89, en: { nombre: "The Beast", items: ["ChuChuWah Napole Pizza", "Croquettes (6 units)", "Drink of choice"] } },
+    { nombre: "El Cubano", emoji: "🥩", items: ["Bistec Uruguaito", "Arroz moro", "Ensalada", "Líquido a elegir"], cup: 3750, usd: 9.57, en: { nombre: "The Cuban", items: ["Uruguayan Pork Steak", "Moro Rice", "Salad", "Drink of choice"] } },
+    { nombre: "Noche ChuChuWah (Pareja)", emoji: "💑", items: ["2x Bistec de pollo", "Arroz frito", "Ensalada", "2 Líquidos"], cup: 4945, usd: 12.63, pareja: true, en: { nombre: "ChuChuWah Night (Couple)", items: ["2x Chicken Steak", "Fried Rice", "Salad", "2 Drinks"] } },
+    { nombre: "Mar y Amor (Pareja)", emoji: "🐟", items: ["2x Filete de pescado grille", "Arroz frito", "Ensalada fría", "2 Líquidos"], cup: 5535, usd: 14.13, pareja: true, en: { nombre: "Sea and Love (Couple)", items: ["2x Grilled Fish Fillet", "Fried Rice", "Cold Salad", "2 Drinks"] } }
   ];
 
   const todosAgregos = [
-    { nombre: "Hawaiana", cup: 280, usd: 0.72, para: ["pizza"] },
-    { nombre: "Jamón", cup: 165, usd: 0.43, para: ["pizza", "pasta", "pan"] },
-    { nombre: "Queso Gouda", cup: 450, usd: 1.16, para: ["pizza", "pasta", "pan"] },
-    { nombre: "Chorizo", cup: 375, usd: 0.97, para: ["pizza", "pasta"] },
-    { nombre: "Atún", cup: 760, usd: 1.96, para: ["pizza", "pasta"] },
-    { nombre: "Piña", cup: 140, usd: 0.36, para: ["pizza"] },
-    { nombre: "Bacon", cup: 545, usd: 1.41, para: ["pizza", "pasta", "pan"] },
-    { nombre: "Aceituna", cup: 440, usd: 1.14, para: ["pizza"] },
-    { nombre: "Lomo ahumado", cup: 345, usd: 0.89, para: ["pizza", "pasta", "pan"] },
-    { nombre: "Cebolla", cup: 300, usd: 0.77, para: ["pizza", "pasta", "pan"] },
-    { nombre: "Pimiento", cup: 125, usd: 0.32, para: ["pizza", "pasta"] }
+    { nombre: "Hawaiana", cup: 280, usd: 0.72, para: ["pizza"], en: "Hawaiian" },
+    { nombre: "Jamón", cup: 165, usd: 0.43, para: ["pizza", "pasta", "pan"], en: "Ham" },
+    { nombre: "Queso Gouda", cup: 450, usd: 1.16, para: ["pizza", "pasta", "pan"], en: "Gouda Cheese" },
+    { nombre: "Chorizo", cup: 375, usd: 0.97, para: ["pizza", "pasta"], en: "Chorizo" },
+    { nombre: "Atún", cup: 760, usd: 1.96, para: ["pizza", "pasta"], en: "Tuna" },
+    { nombre: "Piña", cup: 140, usd: 0.36, para: ["pizza"], en: "Pineapple" },
+    { nombre: "Bacon", cup: 545, usd: 1.41, para: ["pizza", "pasta", "pan"], en: "Bacon" },
+    { nombre: "Aceituna", cup: 440, usd: 1.14, para: ["pizza"], en: "Olives" },
+    { nombre: "Lomo ahumado", cup: 345, usd: 0.89, para: ["pizza", "pasta", "pan"], en: "Smoked Loin" },
+    { nombre: "Cebolla", cup: 300, usd: 0.77, para: ["pizza", "pasta", "pan"], en: "Onion" },
+    { nombre: "Pimiento", cup: 125, usd: 0.32, para: ["pizza", "pasta"], en: "Bell Pepper" }
   ];
 
   let carrito = [];
@@ -906,60 +906,131 @@
   let pendingProduct = null;
   let currentLang = "es";
 
-  // ======================== IDIOMA ========================
+  // ======================== TRADUCCIONES ========================
   const translations = {
     es: {
-      heroTitle: "CHU<span>CHU</span>WAH",
-      heroSubtitle: "El Expreso del Sabor",
-      heroDesc: "Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.",
-      combosTitle: "COMBOS <em>ESPECIALES</em>",
-      menuTitle: "MENÚ <em>COMPLETO</em>",
-      bebidasTitle: "NUESTRAS <em>BEBIDAS</em>",
-      bebidasNota: "El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.",
-      pedidoTitle: "¿LISTO PARA PEDIR?",
-      pedidoSub: "Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm",
-      infoTitle: "INFORMACIÓN <em>& CONTACTO</em>",
-      cartTitle: "Tu Pedido",
-      checkoutBtn: "📲 Pedir por WhatsApp",
-      open: "Abierto",
-      closing: "A punto de cerrar",
-      closed: "Cerrado",
-      digitalOnly: "Solo para pedidos digitales. No se atiende presencialmente."
+      "combos": "Combos",
+      "menu": "Menú",
+      "bebidas": "Bebidas",
+      "mas-pedido": "Lo más pedido",
+      "info": "Info",
+      "hero-title": "CHU<span>CHU</span>WAH",
+      "hero-subtitle": "El Expreso del Sabor",
+      "hero-desc": "Comida cubana con alma propia. Pollos, pizzas, mariscos, carnes y mucho más — directo a tu mesa o a tu puerta en todo Mayabeque.",
+      "ver-menu": "Ver Menú Completo",
+      "horario": "11am – 10pm",
+      "delivery": "Delivery Mayabeque",
+      "pago": "Zelle & CUP",
+      "ofertas": "Nuestras Ofertas",
+      "combos-title": "COMBOS <em>ESPECIALES</em>",
+      "todo-menu": "Todo lo que tenemos",
+      "menu-title": "MENÚ <em>COMPLETO</em>",
+      "para-tomar": "Para tomar",
+      "bebidas-title": "NUESTRAS <em>BEBIDAS</em>",
+      "bebidas-nota": "El precio de las bebidas se consulta al momento del pedido. Se añaden sin costo en el carrito y se facturan aparte.",
+      "listo-pedir": "¿LISTO PARA PEDIR?",
+      "pedido-sub": "Delivery disponible a todo Mayabeque • Lunes a Domingo 11am – 10pm",
+      "encuentranos": "Encuéntranos",
+      "info-title": "INFORMACIÓN <em>& CONTACTO</em>",
+      "ubicacion": "Jaruco, Mayabeque",
+      "ubicacion-detalle": "Cuba, cerca del tren Hershey",
+      "horario-title": "Horario",
+      "horario-detalle": "11am – 10pm (Delivery hasta 10pm)",
+      "contacto": "Contacto",
+      "whatsapp": "WhatsApp +53 50993981",
+      "tu-pedido": "Tu Pedido",
+      "metodo-pago": "Método de pago:",
+      "tipo-pedido": "Tipo de pedido:",
+      "para-llevar": "Para llevar (sin costo extra)",
+      "delivery-dom": "Delivery a domicilio (Jaruco +200 CUP / 0.52 USD)",
+      "delivery-fuera": "Delivery fuera de Jaruco (precio a consultar)",
+      "direccion-placeholder": "Dirección completa",
+      "nombre-destino": "Nombre de quien recibe",
+      "telefono-destino": "Número de celular",
+      "notas-placeholder": "Notas adicionales (opcional)",
+      "pedir-whatsapp": "📲 Pedir por WhatsApp",
+      "agregar-extras": "Agregar extras",
+      "agregar-carrito": "Agregar al carrito",
+      "cancelar": "Cancelar",
+      "open": "Abierto",
+      "closing": "A punto de cerrar",
+      "closed": "Cerrado",
+      "digital-only": "Solo para pedidos digitales. No se atiende presencialmente."
     },
     en: {
-      heroTitle: "CHU<span>CHU</span>WAH",
-      heroSubtitle: "The Flavor Express",
-      heroDesc: "Cuban food with its own soul. Chicken, pizzas, seafood, meats and much more — straight to your table or door throughout Mayabeque.",
-      combosTitle: "SPECIAL <em>COMBOS</em>",
-      menuTitle: "FULL <em>MENU</em>",
-      bebidasTitle: "OUR <em>DRINKS</em>",
-      bebidasNota: "The price of drinks is consulted at the time of order. They are added to the cart at no cost and billed separately.",
-      pedidoTitle: "READY TO ORDER?",
-      pedidoSub: "Delivery available throughout Mayabeque • Monday to Sunday 11am – 10pm",
-      infoTitle: "INFORMATION <em>& CONTACT</em>",
-      cartTitle: "Your Order",
-      checkoutBtn: "📲 Order via WhatsApp",
-      open: "Open",
-      closing: "Closing soon",
-      closed: "Closed",
-      digitalOnly: "Digital orders only. No in-person service."
+      "combos": "Combos",
+      "menu": "Menu",
+      "bebidas": "Drinks",
+      "mas-pedido": "Most Ordered",
+      "info": "Info",
+      "hero-title": "CHU<span>CHU</span>WAH",
+      "hero-subtitle": "The Flavor Express",
+      "hero-desc": "Cuban food with its own soul. Chicken, pizzas, seafood, meats and much more — straight to your table or door throughout Mayabeque.",
+      "ver-menu": "View Full Menu",
+      "horario": "11am – 10pm",
+      "delivery": "Mayabeque Delivery",
+      "pago": "Zelle & CUP",
+      "ofertas": "Our Offers",
+      "combos-title": "SPECIAL <em>COMBOS</em>",
+      "todo-menu": "Everything we have",
+      "menu-title": "FULL <em>MENU</em>",
+      "para-tomar": "To drink",
+      "bebidas-title": "OUR <em>DRINKS</em>",
+      "bebidas-nota": "The price of drinks is consulted at the time of order. They are added to the cart at no cost and billed separately.",
+      "listo-pedir": "READY TO ORDER?",
+      "pedido-sub": "Delivery available throughout Mayabeque • Monday to Sunday 11am – 10pm",
+      "encuentranos": "Find Us",
+      "info-title": "INFORMATION <em>& CONTACT</em>",
+      "ubicacion": "Jaruco, Mayabeque",
+      "ubicacion-detalle": "Cuba, near the Hershey train",
+      "horario-title": "Schedule",
+      "horario-detalle": "11am – 10pm (Delivery until 10pm)",
+      "contacto": "Contact",
+      "whatsapp": "WhatsApp +53 50993981",
+      "tu-pedido": "Your Order",
+      "metodo-pago": "Payment method:",
+      "tipo-pedido": "Order type:",
+      "para-llevar": "Take away (no extra cost)",
+      "delivery-dom": "Home delivery (Jaruco +200 CUP / 0.52 USD)",
+      "delivery-fuera": "Delivery outside Jaruco (price to consult)",
+      "direccion-placeholder": "Full address",
+      "nombre-destino": "Recipient's name",
+      "telefono-destino": "Cell phone number",
+      "notas-placeholder": "Additional notes (optional)",
+      "pedir-whatsapp": "📲 Order via WhatsApp",
+      "agregar-extras": "Add extras",
+      "agregar-carrito": "Add to cart",
+      "cancelar": "Cancel",
+      "open": "Open",
+      "closing": "Closing soon",
+      "closed": "Closed",
+      "digital-only": "Digital orders only. No in-person service."
     }
   };
 
-  function updateLanguage() {
-    document.querySelector('.hero-title').innerHTML = translations[currentLang].heroTitle;
-    document.querySelector('.hero-subtitle').textContent = translations[currentLang].heroSubtitle;
-    document.querySelector('.hero-desc').textContent = translations[currentLang].heroDesc;
-    document.querySelector('#combos .section-title').innerHTML = translations[currentLang].combosTitle;
-    document.querySelector('#menu .section-title').innerHTML = translations[currentLang].menuTitle;
-    document.querySelector('#bebidas .section-title').innerHTML = translations[currentLang].bebidasTitle;
-    document.querySelector('.bebidas-nota').textContent = translations[currentLang].bebidasNota;
-    document.querySelector('.pedido-title').textContent = translations[currentLang].pedidoTitle;
-    document.querySelector('.pedido-sub').textContent = translations[currentLang].pedidoSub;
-    document.querySelector('#info .section-title').innerHTML = translations[currentLang].infoTitle;
-    document.querySelector('.cart-header h3').textContent = translations[currentLang].cartTitle;
-    document.querySelector('#enviarWhatsappBtn').textContent = translations[currentLang].checkoutBtn;
-    document.querySelector('.digital-only').textContent = translations[currentLang].digitalOnly;
+  function translatePage() {
+    document.querySelectorAll('[data-trans]').forEach(el => {
+      const key = el.getAttribute('data-trans');
+      el.innerHTML = translations[currentLang][key] || el.innerHTML;
+    });
+    document.querySelectorAll('.combo-name').forEach((el, i) => {
+      const combo = combosData[i];
+      el.textContent = currentLang === "es" ? combo.nombre : combo.en.nombre;
+    });
+    document.querySelectorAll('.combo-items').forEach((ul, i) => {
+      const combo = combosData[i];
+      const items = currentLang === "es" ? combo.items : combo.en.items;
+      ul.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+    });
+    document.querySelectorAll('.menu-item-name').forEach(el => {
+      const nombre = el.textContent;
+      const producto = Object.values(productosData).find(p => p.en === nombre || p.nombre === nombre);
+      if (producto) el.textContent = currentLang === "es" ? producto.nombre : producto.en;
+    });
+    document.querySelectorAll('#deliveryType option').forEach(el => {
+      const key = el.getAttribute('data-trans');
+      if (key) el.textContent = translations[currentLang][key];
+    });
     updateStatusBanner();
   }
 
@@ -994,72 +1065,43 @@
     banner.innerHTML = `<span class="${color}">● ${message}</span>`;
   }
 
-  // ======================== INICIO ========================
-  function init() {
-    updateLanguage();
-    renderCombos();
-    renderMenu();
-    renderBebidas();
-    setCurrency("cup");
-    setupDeliveryEvents();
-    setupLanguageSwitcher();
-    setupMobileMenu();
+  // ======================== MONEDA ========================
+  function setCurrency(currency) {
+    currentCurrency = currency;
     document.querySelectorAll('.currency-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => setCurrency(e.target.dataset.currency));
+      if (btn.dataset.currency === currency) btn.classList.add('active');
+      else btn.classList.remove('active');
     });
-    document.getElementById("paymentMethod").addEventListener("change", syncCurrencyWithPaymentMethod);
-    document.getElementById("confirmAgregosBtn").onclick = () => {
-      const checkboxes = document.querySelectorAll("#agregosList input:checked");
-      const seleccionados = Array.from(checkboxes).map(cb => {
-        const nombre = cb.value;
-        const cup = parseFloat(cb.dataset.cup);
-        const usd = parseFloat(cb.dataset.usd);
-        return { nombre, cup, usd };
-      });
-      if (pendingProduct) agregarAlCarrito(pendingProduct, 1, seleccionados);
-      document.getElementById("agregosModal").style.display = "none";
-      pendingProduct = null;
-    };
-    document.getElementById("cancelAgregosBtn").onclick = () => {
-      document.getElementById("agregosModal").style.display = "none";
-      pendingProduct = null;
-    };
-    document.getElementById("cartIcon").onclick = () => document.getElementById("cartDrawer").classList.add("open");
-    document.getElementById("closeCartBtn").onclick = () => document.getElementById("cartDrawer").classList.remove("open");
-    document.getElementById("enviarWhatsappBtn").addEventListener("click", enviarPedidoWhatsApp);
-    loadCarouselImages();
-    setupTouchCarousel();
-    setInterval(updateStatusBanner, 60000);
-    updateStatusBanner();
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    // Actualizar precios en combos
+    document.querySelectorAll('.combo-price-value').forEach(el => {
+      const cupVal = parseFloat(el.getAttribute('data-cup'));
+      const usdVal = parseFloat(el.getAttribute('data-usd'));
+      el.innerText = currency === "cup" ? cupVal + " CUP" : "$" + usdVal.toFixed(2) + " USD";
+    });
+
+    // Actualizar precios en menú
+    document.querySelectorAll('.price-value').forEach(el => {
+      const cupVal = parseFloat(el.getAttribute('data-cup'));
+      const usdVal = parseFloat(el.getAttribute('data-usd'));
+      el.innerText = currency === "cup" ? cupVal + " CUP" : "$" + usdVal.toFixed(2) + " USD";
+    });
+
+    // Actualizar precios en modal de agregos
+    const modalAgregos = document.querySelectorAll('#agregosList .agrego-item span:last-child');
+    modalAgregos.forEach(el => {
+      const parent = el.parentElement;
+      const checkbox = parent.querySelector('input');
+      const cupVal = parseFloat(checkbox.dataset.cup);
+      const usdVal = parseFloat(checkbox.dataset.usd);
+      el.innerText = currency === "cup" ? cupVal + " CUP" : "$" + usdVal.toFixed(2) + " USD";
+    });
+
+    // Recalcular todo el carrito
+    actualizarCarrito();
+    syncPaymentMethodWithCurrency();
   }
 
-  function setupLanguageSwitcher() {
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        currentLang = e.target.dataset.lang;
-        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        updateLanguage();
-      });
-    });
-  }
-
-  function setupMobileMenu() {
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
-  }
-
-  // ======================== RESTO DE FUNCIONES ========================
   function getPriceValue(cup, usd) { return currentCurrency === "cup" ? cup : usd; }
   function formatPrice(valor) {
     if (currentCurrency === "cup") return Math.round(valor) + " CUP";
@@ -1077,91 +1119,25 @@
     }
   }
 
-  function renderCombos() {
-    const container = document.getElementById("combos-container");
-    container.innerHTML = combosData.map(c => `
-      <div class="combo-card ${c.pareja ? 'pareja' : ''} fade-in">
-        <div class="combo-emoji">${c.emoji}</div>
-        <div class="combo-num">${c.pareja ? 'Pareja' : 'Combo'}</div>
-        <div class="combo-name">${c.nombre}</div>
-        <ul class="combo-items">${c.items.map(i => `<li>${i}</li>`).join('')}</ul>
-        <div class="combo-price">
-          <span class="combo-price-value" data-cup="${c.cup} CUP" data-usd="$${c.usd} USD">${currentCurrency === "cup" ? c.cup + " CUP" : "$" + c.usd + " USD"}</span>
-          <button class="add-to-cart-btn" data-nombre="${c.nombre}" data-cup="${c.cup}" data-usd="${c.usd}" data-tipo="combo">Agregar</button>
-        </div>
-      </div>
-    `).join('');
-    document.querySelectorAll('.add-to-cart-btn[data-tipo="combo"]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const nombre = btn.dataset.nombre;
-        const cup = parseFloat(btn.dataset.cup);
-        const usd = parseFloat(btn.dataset.usd);
-        agregarAlCarrito({ nombre, cup, usd, tipo: "combo" }, 1, []);
-      });
-    });
-  }
-
-  function renderMenu() {
-    const container = document.getElementById("menu-container");
-    const categorias = {
-      "🍗 Pollo & Cerdo": ["Bistec de pollo","Pollo asado","Has Gordon Blue de pollo","Juliana de pollo","Fajitas de pollo empanizadas","Fricase de pollo","Alitas de pollo","Bistec de cerdo grille","Bistec Uruguaito","Juliana de cerdo","Fajita de cerdo empanizada","Suprema de cerdo","Fricase de cerdo","Masa de cerdo frita","Rolitillo de cerdo","Chuletas de cerdo ahumado","Lonjas de cerdo asado","Juliana mixta","Padre mixta empanizada","San Jacobo (jamón y queso)","Lomo ahumado"],
-      "🍕 Pizzas": ["Pizza Chuchu Napole","Pizza Gouda Napole","Pizza ChuChuWah Napole","Pizza ChuChuWah Gouda","Pizza Chuchu 4 Estaciones","Pizza Gouda 4 Estaciones","Pizza Gouda Vegetales"],
-      "🦐 Mariscos & Pescado": ["Coctel de atún","Eperlan entrante","Filete de pescado grille","Filete de pescado canciller","Filetillo de pescado","Filete de pescado con camarón"],
-      "🍝 Pastas": ["Spaghetti de queso Gouda"],
-      "☕ Cafetería & Panes": ["Pan con bistec","Bocadito de jamón","Bocadito de jamón y queso","Super hamburgueza","Super Expreso ChuChuWah","Pan con hamburgueza pollo","Café expreso","Café cortadito","Batido de frutas","Batido de chocolate","Batido de Mamey","Pan con 2 croquetas"],
-      "🥗 Entremeses": ["Entremeses surtido","Entremés ChuChuWah","Bolitas de jamón","Bolitas de queso Gouda","Croquetas (6 unidades)","Picadera ChuChuWah","Ensalada fría","Buñuelos en almíbar"],
-      "🍚 Guarniciones": ["Ensalada","Arroz frito","Arroz blanco","Arroz moro","Papas pre fritas","Vianda frita","Vianda hervida"]
-    };
-    let html = "";
-    for (let [cat, items] of Object.entries(categorias)) {
-      html += `<div class="menu-category fade-in" style="margin-bottom: 2rem;"><div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; border-bottom: 1px solid rgba(192,0,26,0.3); padding-bottom: 8px;"><span style="font-size: 24px;">${cat.split(' ')[0]}</span><span style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--amarillo);">${cat.substring(2)}</span></div><div class="menu-items-grid">`;
-      items.forEach(nombre => {
-        const p = productosData[nombre];
-        if (!p) return;
-        const precioMostrado = currentCurrency === "cup" ? p.cup + " CUP" : "$" + p.usd + " USD";
-        html += `<div class="menu-item"><span class="menu-item-name">${nombre}</span><span class="price-value" data-cup="${p.cup}" data-usd="${p.usd}">${precioMostrado}</span><button class="small-add-btn" data-nombre="${nombre}" data-tipo="${p.tipo}" data-cup="${p.cup}" data-usd="${p.usd}">+</button></div>`;
-      });
-      html += `</div></div>`;
-    }
-    container.innerHTML = html;
-    document.querySelectorAll('.small-add-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const nombre = btn.dataset.nombre;
-        const tipo = btn.dataset.tipo;
-        const cup = parseFloat(btn.dataset.cup);
-        const usd = parseFloat(btn.dataset.usd);
-        if (tipo === "pizza" || tipo === "pasta" || tipo === "pan") {
-          pendingProduct = { nombre, cup, usd, tipo };
-          mostrarModalAgregos(tipo);
-        } else {
-          agregarAlCarrito({ nombre, cup, usd, tipo }, 1, []);
-        }
-      });
-    });
-  }
-
-  function mostrarModalAgregos(tipoProducto) {
-    let filtrados = todosAgregos.filter(ag => ag.para.includes(tipoProducto));
-    if (tipoProducto === "pan") filtrados = filtrados.filter(ag => !["Hawaiana", "Piña", "Aceituna"].includes(ag.nombre));
-    const container = document.getElementById("agregosList");
-    container.innerHTML = filtrados.map(ag => `
-      <div class="agrego-item">
-        <label><input type="checkbox" value="${ag.nombre}" data-cup="${ag.cup}" data-usd="${ag.usd}"> ${ag.nombre}</label>
-        <span>${currentCurrency === "cup" ? ag.cup + " CUP" : "$" + ag.usd + " USD"}</span>
-      </div>
-    `).join('');
-    document.getElementById("modalTitle").innerText = `Agregar extras a ${pendingProduct.nombre}`;
-    document.getElementById("agregosModal").style.display = "flex";
-  }
-
+  // ======================== CARRITO ========================
   function agregarAlCarrito(productoBase, cantidad, agregosSeleccionados) {
-    const precioBase = getPriceValue(productoBase.cup, productoBase.usd);
-    const extraCosto = agregosSeleccionados.reduce((sum, ag) => sum + getPriceValue(ag.cup, ag.usd), 0);
-    const precioUnitario = precioBase + extraCosto;
+    const precioBaseCup = productoBase.cup;
+    const precioBaseUsd = productoBase.usd;
+    const extraCosto = agregosSeleccionados.reduce((sum, ag) => sum + (currentCurrency === "cup" ? ag.cup : ag.usd), 0);
+    const precioUnitario = (currentCurrency === "cup" ? precioBaseCup : precioBaseUsd) + extraCosto;
     const key = JSON.stringify({ nombre: productoBase.nombre, agregos: agregosSeleccionados.map(a=>a.nombre).sort() });
     const existing = carrito.find(item => JSON.stringify({ nombre: item.nombre, agregos: item.agregos.map(a=>a.nombre).sort() }) === key);
     if (existing) existing.cantidad += cantidad;
-    else carrito.push({ id: Date.now()+Math.random(), nombre: productoBase.nombre, tipo: productoBase.tipo, precioUnitario, cantidad, agregos: agregosSeleccionados, baseCup: productoBase.cup, baseUsd: productoBase.usd });
+    else carrito.push({
+      id: Date.now()+Math.random(),
+      nombre: productoBase.nombre,
+      tipo: productoBase.tipo,
+      precioUnitario: precioUnitario,
+      cantidad: cantidad,
+      agregos: agregosSeleccionados,
+      baseCup: precioBaseCup,
+      baseUsd: precioBaseUsd
+    });
     actualizarCarrito();
   }
 
@@ -1169,10 +1145,14 @@
     const cartContainer = document.getElementById("cartItems");
     let subtotal = 0, cajasPizza = 0, termopacks = 0;
     carrito.forEach(item => {
+      const precioUnitario = currentCurrency === "cup" ? item.baseCup : item.baseUsd;
+      const extraCosto = item.agregos.reduce((sum, ag) => sum + (currentCurrency === "cup" ? ag.cup : ag.usd), 0);
+      item.precioUnitario = precioUnitario + extraCosto;
       subtotal += item.precioUnitario * item.cantidad;
       if (item.tipo === "pizza") cajasPizza += item.cantidad;
       else if (item.tipo === "comida" || item.tipo === "pasta" || item.tipo === "pan") termopacks += item.cantidad;
     });
+
     const precioCaja = currentCurrency === "cup" ? 60 : 0.19;
     const precioTermo = currentCurrency === "cup" ? 100 : 0.31;
     let totalEmpaque = (cajasPizza * precioCaja) + (termopacks * precioTermo);
@@ -1194,18 +1174,19 @@
           <button onclick="cambiarCantidad(${idx}, -1)">-</button>
           <span>${item.cantidad}</span>
           <button onclick="cambiarCantidad(${idx}, 1)">+</button>
-          <button class="remove-item" onclick="eliminarItem(${idx})">Eliminar</button>
+          <button class="remove-item" onclick="eliminarItem(${idx})" data-trans="eliminar">Eliminar</button>
         </div>
       </div>
     `).join('');
-    if (carrito.length === 0) cartContainer.innerHTML = "<p>Tu carrito está vacío</p>";
+    if (carrito.length === 0) cartContainer.innerHTML = `<p data-trans="carrito-vacio">${translations[currentLang]["carrito-vacio"] || "Tu carrito está vacío"}</p>`;
     document.getElementById("totalsArea").innerHTML = `
-      <p><span>Subtotal:</span><span>${formatPrice(subtotal)}</span></p>
-      <p><span>Empaque (caja pizza x${cajasPizza} / termopack x${termopacks}):</span><span>${formatPrice(totalEmpaque)}</span></p>
-      <p><span>Mensajería:</span><span>${deliveryType === "outside" ? "A consultar" : formatPrice(deliveryCost)}</span></p>
-      <hr><p><strong>Total:</strong><strong>${deliveryType === "outside" ? formatPrice(total) + " + envío a confirmar" : formatPrice(total)}</strong></p>
+      <p><span data-trans="subtotal">Subtotal:</span><span>${formatPrice(subtotal)}</span></p>
+      <p><span data-trans="empaque">Empaque (caja pizza x${cajasPizza} / termopack x${termopacks}):</span><span>${formatPrice(totalEmpaque)}</span></p>
+      <p><span data-trans="mensajeria">Mensajería:</span><span>${deliveryType === "outside" ? translations[currentLang].closed : formatPrice(deliveryCost)}</span></p>
+      <hr><p><strong data-trans="total">Total:</strong><strong>${deliveryType === "outside" ? formatPrice(total) + " + envío a confirmar" : formatPrice(total)}</strong></p>
     `;
     document.getElementById("cartCount").innerText = carrito.reduce((acc, i) => acc + i.cantidad, 0);
+    translatePage();
   }
 
   window.cambiarCantidad = (idx, delta) => {
@@ -1215,6 +1196,148 @@
     actualizarCarrito();
   };
   window.eliminarItem = (idx) => { carrito.splice(idx, 1); actualizarCarrito(); };
+
+  // ======================== RENDERIZADO ========================
+  function renderCombos() {
+    const container = document.getElementById("combos-container");
+    container.innerHTML = combosData.map((c, i) => `
+      <div class="combo-card ${c.pareja ? 'pareja' : ''} fade-in">
+        <div class="combo-emoji">${c.emoji}</div>
+        <div class="combo-num">${c.pareja ? (currentLang === "es" ? 'Pareja' : 'Couple') : (currentLang === "es" ? 'Combo' : 'Combo')}</div>
+        <div class="combo-name">${currentLang === "es" ? c.nombre : c.en.nombre}</div>
+        <ul class="combo-items">${(currentLang === "es" ? c.items : c.en.items).map(item => `<li>${item}</li>`).join('')}</ul>
+        <div class="combo-price">
+          <span class="combo-price-value" data-cup="${c.cup}" data-usd="${c.usd}">${currentCurrency === "cup" ? c.cup + " CUP" : "$" + c.usd.toFixed(2) + " USD"}</span>
+          <button class="add-to-cart-btn" data-nombre="${c.nombre}" data-cup="${c.cup}" data-usd="${c.usd}" data-tipo="combo" data-trans="agregar">Agregar</button>
+        </div>
+      </div>
+    `).join('');
+    document.querySelectorAll('.add-to-cart-btn[data-tipo="combo"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const nombre = btn.dataset.nombre;
+        const combo = combosData.find(c => c.nombre === nombre);
+        agregarAlCarrito({ nombre: combo.nombre, cup: combo.cup, usd: combo.usd, tipo: "combo" }, 1, []);
+      });
+    });
+    translatePage();
+  }
+
+  function renderMenu() {
+    const container = document.getElementById("menu-container");
+    const categorias = {
+      "🍗 Pollo & Cerdo": ["Bistec de pollo","Pollo asado","Has Gordon Blue de pollo","Juliana de pollo","Fajitas de pollo empanizadas","Fricase de pollo","Alitas de pollo","Bistec de cerdo grille","Bistec Uruguaito","Juliana de cerdo","Fajita de cerdo empanizada","Suprema de cerdo","Fricase de cerdo","Masa de cerdo frita","Rolitillo de cerdo","Chuletas de cerdo ahumado","Lonjas de cerdo asado","Juliana mixta","Padre mixta empanizada","San Jacobo (jamón y queso)","Lomo ahumado"],
+      "🍕 Pizzas": ["Pizza Chuchu Napole","Pizza Gouda Napole","Pizza ChuChuWah Napole","Pizza ChuChuWah Gouda","Pizza Chuchu 4 Estaciones","Pizza Gouda 4 Estaciones","Pizza Gouda Vegetales"],
+      "🦐 Mariscos & Pescado": ["Coctel de atún","Eperlan entrante","Filete de pescado grille","Filete de pescado canciller","Filetillo de pescado","Filete de pescado con camarón"],
+      "🍝 Pastas": ["Spaghetti de queso Gouda"],
+      "☕ Cafetería & Panes": ["Pan con bistec","Bocadito de jamón","Bocadito de jamón y queso","Super hamburgueza","Super Expreso ChuChuWah","Pan con hamburgueza pollo","Café expreso","Café cortadito","Batido de frutas","Batido de chocolate","Batido de Mamey","Pan con 2 croquetas"],
+      "🥗 Entremeses": ["Entremeses surtido","Entremés ChuChuWah","Bolitas de jamón","Bolitas de queso Gouda","Croquetas (6 unidades)","Picadera ChuChuWah","Ensalada fría","Buñuelos en almíbar"],
+      "🍚 Guarniciones": ["Ensalada","Arroz frito","Arroz blanco","Arroz moro","Papas pre fritas","Vianda frita","Vianda hervida"]
+    };
+    let html = "";
+    for (let [cat, items] of Object.entries(categorias)) {
+      html += `<div class="menu-category fade-in" style="margin-bottom: 2rem;"><div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; border-bottom: 1px solid rgba(192,0,26,0.3); padding-bottom: 8px;"><span style="font-size: 24px;">${cat.split(' ')[0]}</span><span style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--amarillo);">${cat.substring(2)}</span></div><div class="menu-items-grid">`;
+      items.forEach(nombre => {
+        const p = productosData[nombre];
+        if (!p) return;
+        const nombreMostrado = currentLang === "es" ? p.nombre : p.en;
+        const precioMostrado = currentCurrency === "cup" ? p.cup + " CUP" : "$" + p.usd.toFixed(2) + " USD";
+        html += `<div class="menu-item"><span class="menu-item-name">${nombreMostrado}</span><span class="price-value" data-cup="${p.cup}" data-usd="${p.usd}">${precioMostrado}</span><button class="small-add-btn" data-nombre="${p.nombre}" data-tipo="${p.tipo}" data-cup="${p.cup}" data-usd="${p.usd}" data-trans="agregar">+</button></div>`;
+      });
+      html += `</div></div>`;
+    }
+    container.innerHTML = html;
+    document.querySelectorAll('.small-add-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const nombre = btn.dataset.nombre;
+        const tipo = btn.dataset.tipo;
+        const cup = parseFloat(btn.dataset.cup);
+        const usd = parseFloat(btn.dataset.usd);
+        const producto = Object.values(productosData).find(p => p.nombre === nombre);
+        if (tipo === "pizza" || tipo === "pasta" || tipo === "pan") {
+          pendingProduct = { nombre: producto.nombre, cup: producto.cup, usd: producto.usd, tipo: producto.tipo };
+          mostrarModalAgregos(tipo);
+        } else {
+          agregarAlCarrito({ nombre: producto.nombre, cup: producto.cup, usd: producto.usd, tipo: producto.tipo }, 1, []);
+        }
+      });
+    });
+    translatePage();
+  }
+
+  function mostrarModalAgregos(tipoProducto) {
+    let filtrados = todosAgregos.filter(ag => ag.para.includes(tipoProducto));
+    if (tipoProducto === "pan") filtrados = filtrados.filter(ag => !["Hawaiana", "Piña", "Aceituna"].includes(ag.nombre));
+    const container = document.getElementById("agregosList");
+    container.innerHTML = filtrados.map(ag => `
+      <div class="agrego-item">
+        <label><input type="checkbox" value="${ag.nombre}" data-cup="${ag.cup}" data-usd="${ag.usd}"> ${currentLang === "es" ? ag.nombre : ag.en}</label>
+        <span>${currentCurrency === "cup" ? ag.cup + " CUP" : "$" + ag.usd.toFixed(2) + " USD"}</span>
+      </div>
+    `).join('');
+    document.getElementById("modalTitle").textContent = `${translations[currentLang]["agregar-extras"]} ${pendingProduct.nombre}`;
+    document.getElementById("agregosModal").style.display = "flex";
+  }
+
+  function renderBebidas() {
+    const bebidas = [
+      { es: "Tigón", en: "Tigón" },
+      { es: "Malta", en: "Malta" },
+      { es: "Agua Natural Grande", en: "Large Natural Water" },
+      { es: "Agua Natural Pequeño", en: "Small Natural Water" },
+      { es: "Presidente / Widmill", en: "Presidente / Widmill" },
+      { es: "Heniken / Corona", en: "Heineken / Corona" },
+      { es: "Energizante", en: "Energy Drink" },
+      { es: "Jugo de Lata", en: "Canned Juice" },
+      { es: "Caja de Jugo", en: "Juice Box" },
+      { es: "Shaka", en: "Shaka" },
+      { es: "Néctar / Limonada", en: "Nectar / Lemonade" },
+      { es: "Coca Cola", en: "Coca Cola" },
+      { es: "Kermato", en: "Kermato" },
+      { es: "Cristal / Bucanero", en: "Cristal / Bucanero" },
+      { es: "Pomo de Refresco", en: "Soda Jug" },
+      { es: "Hollandia / Lander", en: "Hollandia / Lander" },
+      { es: "Refresco Vaso", en: "Glass Soda" },
+      { es: "Redbull", en: "Redbull" },
+      { es: "Refresco Importado", en: "Imported Soda" },
+      { es: "Batido Mango / Guayaba", en: "Mango / Guava Milkshake" },
+      { es: "Go Tropic Morena", en: "Go Tropic Morena" },
+      { es: "Go Tropic Roja", en: "Go Tropic Roja" },
+      { es: "Batido de Chocolate", en: "Chocolate Milkshake" },
+      { es: "Vaso de Dispensada", en: "Draft Glass" },
+      { es: "Jarra de Dispensada", en: "Draft Pitcher" },
+      { es: "Termo de Dispensada", en: "Draft Thermos" }
+    ];
+    const container = document.getElementById("bebidas-container");
+    container.innerHTML = bebidas.map(b => `
+      <div class="bebida-item">
+        <span>${currentLang === "es" ? b.es : b.en}</span>
+        <button class="add-bebida" data-nombre="${b.es}" data-trans="agregar">Agregar</button>
+      </div>
+    `).join('');
+    document.querySelectorAll('.add-bebida').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const nombre = btn.dataset.nombre;
+        agregarAlCarrito({ nombre: nombre, cup: 0, usd: 0, tipo: "bebida" }, 1, []);
+      });
+    });
+    translatePage();
+  }
+
+  function setupDeliveryEvents() {
+    const deliverySelect = document.getElementById("deliveryType");
+    const deliveryFields = document.getElementById("deliveryFields");
+    if (deliverySelect) {
+      deliverySelect.addEventListener("change", () => {
+        if (deliverySelect.value === "delivery" || deliverySelect.value === "outside") {
+          deliveryFields.style.display = "block";
+        } else {
+          deliveryFields.style.display = "none";
+        }
+        actualizarCarrito();
+      });
+      deliverySelect.dispatchEvent(new Event('change'));
+    }
+  }
 
   function enviarPedidoWhatsApp() {
     let mensaje = "🍽️ *NUEVO PEDIDO CHUCHUWAH*%0A";
@@ -1264,56 +1387,6 @@
     if (notas) mensaje += `%0A%0A📝 Notas: ${notas}`;
     mensaje += `%0A%0A¡Gracias por tu pedido! 🚂`;
     window.open(`https://wa.me/5350993981?text=${mensaje}`, "_blank");
-  }
-
-  function setCurrency(currency) {
-    currentCurrency = currency;
-    document.querySelectorAll('.currency-btn').forEach(btn => {
-      if (btn.dataset.currency === currency) btn.classList.add('active');
-      else btn.classList.remove('active');
-    });
-    document.querySelectorAll('.combo-price-value').forEach(el => {
-      const cupVal = el.getAttribute('data-cup');
-      const usdVal = el.getAttribute('data-usd');
-      if (cupVal && usdVal) el.innerText = currency === "cup" ? cupVal : usdVal;
-    });
-    document.querySelectorAll('.price-value').forEach(el => {
-      const cupVal = el.getAttribute('data-cup');
-      const usdVal = el.getAttribute('data-usd');
-      if (cupVal && usdVal) el.innerText = currency === "cup" ? cupVal + " CUP" : "$" + usdVal + " USD";
-      else if (el.getAttribute('data-cup')) {
-        const cup = parseFloat(el.getAttribute('data-cup'));
-        const usd = parseFloat(el.getAttribute('data-usd'));
-        el.innerText = currency === "cup" ? cup + " CUP" : "$" + usd + " USD";
-      }
-    });
-    actualizarCarrito();
-    syncPaymentMethodWithCurrency();
-  }
-
-  function renderBebidas() {
-    const bebidas = ["Tigón","Malta","Agua Natural Grande","Agua Natural Pequeño","Presidente / Widmill","Heniken / Corona","Energizante","Jugo de Lata","Caja de Jugo","Shaka","Néctar / Limonada","Coca Cola","Kermato","Cristal / Bucanero","Pomo de Refresco","Hollandia / Lander","Refresco Vaso","Redbull","Refresco Importado","Batido Mango / Guayaba","Go Tropic Morena","Go Tropic Roja","Batido de Chocolate","Vaso de Dispensada","Jarra de Dispensada","Termo de Dispensada"];
-    const container = document.getElementById("bebidas-container");
-    container.innerHTML = bebidas.map(b => `<div class="bebida-item"><span>${b}</span><button class="add-bebida" data-nombre="${b}">Agregar</button></div>`).join('');
-    document.querySelectorAll('.add-bebida').forEach(btn => {
-      btn.addEventListener('click', () => agregarAlCarrito({ nombre: btn.dataset.nombre, cup: 0, usd: 0, tipo: "bebida" }, 1, []));
-    });
-  }
-
-  function setupDeliveryEvents() {
-    const deliverySelect = document.getElementById("deliveryType");
-    const deliveryFields = document.getElementById("deliveryFields");
-    if (deliverySelect) {
-      deliverySelect.addEventListener("change", () => {
-        if (deliverySelect.value === "delivery" || deliverySelect.value === "outside") {
-          deliveryFields.style.display = "block";
-        } else {
-          deliveryFields.style.display = "none";
-        }
-        actualizarCarrito();
-      });
-      deliverySelect.dispatchEvent(new Event('change'));
-    }
   }
 
   // ======================== CARRUSEL ========================
@@ -1414,6 +1487,69 @@
       if (diff > 50) changeSlide(1);
       else if (diff < -50) changeSlide(-1);
     }
+  }
+
+  // ======================== INICIO ========================
+  function init() {
+    translatePage();
+    renderCombos();
+    renderMenu();
+    renderBebidas();
+    setCurrency("cup");
+    setupDeliveryEvents();
+    document.querySelectorAll('.currency-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => setCurrency(e.target.dataset.currency));
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        currentLang = e.target.dataset.lang;
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        translatePage();
+        renderCombos();
+        renderMenu();
+        renderBebidas();
+      });
+    });
+    document.getElementById("paymentMethod").addEventListener("change", syncCurrencyWithPaymentMethod);
+    document.getElementById("confirmAgregosBtn").onclick = () => {
+      const checkboxes = document.querySelectorAll("#agregosList input:checked");
+      const seleccionados = Array.from(checkboxes).map(cb => {
+        const nombre = cb.value;
+        const ag = todosAgregos.find(a => a.nombre === nombre);
+        return { nombre: ag.nombre, cup: ag.cup, usd: ag.usd };
+      });
+      if (pendingProduct) agregarAlCarrito(pendingProduct, 1, seleccionados);
+      document.getElementById("agregosModal").style.display = "none";
+      pendingProduct = null;
+    };
+    document.getElementById("cancelAgregosBtn").onclick = () => {
+      document.getElementById("agregosModal").style.display = "none";
+      pendingProduct = null;
+    };
+    document.getElementById("cartIcon").onclick = () => document.getElementById("cartDrawer").classList.add("open");
+    document.getElementById("closeCartBtn").onclick = () => document.getElementById("cartDrawer").classList.remove("open");
+    document.getElementById("enviarWhatsappBtn").addEventListener("click", enviarPedidoWhatsApp);
+    loadCarouselImages();
+    setupTouchCarousel();
+    setupMobileMenu();
+    setInterval(updateStatusBanner, 60000);
+    updateStatusBanner();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  }
+
+  function setupMobileMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
   }
 
   init();
